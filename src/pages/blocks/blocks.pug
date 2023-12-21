@@ -1,0 +1,280 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageTitle = 'Repository blocks'
+    const orderListItems = [
+      { p1: 'Lorem' },
+      { p1: 'Lorem' },
+      { p1: 'Lorem' }
+    ]
+    const unorderListItems = [
+      { title: 'Lorem', descr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ex, aliquam dolores laboriosam eaque, itaque mollitia doloremque earum officiis velit recusandae explicabo aliquid, sed enim ipsum dolore corrupti repellat eligendi!' },
+      { title: 'Lorem', descr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ex voluptates quas, iure quasi perferendis doloremque unde nesciunt et eaque illo vitae exercitationem beatae distinctio cumque fugiat, ducimus, porro enim.' },
+      { title: 'Lorem', descr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto corrupti natus veniam. Architecto, omnis suscipit reiciendis perferendis ea dolore quidem esse culpa, nemo quasi nisi vitae tenetur quo eligendi alias.' }
+    ]
+    const tabHeadings = [
+      {
+        p3: 'Tab #1'
+      },
+      {
+        p3: 'Tab #2'
+      },
+      {
+        p3: 'Tab #3'
+      }
+    ]
+    const tableData = {
+      style: 'min-width: 695px;',
+      thead: [
+        {
+          mods: 'ui-secondary3',
+          th: [
+            { text: 'Сумма вклада', width: '24%' },
+            { text: '90 дней' },
+            { text: '180 дней' },
+            { text: '367 дней' },
+            { text: '720 дней' },
+            { text: '1080 дней' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'Ставка в 1 и 2 расчетный месяц', mods: 'ui-text-center', bg: true, colspan: 6 },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 10 000 ₽' },
+            { text: '7.0%' },
+            { text: '7.9%' },
+            { text: '8.1%' },
+            { text: '8.5%' },
+            { text: '9.6%' },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 1 500 000 ₽' },
+            { text: '7.1%' },
+            { text: '8.0%' },
+            { text: '8.1%' },
+            { text: '8.7%' },
+            { text: '9.7%' },
+          ]
+        },
+      ]
+    }
+
+block content
+  main
+    .inner
+      br
+      br
+      +ui-h1(pageTitle)
+      br
+      br
+      .banner.banner--deposit-desires.banner--layout
+        .banner__body
+          +ui-h2('Вклад "Исполнение желаний"', 'banner, --bold')
+          +ui-p2('Вклад с максимальной доходностью на длительный срок', 'banner, --secondary3')
+          .banner__info
+            .banner__item
+              +ui-p2('до<span>8.4</span>%')
+              +ui-p4('ставка на весь срок', '--secondary3')
+            .banner__item
+              +ui-p2('от<span>10 000</span>₽<span>/ 300</span>$')
+              +ui-p4('сумма вклада', '--secondary3')
+          +ui-info
+            +ui-p5('Повышение ставки доступно до 17 августа 2023г.')
+          .banner__image: img(src=`../../images/banner_img--deposit-desires.png`, alt='')
+          .banner__buttons
+            +ui-button({p3: 'Открыть вклад'}, '--filled, --p64')
+      br
+      br
+      p Пример секции с таблицей, отображаемой только на мобилке
+      +section('--background, --m-only')
+        +section-head: +ui-h3('Открыть вклад просто!', '--bold')
+        +section-head('--flex')
+          +ui-checkbox('capital', 'Капитализация процентов', '--white', 'tt')
+          +ui-tab-head([{ p4: 'Открыть онлайн' }, { p4: 'Открыть в офисе' }], '--bg-white, --no-outside, --m-2col')(data-tab-group='where')
+        +ui-tab(data-tab-group='where')
+          +ui-tab-body(data-tab-group='where')
+            +ui-tab-item('--active')
+              +ui-table(tableData, '--m-scroll, --bg-white')
+            +ui-tab-item
+              +ui-table(tableData, '--m-scroll, --bg-white')
+      br
+      br
+      a.js-popup(href='#popupHolidaysDocs') Holidays docs popup
+      +popup-holidays-docs
+      br
+      br
+      a.js-popup(href='#popupCertificates') Certificates popup
+      +popup-certificates
+      br
+      +section()
+        +ui-h4('UI Buttons')
+        br
+        +ui-button('Кнопка-ссылка')(href='/')
+        +ui-button('Кнопка-button')
+        br
+        br
+        +ui-button('Кнопка-ссылка', '--filled')(href='/')
+        +ui-button('Кнопка-button', '--filled')
+      +section()
+        +ui-h4('UI Checkbox')
+        br
+        +ui-checkbox('id', 'I love ')
+          a(href='') semolina
+      +section()
+        +ui-h4('UI Datepicker')
+        br
+        +ui-h6('UI Date single')
+        +ui-datepicker('', '--single')
+        br
+        +ui-h6('UI Date range')
+        +ui-datepicker('', '--range')
+        br
+        +ui-h6('UI Date time')
+        +ui-datepicker('', '--time')
+      +section()
+        +ui-h4('Titles')
+        br
+        .flex(style='display: flex; align-items: baseline')
+          +ui-h1('Text')
+          +ui-h2('Text')
+          +ui-h3('Text')
+          +ui-h4('Text')
+          +ui-h5('Text')
+          +ui-h6('Text')
+        br
+        br
+        +ui-h4('Paragraphs')
+        br
+        .flex(style='display: flex; align-items: baseline')
+          +ui-p1('Text')
+          +ui-p2('Text')
+          +ui-p3('Text')
+          +ui-p4('Text')
+          +ui-p5('Text')
+          +ui-p6('Text')
+          +ui-p7('Text')
+          +ui-p8('Text')
+      +section()
+        +ui-h4('UI Input')
+        br
+        +ui-input('phone', 'Phone')(required)
+      +section()
+        +ui-h4('UI Range')
+        br
+        +ui-h6('UI Range single')
+        +ui-range()(data-start=5000 data-step=100 data-min=100 data-max=10000)
+        br
+        +ui-h6('UI Date double')
+        +ui-range()(data-start=[2500, 7500] data-step=100 data-min=100 data-max=10000)
+      +section()
+        +ui-h4('UI Select')
+        br
+        +ui-select('', '1', '2', '3', '4')(placeholder='Цель кредита')
+      +section()
+        +ui-h4('UI Tab')
+        br
+        +ui-tab
+          +ui-tab-head(tabHeadings)
+          +ui-tab-body
+            +ui-tab-item('--active')
+              span Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quaerat aut quas ex error id temporibus molestiae ipsa necessitatibus quos hic in praesentium atque natus inventore eius, aliquam dolore libero.
+            +ui-tab-item
+              span Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed dolore officiis eum ullam consequatur quaerat nobis? Ut excepturi eum quod modi a nulla! Fugiat cum aut quos, perferendis vero vel?
+            +ui-tab-item
+              span Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi adipisci qui et necessitatibus culpa eligendi sit odit, obcaecati quia quo? Recusandae ipsum qui mollitia totam maxime possimus quam repellat earum!
+      +section()
+        +ui-h4('Lazy load test')
+        br
+        img.lazyload(src='../../images/swim.jpg' data-src='../../images/fancy_img1.png' alt='')
+      +section()
+        +ui-h4('Lazy load test')
+        br
+        img.lazyload(src='../../images/swim.jpg' data-src='../../images/fancy_img2.png' alt='')
+      +section()
+        +ui-h4('Lazy load test')
+        br
+        img.lazyload(src='../../images/swim.jpg' data-src='../../images/fancy_img3.png' alt='')
+      +section()
+        +ui-h4('UI Textarea')
+        br
+        +ui-textarea()(maxlength='256')
+      +section()
+        +ui-h4('UI Tooltip')
+        br
+        +ui-tooltip('Tooltip text')
+      +section()
+        +ui-h4('UI order list')
+        br
+        +ui-ol(orderListItems)
+        br
+        br
+        +ui-h4('UI unorder list')
+        br
+        +ui-ul(unorderListItems)
+      +section()
+        +ui-h4('Breadcrumbs')
+        br
+        +breadcrumbs
+          +breadcrumbs-item('Main', '/')
+          +breadcrumbs-item('News')
+          +breadcrumbs-item('News', '/', '--mobile')
+      +section
+        +ui-h4('From validation')
+        br
+        form(action='')
+          +ui-input('name', 'Name')(required)
+          br
+          +ui-input('mail', 'Mail')(required)
+          br
+          +ui-input('phone', 'Phone')(required)
+          br
+          +ui-select('', '1', '2', '3', '4')#select(placeholder='Цель кредита' required)
+          br
+          +ui-checkbox('agreement', 'I love ')(required)
+          br
+          +ui-button('Кнопка-submit', '', true)
+      +section()
+        +ui-h4('Pagination')
+        br
+        +pagination()
+      // Не удалять! Для билда картинки в ui-select
+      div(style='display: flex;')
+        img(src='../../images/cards/cards-calculator_select-0.png' alt='')
+        img(src='../../images/cards/cards-calculator_select-1.png' alt='')
+        img(src='../../images/cards/cards-calculator_select-2.png' alt='')
+        img(src='../../images/cards/cards-calculator_select-3.png' alt='')
+        img(src='../../images/cards/cards-calculator_select-4.png' alt='')
+        img(src='../../images/cards/cards-calculator_select-5.png' alt='')
+        img(src='../../images/cards/cards-calculator_select-6.png' alt='')
+      br
+      img(src='../../images/icon_menu-geo.svg' style='width: 40px; heigh: 40px;' alt='')
+      br
+      div(style='display: flex;')
+        img(src='../../images/icon_geo_alfa1.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_alfa2.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_open1.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_open2.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_skb1.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_skb2.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_sinara1.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_sinara2.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_vtb1.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo_vtb2.svg' style='width: 40px; heigh: 40px;' alt='')
+      br
+      div(style='display: flex;')
+        img(src='../../images/icon_full_screen--open.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_full_screen--close.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_geo-tick--circle-white.svg' style='width: 40px; heigh: 40px;' alt='')
+      br
+      div(style='display: flex;')
+        img(src='../../images/icon_mail.svg' style='width: 40px; heigh: 40px;' alt='')
+        img(src='../../images/icon_rocket--circle.svg' style='width: 40px; heigh: 40px;' alt='')

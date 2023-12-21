@@ -1,0 +1,167 @@
+mixin main-calculator(types, mods)
+  -
+    const baseName = 'main-calculator'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const tabHeadings = [
+      { p4: 'Кредит наличными' },
+      { p4: 'Вклад' }
+    ]
+
+  .main-calculator(class=allMods)&attributes(attributes)
+    if types && types.length < 2
+      .main-calculator__head
+        each type in types
+          if type.credit
+            +ui-tab-item('--active')
+              +ui-h3('Кpедит на любые цели', 'main-calculator, --bold')
+    if types.length > 1
+      .main-calculator__head
+        +ui-tab(data-tab-group='main-calculator')
+          +ui-tab-body
+            each type in types
+              if type.credit
+                +ui-tab-item('--active')
+                  +ui-h3('Кpедит на любые цели', 'main-calculator, --bold')
+              if type.deposit
+                +ui-tab-item
+                  +ui-h3('Вклад', 'main-calculator, --bold')
+              if type.cardsGoodness
+                +ui-tab-item('--active')
+                  +ui-h3('Как это работает', '--bold')
+        each type, index in types
+          if index > 0
+            +ui-tab-head(tabHeadings, 'main-calculator, --bookmarks')(data-tab-group='main-calculator')
+    +ui-tab(data-tab-group='main-calculator')
+      +ui-tab-body(isNewYear ? '--ny-24' : '')
+        each type, index in types
+          if type.credit
+            +ui-tab-item(class=(index < 1 ? 'ui-tab-body__item--active' : ''))
+              .main-calculator__body
+                .main-calculator__item
+                  +ui-h5('Рассчитайте кредит', 'main-calculator, --bold')
+                  +ui-p3('Сумма кредита', 'main-calculator')
+                  +ui-input('', '', 'main-calculator, --background1', 'summ')(value='450000', data-step='10000', data-min='51000', data-max='4200000' pattern='[0-9]*' inputmode='numeric')
+                    +ui-svg('icon_minus')
+                    +ui-svg('icon_plus')
+                  .main-calculator__limits
+                    +ui-p5('от  51 000 ₽', '--secondary3')
+                    +ui-p5('до  4.2 млн ₽', '--secondary3')
+                  +ui-p3('Срок кредита', 'main-calculator')
+                  .main-calculator__period
+                    +ui-radio('loanPeriod1', {p4: '1 год'}, 'main-calculator, --years')(name='loanPeriod' checked)
+                    +ui-radio('loanPeriod2', {p4: '2 года'}, 'main-calculator, --years')(name='loanPeriod')
+                    +ui-radio('loanPeriod3', {p4: '3 года'}, 'main-calculator, --years')(name='loanPeriod')
+                    +ui-radio('loanPeriod4', {p4: '4 года'}, 'main-calculator, --years')(name='loanPeriod')
+                    +ui-radio('loanPeriod5', {p4: '5 лет'}, 'main-calculator, --years')(name='loanPeriod')
+                .main-calculator__item
+                  .main-calculator__info
+                    .main-calculator__line
+                      +ui-p2('Ставка', '--secondary3')
+                      +ui-h6('7,2 %', '--secondary1')
+                    .main-calculator__line
+                      +ui-p2('Срок кредита', '--secondary3')
+                      +ui-h6('1 год', '--secondary1')
+                    .main-calculator__line
+                      +ui-p2('Ежемесячный платеж', '--secondary3')
+                      +ui-h6('50 000 ₽', '--secondary1')
+                    +ui-button({p4: 'Получить деньги', mods: '--bold'}, 'main-calculator, --filled, --p44')
+                    +ui-p5('Расчет носит информационно-справочный характер', 'main-calculator, --secondary3')
+                      +ui-tooltip('', 'Расчет выполнен при условии подключения сервисного пакета «Управляй легко». Полная стоимость кредита рассчитывается индивидуально', 'main-calculator')
+          if type.deposit
+            +ui-tab-item(class=(index < 1 ? 'ui-tab-body__item--active' : ''))
+              .main-calculator__body
+                .main-calculator__item
+                  +ui-h5(type.deposit.title || 'Рассчитайте доходность <span>по вкладу</span>', 'main-calculator, --bold')
+                  if type.deposit.insideTabHeads
+                    +ui-tab-head(type.deposit.insideTabHeads, '--bg-grey, --no-outside')(data-fake-tabs='')
+                  if type.deposit.inputs
+                    each input in type.deposit.inputs
+                      +ui-p3(input.name, 'main-calculator')
+                        if input.nameNowrap
+                          =' '
+                          span.ui-nowrap !{input.nameNowrap}
+                            if input.nameTooltip
+                              +ui-tooltip('', input.nameTooltip)
+                      +ui-input('', '', 'main-calculator, --background1', 'summ')(value=input.value, data-step='10000', data-min=input.min, data-max=input.max pattern='[0-9]*' inputmode='numeric')
+                        +ui-svg('icon_minus')
+                        +ui-svg('icon_plus')
+                      .main-calculator__limits
+                        +ui-p5(input.botLimit, '--secondary3')
+                        +ui-p5(input.topLimit, '--secondary3')
+                  else
+                    +ui-p3('Сумма вклада', 'main-calculator')
+                    +ui-input('', '', 'main-calculator, --background1', 'summ')(value='10000', data-step='10000', data-min='10000', data-max='100000000' pattern='[0-9]*' inputmode='numeric')
+                      +ui-svg('icon_minus')
+                      +ui-svg('icon_plus')
+                    .main-calculator__limits
+                      +ui-p5('от  10 000 ₽', '--secondary3')
+                      +ui-p5('до  100 млн ₽', '--secondary3')
+                  if type.deposit.period
+                    +ui-p3('Срок вклада, дней', 'main-calculator')
+                    .main-calculator__period
+                      +ui-radio('depositPeriod1', {p4: '90'}, 'main-calculator, --years')(name='depositPeriod' checked)
+                      +ui-radio('depositPeriod2', {p4: '180'}, 'main-calculator, --years')(name='depositPeriod')
+                      +ui-radio('depositPeriod3', {p4: '367'}, 'main-calculator, --years')(name='depositPeriod')
+                      +ui-radio('depositPeriod4', {p4: '720'}, 'main-calculator, --years')(name='depositPeriod')
+                      +ui-radio('depositPeriod5', {p4: '1080'}, 'main-calculator, --years')(name='depositPeriod')
+                      +ui-radio('depositPeriod6', {p4: '1081'}, 'main-calculator, --years')(name='depositPeriod')
+                      +ui-radio('depositPeriod7', {p4: '1082'}, 'main-calculator, --years')(name='depositPeriod')
+                      +ui-radio('depositPeriod8', {p4: '1083'}, 'main-calculator, --years')(name='depositPeriod')
+                  if type.deposit.checkboxes
+                    .main-calculator__checkboxes(class=type.deposit.checkboxesMods)
+                      each checkbox in type.deposit.checkboxes
+                        +ui-checkbox(checkbox.id, checkbox.label, 'main-calculator', checkbox.tooltip)(checked)
+                  if type.deposit.switches
+                    .main-calculator__switches(class=type.deposit.switchesMods)
+                      each switchItem in type.deposit.switches
+                        +ui-switch(switchItem.id, switchItem.label, 'main-calculator', switchItem.tooltip)(checked)
+                .main-calculator__item
+                  .main-calculator__info
+                    if type.deposit.info
+                      each item in type.deposit.info
+                        .main-calculator__line
+                          +ui-p2(item.name, '--secondary3')
+                          +ui-h6(item.value, '--secondary1')
+                    else
+                      .main-calculator__line
+                        +ui-p2('Ставка', '--secondary3')
+                        +ui-h6('7,2 %', '--secondary1')
+                      .main-calculator__line
+                        +ui-p2('Доход по вкладу', '--secondary3')
+                        +ui-h6('50 000 ₽', '--secondary1')
+                      .main-calculator__line
+                        +ui-p2('Сумма в конце срока', '--secondary3')
+                        +ui-h6('500 989 ₽', '--secondary1')
+                    +ui-button({p4: 'Подробные условия', mods: '--bold'}, 'main-calculator, --filled, --p44')
+                    +ui-p5(type.deposit.footInfo || 'Расчет носит информационно-справочный характер', 'main-calculator, --secondary3, --center')
+          if type.cardsGoodness
+            +ui-tab-item(class=(index < 1 ? 'ui-tab-body__item--active' : ''))
+              .main-calculator__body
+                .main-calculator__item
+                  +ui-h5('Просто используйте карту при оплате покупок и дарите добро', 'main-calculator, --bold')
+                  +ui-p3('Сумма покупок на территории РФ в месяц', 'main-calculator')
+                  +ui-input('', '', 'main-calculator, --background1', 'summ')(value='500000', data-step='10000', data-min='0', data-max='700000' pattern='[0-9]*' inputmode='numeric')
+                    +ui-svg('icon_minus')
+                    +ui-svg('icon_plus')
+                  .main-calculator__limits
+                    +ui-p5('от  0 ₽ ', '--secondary3')
+                    +ui-p5('до  700 тыс ₽', '--secondary3')
+                .main-calculator__item
+                  .main-calculator__info
+                    .main-calculator__line
+                      +ui-p2('Кешбэк для вас', '--secondary3')
+                      +ui-h6('2 308 ₽ /мес.', '--secondary1')
+                    .main-calculator__line
+                      +ui-p2('На добрые дела', '--secondary3')
+                      +ui-h6('692 ₽ /мес.', '--secondary1')
+                    +ui-button({p4: 'Оформить карту', mods: '--bold'}, 'main-calculator, --filled, --p44')
+                    +ui-p5('Расчет носит информационно-справочный характер', 'main-calculator, --secondary3')
+                      +ui-tooltip('', 'Расчет выполнен при условии подключения сервисного пакета «Управляй легко». Полная стоимость кредита рассчитывается индивидуально', 'main-calculator')
+    block

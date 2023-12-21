@@ -1,0 +1,58 @@
+mixin usefull(items, title, mods)
+  -
+    const baseName = 'usefull'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .usefull(class=allMods)&attributes(attributes)
+    .usefull__head
+      +ui-h3(title || 'Может быть полезно', '--bold')
+    .usefull__body
+      each item in items
+        if item.touchPay
+          .usefull__item.usefull__item--touch-pay
+            +ui-p2('Оплачивайте покупки одним касанием удобным способом', '--bold')
+            +ui-p3('Оформите ', 'usefull')
+              a.ui-primary1(href='#')  платежный стикер
+              |  и&nbsp;приклейте его на&nbsp;заднюю часть смартфона или добавьте Универсальную карту в свой
+              =' '
+              span.ui-nowrap смартфон
+                +ui-tooltip('', 'tt', '--white')
+              | . Во&nbsp;время оплаты просто поднесите смартфон к терминалу.
+            .usefull__image: img(src='../../images/credits/usefull_img3.png', alt='Оплачивайте покупки одним касанием')
+        if item.credit
+          a.usefull__item(class=(isNewYear ? 'usefull__item--ny-24' : 'usefull__item--gradient1') href='#')
+            +ui-p2('Оформить <br>заявку на кредит')
+            .usefull__image
+              if isNewYear
+                img(src='../../images/new-year/usefull_img1_ny_24.png', alt='Оформить заявку на кредит')
+              else
+                img(src='../../images/usefull_img1.png', alt='Оформить заявку на кредит')
+        if item.card
+          a.usefull__item(class=(isNewYear ? 'usefull__item--ny-24' : 'usefull__item--gradient2') href='#')
+            +ui-p2('Оформить <br>кредитную карту')
+            .usefull__image
+              if isNewYear
+                img(src='../../images/new-year/usefull_img2_ny_24.png', alt='Оформить кредитную карту')
+              else
+                img(src='../../images/usefull_img2.png', alt='Оформить кредитную карту')
+        if item.mobile_bank
+          +mobile-bank('usefull')
+        if item.mobilization
+          a.usefull__item(href='#')
+            +ui-p3('Условия кредитных каникул для мобилизованных', 'usefull')
+            .usefull__image: img(src='../../images/usefull_img3.png', alt='Условия кредитных каникул для мобилизованных')
+        if item.reference
+          a.usefull__item.usefull__item--gradient1(href='#')
+            +ui-p2('Справка по <br>форме Банка')
+            .usefull__image: img(src='../../images/usefull_img4.png', alt='Справка по форме Банка')
+        if item.questions
+          .usefull__item.usefull__item--white-bg(href='#')
+            +ui-p2('Если у вас остались вопросы, звоните нам по телефону: <a href="#">8 800 1000 600</a> или приходите в <a href="#">офис</a>', 'usefull')
+    block

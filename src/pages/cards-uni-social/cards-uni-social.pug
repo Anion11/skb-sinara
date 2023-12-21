@@ -1,0 +1,190 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'cards-uni-social'
+    const pageTitle = 'Единая социальная карта'
+    const headerAbsolute = true
+    const siteSection = 'private'
+    const headerMenuActive = 'Карты'
+
+    const conditionsItems1 = {
+      h3: 'Одна карта на все случаи жизни',
+      items: [
+        {
+          front: [{ icon: 'icon_card', p3: 'Удобно' }],
+          back: [{ p3: 'Получайте на карту все социальные пособия, зарплату и пенсию' }]
+        },
+        {
+          front: [{ icon: 'icon_clock', p3: 'Быстро' }],
+          back: [{ p3: 'Оформим карту за 15 минут в ближайшем <a href="#">офисе</a> банка или отделении <a href="#">мфц</a>' }]
+        },
+        {
+          front: [{ icon: 'icon_coins', p3: 'Выгодно' }],
+          back: [{ p3: 'До 20% от партнеров платежной системы Мири до 7% от банка' }]
+        },
+        { front: [{ icon: 'icon_free', p3: 'Бесплатно' }],
+          back: [{ p3: 'SMS-сообщения о зачислении выплат на карту и ещё <a href="#">10 услуг</a>' }]
+        },
+        {
+          front: [{ icon: 'icon_limit', p3: 'Просто' }],
+          back: [{ p3: 'Доступ к предложениям <a href="#">партнеров проекта</a>' }]
+        }
+      ]
+    }
+
+    const conditionsItems2 = {
+      h3: 'Простое управление',
+      items: [
+        {
+          front: [{ icon: 'icon_atm', p3: 'Снимайте наличные деньги' }],
+          back: [{ p3: 'В банкоматах Банка Синара и банкоматах партнёров без комиссии*.', p5: '*АО Банк СинараАО «Газэнергобанк»' }]
+        },
+        {
+          front: [{ icon: 'icon_nfc', p3: 'Оплачивайте покупки одним касанием' }],
+          back: [{ p3: 'По бесконтактной карте «Мир». Для покупок до 1000 рублей можно совершать покупки без ввода ПИН-кода' }]
+        },
+        {
+          front: [{ icon: 'icon_bus', p3: 'Две карты в одной' }],
+          back: [{ p3: 'Оплачивайте поездки на транспорте по выгодным тарифам с помощью нефинансового приложения ЕКАРТА', mobileFullWidth: true }]
+        },
+        { front: [{ icon: 'icon_coins', p3: 'Моментально пополняйте' }],
+          back: [{ p3: 'С карт других банков и осуществляйте переводы' }]
+        },
+        {
+          front: [{ icon: 'icon_services', p3: 'Оплачивайте услуги' }],
+          back: [{ p3: 'ЖКХ, интернета, мобильной связи и другие в Интернет-банке и Мобильном приложении Синара Банк' }]
+        }
+      ]
+    }
+
+    const cardReceivingPlacesData = {
+      h6: 'Оформление карты доступно на&nbsp;территории Свердловской области',
+      p4: 'Карту можно получить за&nbsp;15&nbsp;минут в&nbsp;ближайшем офисе или&nbsp;МФЦ при&nbsp;предъявлении Паспорта РФ и&nbsp;СНИЛС.',
+      buttons: [
+        'Офисы банка',
+        'Отделения МФЦ'
+      ]
+    }
+
+    const parametersGrid = [
+      {
+        p3: 'Сумма на руки',
+        p1: 'от 51 000 до 3 000 000 ₽'
+      },
+      {
+        p3: 'Срок кредита',
+        p1: 'от 4 до 5 лет'
+      },
+      {
+        itemMods: 'parameters-grid__item--x2-row parameters-grid__item--t-w100',
+        p3: 'При подключении <a href="#">Сервисного пакета «Управляй Легко»</a>',
+        p1: 'Снижение ставки на 14.5%'
+      },
+      {
+        p3: 'Погашение кредита',
+        p1: 'Аннуитетными платежами'
+      },
+      {
+        p3: 'При соблюдении условий кредита',
+        p1: 'Гарантия ставки 0%'
+      },
+      {
+        itemMods: 'parameters-grid__item--x2 parameters-grid__item--t-w100',
+        h5: 'Требования к заемщику',
+        list: [
+          { p3: 'Возраст заемщика — от 23 до 80 лет на момент окончания срока действия кредитного договора' },
+          { p3: 'Стаж — не менее 3 месяцев на последнем месте работы' },
+          { p3: 'Регистрация и проживание — кредитуемые Субъекты РФ' },
+          { p3: 'Гражданство – Российская Федерация' },
+        ]
+      },
+      {
+        itemMods: 'parameters-grid__item--t-w100',
+        h5: 'Документы',
+        docs: [
+          {
+            icon: 'icon_emblem',
+            name: 'Паспорт гражданина РФ'
+          },
+          {
+            icon: 'icon_doc-plus',
+            name: 'Документ, подтверждающий',
+            nameNowrap: 'доход',
+            nameTooltip: 'tt'
+          }
+        ]
+      }
+    ]
+
+    const parametersListItems = [
+      { p3: 'данные лица, которому выдан документ (ФИО, дата рождения);' },
+      { p3: 'наименование работодателя, сумма выплат и иных вознаграждений за последние 12 месяцев (при стаже работы менее 12 месяцев - за фактическое время работы, минимум - 3 месяца);' },
+      { p3: 'на последней странице - штамп с указанием реквизитов усиленной квалифицированной электронной подписи' }
+    ]
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Единая социальная карта')
+        +breadcrumbs-item('Единая социальная карта', '/', '--mobile')
+      +banner({h2: 'Единая социальная карта', p2: 'Все бюджетные выплаты и дополнительный доход – на одной карте!', infoItems: [{ p2: '<span>0</span>₽', p4: 'выпуск и обслуживание карты' }, { p2: 'до<span>20</span>%', p4: 'cash-back за покупки у&nbsp;<a href="#">партнёров</a>' }], image: 'banner_img--cards-uni-social.png', buttons: [{ p3: 'Оформить карту', mods: '--filled, --p64' }]}, '--cards-uni-social, --layout')
+      +section
+        +conditions(conditionsItems1)
+      +section
+        +conditions(conditionsItems2)
+      +section
+        +application-help
+      +section('--background, --order-up')
+        +parameters
+      +section('--background, --order-up')
+        +parameters-new('Параметры', [{ p4: 'Условия кредитования' }, { p4: 'Способы погашения кредита' }, { p4: 'Cпособы подтверждения дохода' }, { p4: 'Тарифы и документы'}])
+          +ui-tab-item('--active')
+            .parameters-new__top
+              +ui-h4('Условия кредитования', '--bold')
+              .parameters-new__close
+            +parameters-grid(parametersGrid, '--x3')
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Способы погашения кредита', '--bold')
+              .parameters-new__close
+            +repayment([{withoutCommission: true}], 'parameters-new')
+            +repayment([{withCommission: true}], 'parameters-new')
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Cпособы подтверждения дохода', '--bold')
+              .parameters-new__close
+            +ui-h5('Подтвердите свой доход за несколько минут', 'parameters-new, --bold')
+            +ui-accordion({p2: 'Выписка о состоянии счёта ПФР'})
+              +ui-p2('Должна содержать:', 'parameters-new, --bold')
+              +ui-ul(parametersListItems, 'parameters-new')
+              +ui-p3('Срок действия: 6 месяцев')
+            +ui-accordion({p2: 'Справка по форме банка'})
+            +ui-accordion({p2: 'Справка по форме ФНС'})
+            +ui-accordion({p2: 'Выписка по счёту'})
+            +ui-accordion({p2: 'Декларация 3-НДФЛ'})
+            +ui-accordion({p2: 'Подтверждение, что вы получаете пенсию менее 12 месяцев'})
+            +ui-accordion({p2: 'Выписка со счёта для зачисления пенсии'})
+            +ui-accordion({p2: 'Справка организации, назначившей пенсию'})
+            br
+            br
+            +document({p4: 'Шаблон справки по форме банка'})
+            +document({p4: 'Инструкция по получению Извещения о состоянии счета ПФР'})
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Тарифы и документы', '--bold')
+              .parameters-new__close
+            +document({p4: 'Тарифы банка'})
+            +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+            +document({p4: 'Реквизиты для безналичного пополнения счета'})
+            +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+            +document({p4: 'Правила КБО Версии 1.0-8.3'})
+            +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+            +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+            +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+      +section
+        +card-receiving-places(cardReceivingPlacesData)
+      +section
+        +promo([{activeIncome: true}])

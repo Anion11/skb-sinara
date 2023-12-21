@@ -1,0 +1,15 @@
+mixin popup-feedback-success(mods)
+  -
+    const baseName = 'popup-feedback-success'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  +popup('popupFeedbackSuccess', '--small, --feedback-success').popup-feedback-success(class=allMods)&attributes(attributes)
+    +ui-h3('Ваше сообщение успешно отправлено', 'popup-feedback-success, --bold')
+    block

@@ -1,0 +1,65 @@
+mixin cards-categories(mods)
+  -
+    const baseName = 'cards-categories'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const listItems1 = [
+      { p3: 'городской транспорт, метро <span>(4900)</span>' },
+      { p3: 'пригородные поезда, аэроэкспресс <span>(5193, 5947, 5992)</span>' },
+      { p3: 'велопрокат <span>(5811, 5813)</span>' }
+    ]
+    const listItems2  = [
+      { p3: 'автомойки <span>(4900)</span>' },
+      { p3: 'АЗС <span>(5193, 5947, 5992)</span>' },
+      { p3: 'автоуслуги <span>(5811, 5813)</span>' },
+      { p3: 'такси, каршеринг <span>(4900)</span>' },
+      { p3: 'кикшеринг <span>(5193, 5947, 5992)</span>' },
+      { p3: 'парковка, платные дороги <span>(5811, 5813)</span>' }
+    ]
+
+  .cards-categories(class=allMods)&attributes(attributes)
+    .cards-categories__head
+      +ui-h3('Найдите свою любимую категорию', 'cards-categories, --bold')
+      +ui-p1('ДА! Она точно здесь есть', '--secondary3')
+    +ui-tab
+      +ui-tab-head('', 'cards-categories')
+        .ui-tab-head__item
+          .ui-tab-head__image: img(src='../../images/cards/cards-categories_img0.png', alt='')
+          +ui-p3('Маркетплейсы')
+        .ui-tab-head__item
+          .ui-tab-head__image: img(src='../../images/cards/cards-categories_img1.png', alt='')
+          +ui-p3('Одежда и обувь')
+        .ui-tab-head__item
+          .ui-tab-head__image: img(src='../../images/cards/cards-categories_img2.png', alt='')
+          +ui-p3('Мой дом')
+        .ui-tab-head__item
+          .ui-tab-head__image: img(src='../../images/cards/cards-categories_img3.png', alt='')
+          +ui-p3('Праздник')
+        .ui-tab-head__item
+          .ui-tab-head__image: img(src='../../images/cards/cards-categories_img4.png', alt='')
+          +ui-p3('Город')
+        .ui-tab-head__item
+          .ui-tab-head__image: img(src='../../images/cards/cards-categories_img5.png', alt='')
+          +ui-p3('Развлечения')
+        .ui-tab-head__item
+          .ui-tab-head__image: img(src='../../images/cards/cards-categories_img6.png', alt='')
+          +ui-p3('Прочее')
+      +ui-tab-body('cards-categories')
+        -for(items = 0; items < 7; items++)
+          +ui-tab-item
+            .cards-categories__body
+              +ui-h4('Город', 'cards-categories, --bold')
+              .cards-categories__close
+              .cards-categories__item
+                +ui-p3('Кэшбек 15%', '--bold, --primary1')
+                +ui-ul(listItems1, 'cards-categories')
+              .cards-categories__item
+                +ui-p3('Кэшбек 5%', '--bold, --primary1')
+                +ui-ul(listItems2, 'cards-categories')
+    block

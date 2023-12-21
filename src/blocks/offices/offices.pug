@@ -1,0 +1,32 @@
+mixin offices(mods)
+  -
+    const baseName = 'offices'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .offices(class=allMods)&attributes(attributes)
+    .offices__head
+      +ui-h5('Офисы в ', 'offices, --bold')
+        span Комсомольске-на-амуре
+    .offices__body
+      .offices__aside
+        +offices-list.offices__item(data-scroll-lock-scrollable)
+          a.offices__request(href='#')
+            +ui-svg('icon_atm')
+            +ui-p3('Заявка на установку банкомата Синара')
+            +ui-button('', '--arrow-right')
+        +offices-office.offices__item(data-scroll-lock-scrollable)
+      .offices__map
+        #officesMap(style='width:100%; height:100%')
+        .offices__buttons
+          +ui-svg('icon_full_screen--open', 'offices, --open')
+          +ui-svg('icon_full_screen--close', 'offices, --close')
+          +ui-svg('icon_geo-tick--circle-white', 'offices')
+        +offices-banner('offices, --map')
+    block

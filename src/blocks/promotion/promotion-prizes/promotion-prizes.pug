@@ -1,0 +1,64 @@
+mixin promotion-prizes(mods)
+  -
+    const baseName = 'promotion-prizes'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .promotion-prizes(class=allMods)&attributes(attributes)
+    .promotion-prizes__container
+      .swiper-wrapper
+        .promotion-prizes__item.promotion-prizes__item--light.swiper-slide
+          .promotion-prizes__content
+              +ui-h2('1 место', 'promotion-prizes')
+              +ui-p2('Полностью погасим кредит в банке, а деньги останутся у вас. Если вносили платеж на погашение, то вернём его обратно на карту.', 'promotion-prizes, --secondary3')
+          .promotion-prizes__img: img(src='../../images/promotion-template/promotion-prizes_1.png' alt='')
+        .promotion-prizes__item.swiper-slide
+          .promotion-prizes__content
+              +ui-h2('2-4 место', 'promotion-prizes')
+              +ui-p2('Перечислим 100 000 рублей на погашение остатка задолженности по кредиту (не более остатка задолженности по кредиту)', 'promotion-prizes, --secondary3')
+          .promotion-prizes__img: img(src='../../images/promotion-template/promotion-prizes_2.png' alt='')
+      +ui-swiper-scrollbar('promotion-prizes')
+    br
+    p если 3
+    .promotion-prizes__container
+      .swiper-wrapper
+        .promotion-prizes__item.promotion-prizes__item--light.swiper-slide
+          .promotion-prizes__content
+              +ui-h2('1 место', 'promotion-prizes')
+              +ui-p2('Полностью погасим кредит в банке, а деньги останутся у вас. Если вносили платеж на погашение, то вернём его обратно на карту.', 'promotion-prizes, --secondary3')
+          .promotion-prizes__img: img(src='../../images/promotion-template/promotion-prizes_1.png' alt='')
+        -for(let i=0; i<2; i++)
+          .promotion-prizes__item.swiper-slide
+            .promotion-prizes__content
+                +ui-h2('2-4 место', 'promotion-prizes')
+                +ui-p2('Перечислим 100 000 рублей на погашение остатка задолженности по кредиту (не более остатка задолженности по кредиту)', 'promotion-prizes, --secondary3')
+            .promotion-prizes__img: img(src='../../images/promotion-template/promotion-prizes_2.png' alt='')
+      +ui-swiper-scrollbar('promotion-prizes')
+    br
+    p !{'если > 3'}
+    .promotion-prizes__container
+      .swiper-wrapper
+        .promotion-prizes__item.promotion-prizes__item--light.swiper-slide
+          .promotion-prizes__content
+              +ui-h2('1 место', 'promotion-prizes')
+              +ui-p2('Полностью погасим кредит в банке, а деньги останутся у вас. Если вносили платеж на погашение, то вернём его обратно на карту.', 'promotion-prizes, --secondary3')
+          .promotion-prizes__img: img(src='../../images/promotion-template/promotion-prizes_1.png' alt='')
+        -for(let i=0; i<3; i++)
+          .promotion-prizes__item.swiper-slide
+            .promotion-prizes__content
+                +ui-h2('2-4 место', 'promotion-prizes')
+                +ui-p2('Перечислим 100 000 рублей на погашение остатка задолженности по кредиту (не более остатка задолженности по кредиту)', 'promotion-prizes, --secondary3')
+            .promotion-prizes__img: img(src='../../images/promotion-template/promotion-prizes_2.png' alt='')
+      +ui-swiper-scrollbar('promotion-prizes')
+    .promotion-prizes__foot
+      +ui-p3('Результаты розыгрыша мы опубликуем на странице акции не позднее 31 июля 2023 года', 'promotion-prizes, --secondary3')
+      .promotion-prizes__actions
+        +ui-button({p3: 'Оформить кредит'}, '--p64, --filled-gray')
+        +ui-button({p3: 'Оформить кредит'}, '--p64, --filled-gray')
+    block

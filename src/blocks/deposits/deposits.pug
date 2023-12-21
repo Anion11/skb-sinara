@@ -1,0 +1,106 @@
+mixin deposits(mods)
+  -
+    const baseName = 'deposits'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const tabHeadings1 = [
+      { p4: 'Вклады' },
+      { p4: 'Счета' }
+    ]
+    const tabHeadings2 = [
+      { p4: 'Все' },
+      { p4: '₽' },
+      { p4: '$' }
+    ]
+    const depositWelcome = { p7: 'Вклад', currency: [{ rub: true, usd: false }], h3: 'Вклад "Приветственный"', p2: 'Здорово быть первым! Повышенная ставка для новых клиентов.', info: [{ p2: 'до <span>9.7</span> %', p3: 'ставка на весь срок' }, { p2: 'от <span>10 000</span> ₽', p3: 'сумма вклада' }], image: 'banner_img--deposit-welcome' }
+    const depositDesiresPlus = { p7: 'Вклад', currency: [{ rub: true, usd: true }], h3: 'Вклад "Исполнение желаний+"', p2: 'Вклад-online с максимальной доходностью на длительный срок', info: [{ p2: 'до <span>8.6</span> %', p3: 'ставка на весь срок' }, { p2: 'от <span>10 000</span> ₽ / <span>300</span> $', p3: 'сумма вклада', mods: 'deposits__info-item--big' }], image: 'banner_img--deposit-desires-plus' }
+    const depositDesires = { p7: 'Вклад', currency: [{ rub: true, usd: true }], h3: 'Вклад "Исполнение желаний"', p2: 'Вклад с максимальной доходностью на длительный срок', info: [{ p2: 'до <span>8.4</span> %', p3: 'ставка на весь срок' }, { p2: 'от <span>10 000</span> ₽ / <span>300</span> $', p3: 'сумма вклада' }], image: 'banner_img--deposit-desires' }
+    const depositMiracle = { p7: 'Вклад', currency: [{ rub: true, usd: false }], h3: 'Вклад "Обыкновенное чудо!"', p2: 'Для тех, кто хочет копить и творить добрые дела', info: [{ p2: 'до <span>6.7</span> %', p3: 'ставка на весь срок' }, { p2: 'от <span>10 000</span> ₽', p3: 'сумма вклада' }], image: 'banner_img--deposit-miracle' }
+    const depositMaximum = { p7: 'Вклад', currency: [{ rub: true, usd: false }], h3: 'Вклад "Максимальный"', p2: 'Повышенная ставка при оформлении страховых продуктов или медицины', info: [{ p2: 'до <span>10</span> %', p3: 'ставка на весь срок' }, { p2: 'от <span>10 000</span> ₽', p3: 'сумма вклада' }], image: 'banner_img--deposit-maximum' }
+    const depositPension = { p7: 'Вклад', currency: [{ rub: true, usd: false }], h3: 'Вклад "Пенсионный!!"', p2: 'Выплата процентов - ежемесячно', info: [{ p2: 'до <span>6</span> %', p3: 'ставка на весь срок' }, { p2: 'от <span>1 000</span> ₽', p3: 'сумма вклада' }], image: 'banner_img--deposit-pension' }
+
+    const depositActiveIncome = { p7: 'Вклад', currency: [{ rub: true, usd: false }], p7_2: '<span>%</span> Повышенная ставка для новых клиентов', h3: 'Накопительный счёт "Активный доход"', p2: 'На ежедневный остаток начисление процентов', info: [{ p2: '<span>10</span> %*', p3: 'ставка' }, { p2: 'На ежедневный остаток', p3: 'начисление процентов' }], p6: '*максимальная ставка для новых клиентов в 1 и 2 расчетный месяц', image: 'banner_img--wow' }
+    const depositDreamCourse = { p7: 'Вклад', currency: [{ rub: true, usd: false }], h3: 'Накопительный счёт "Курс на мечту"', p2: 'Комфортное накопление с неограниченным пополнением и снятием', info: [{ p2: 'до <span>7.5</span> %', p3: 'ставка на весь срок' }, { p2: 'от <span>0</span> ₽', p3: 'сумма счёта' }], image: 'banner_img--deposit-dream-course' }
+
+  mixin deposit(data)
+    .deposits__item
+      .deposits__content
+        .deposits__badges
+          if data.p7
+            +ui-p7(data.p7, 'deposits, --secondary3, --uppercase')
+          if data.currency
+            +ui-p7('Валюта вклада', 'deposits, --secondary3, --uppercase')
+              each currencyItem in data.currency
+                if currencyItem.rub
+                  span ₽
+                if currencyItem.usd
+                  span $
+          if data.p7_2
+            +ui-p7(data.p7_2, 'deposits, --secondary3, --uppercase, --bg-none')
+        if data.h3
+          +ui-h3(data.h3, 'deposits, --bold')
+        if data.p2
+          +ui-p2(data.p2, 'deposits, --secondary3')
+        if data.info
+          .deposits__info
+            each infoItem in data.info
+              .deposits__info-item(class=(infoItem.mods))
+                +ui-p2(infoItem.p2)
+                +ui-p3(infoItem.p3, 'deposits, --secondary3')
+                  if infoItem.tooltip
+                    +ui-tooltip('', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere cumque voluptate numquam quam dolor ipsum vero doloribus corrupti omnis, in sint aliquam neque soluta distinctio velit, voluptatum voluptatibus eveniet? Odio.')
+        if data.p6
+          +ui-p6(data.p6, 'deposits, --secondary3')
+        .deposits__buttons
+          +ui-button({p3: 'Подробнее', mods: '--bold'}, 'deposits, --p44')
+          +ui-button('', 'deposits, --arrow-right')(href='#')
+        if data.image
+          .deposits__image
+            if isNewYear
+              img(src=`../../images/new-year/${data.image}_ny_24.png`, alt=h3)
+            else
+              img(src=`../../images/${data.image}.png`, alt=data.h3)
+
+  .deposits(class=allMods)&attributes(attributes)
+    .deposits__head
+      +ui-h2('Вклады и счета', 'deposits, --bold')
+    +ui-tab(data-tab-group='deposits')
+      +ui-tab-head(tabHeadings1, 'deposits, --bg-grey')(data-tab-group='deposits')
+      +ui-tab-body(data-tab-group='deposits')
+        +ui-tab-item('--active')
+          +ui-tab(data-tab-group='deposits2')
+            +ui-tab-head(tabHeadings2)(data-tab-group='deposits2')
+            +ui-tab-body(data-tab-group='deposits2')
+              +ui-tab-item('--active')
+                .deposits__body
+                  +deposit(depositWelcome)
+                  +deposit(depositDesiresPlus)
+                  +deposit(depositDesires)
+                  +deposit(depositMiracle)
+                  +deposit(depositMaximum)
+                  +deposit(depositPension)
+                .deposits__show-more
+                  +ui-button({p3: 'Другие вклады'}, '--arrow-down, --p64')
+              +ui-tab-item
+                .deposits__body
+                  +deposit(depositWelcome)
+                  +deposit(depositDesiresPlus)
+                  +deposit(depositDesires)
+                  +deposit(depositMiracle)
+                  +deposit(depositMaximum)
+                  +deposit(depositPension)
+              +ui-tab-item
+                .deposits__body
+                  +deposit(depositDesiresPlus)
+                  +deposit(depositDesires)
+        +ui-tab-item
+          .deposits__body
+            +deposit(depositActiveIncome)
+            +deposit(depositDreamCourse)
+    block

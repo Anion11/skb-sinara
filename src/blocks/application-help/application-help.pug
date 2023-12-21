@@ -1,0 +1,59 @@
+mixin application-help(mods)
+  -
+    const baseName = 'application-help'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const dataDocs = [
+      {
+        name: 'Пенсионный <br> фонд РФ',
+        img: 'application-help_1.png'
+      },
+      {
+        name: 'Министерство социальной политики',
+        img: 'application-help_2.png'
+      },
+      {
+        name: 'Бухгалтерия <br> предприятия',
+        img: 'application-help_3.png'
+      },
+    ]
+
+  .application-help(class=allMods)&attributes(attributes)
+    .application-help__head
+      +ui-h3('Бесплатная помощь в заполнении заявления', '--bold')
+    .application-help__body
+      .application-help__docs
+        each item in dataDocs
+          .application-help__doc
+            +ui-p2(item.name, 'application-help, --bold')
+            .application-help__doc-img: img(src=`../../images/cards/${item.img}` alt=item.name)
+      .application-help__notifications
+        +ui-h3('Будьте всегда в&nbsp;курсе', 'application-help, --bold')
+        +ui-p2('')
+          p Обо всех расходных операциях по счёту с использованием карты или её реквизитов при покупках в торгово-сервисных предприятиях, в том числе совершенных в интернете и о снятиях наличных в банкоматах.
+          p Устанавливая мобильное приложение Синара Банк, у Вас появится возможность получать мгновенные PUSH-уведомления о совершённых в Системе ДБО операциях и операциях по счёту карты.
+          p Для клиентов, которые только начали пользоваться услугой SMS-информирование, Банк не будет взимать комиссию в течение первых двух месяцев использования услуги.
+        .application-help__benefits
+          .application-help__benefit
+            .application-help__benefit-top
+              +ui-h3('79', 'application-help')
+              +ui-p1('₽/мес')
+            +ui-p3('при ежемесячной оплате')
+          .application-help__benefit
+            .application-help__benefit-top
+              +ui-h3('699')
+              +ui-p1('₽/год')
+            +ui-p3('при оплате за&nbsp;год')
+          .application-help__benefit
+            .application-help__benefit-top
+              +ui-p1('Бесплатно')
+            +ui-p3('при поддержании неснижаемого остатка в&nbsp;размере 30&nbsp;000&nbsp;рублей')
+        .application-help__notifications-img: img(src='../../images/cards/application-help_4.png' alt='Будьте всегда в курсе')
+    block

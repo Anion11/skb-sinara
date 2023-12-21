@@ -1,0 +1,19 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'cards'
+    const pageTitle = 'Cards'
+    const siteSection = 'private'
+    const headerMenuActive = 'Карты'
+
+block content
+  main
+    .inner
+      +breadcrumbs
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Карты')
+        +breadcrumbs-item('Карты', '/', '--mobile')
+      +cards
+      +section
+        +mobile-app

@@ -1,0 +1,21 @@
+mixin mobile-links(mods)
+  -
+    const baseName = 'mobile-links'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .mobile-links(class=allMods)&attributes(attributes)
+    if pageName === 'main'
+      a.mobile-links__item.mobile-links__item--user.mobile-links__item--circle(href='#')
+    else
+      .mobile-links__item.mobile-links__toggle
+      .mobile-links__body
+        a.mobile-links__item.mobile-links__item--user(href='#')
+        a.mobile-links__item.mobile-links__item--home(href='/')
+    block

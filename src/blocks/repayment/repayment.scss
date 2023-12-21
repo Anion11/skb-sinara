@@ -1,0 +1,217 @@
+.repayment {
+  &__head {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    @include media-laptop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include media-tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__item {
+    position: relative;
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 290px;
+    padding: 35px 24px 24px;
+    background-color: $background1;
+    border-radius: 14px;
+    overflow: hidden;
+    @include media-laptop {
+      grid-column: span 1;
+      min-height: 340px;
+      padding: 24px;
+    }
+    @include media-tablet {
+      min-height: 0;
+      padding: 20px 16px 72px;
+    }
+    &--x3 {
+      grid-column: span 3;
+      @include media-laptop {
+        grid-column: span 1;
+      }
+    }
+    &--internet-bank {
+      @include media-laptop {
+        grid-column: span 2;
+        height: 190px;
+      }
+      @include media-tablet {
+        grid-column: span 1;
+        height: auto;
+      }
+      .ui-p3 {
+        @include media-laptop {
+          max-width: 500px;
+        }
+      }
+    }
+    &--visible {
+      overflow: visible;
+    }
+  }
+  &__ui-p1 {
+    max-width: 330px;
+    @include media-laptop {
+      max-width: 100%;
+    }
+    &.ui-p1--w380 {
+      max-width: 380px;
+    }
+    a {
+      color: $primary1;
+    }
+  }
+  &__ui-p3 {
+    max-width: 330px;
+    margin-top: 14px;
+    @include media-laptop {
+      max-width: 285px;
+      margin-top: 10px;
+    }
+    &.ui-p3--w465 {
+      max-width: 465px;
+    }
+  }
+  &__ui-button {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    @include media-laptop {
+      width: 48px;
+      height: 48px;
+    }
+    @include media-tablet {
+      bottom: 12px;
+      left: 16px;
+      width: 40px;
+      height: 40px;
+    }
+    &::after {
+      @include media-laptop {
+        width: 19px;
+        height: 19px;
+      }
+      @include media-tablet {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+  &__ui-svg {
+    flex-shrink: 0;
+    margin-top: auto;
+    margin-left: auto;
+    width: 50px;
+    height: 50px;
+    color: $primary1;
+    @include media-tablet {
+      position: absolute;
+      right: 16px;
+      bottom: 12px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  &__image {
+    margin-top: auto;
+    margin-left: auto;
+    @include media-laptop {
+      right: 24px;
+    }
+    @include media-tablet {
+      position: absolute;
+      right: 16px;
+      bottom: 12px;
+    }
+    &--sbp {
+      width: 50px;
+      height: 61px;
+      @include media-laptop {
+        width: 38px;
+        height: 48px;
+      }
+      @include media-tablet {
+        width: 33px;
+        height: 40px;
+      }
+    }
+    &--qiwi {
+      width: 177px;
+      height: 62px;
+      @include media-laptop {
+        width: 137px;
+        height: 48px;
+      }
+      @include media-tablet {
+        width: 114px;
+        height: 40px;
+      }
+    }
+    &--internet-bank {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 260px;
+      height: 226px;
+      @include media-laptop {
+        display: none;
+      }
+    }
+    &--gold-crown {
+      width: 125px;
+      height: 62px;
+      @include media-laptop {
+        width: 97px;
+        height: 48px;
+      }
+      @include media-tablet {
+        width: 80px;
+        height: 40px;
+      }
+    }
+  }
+  &__foot {
+    margin-top: 35px;
+    @include media-laptop {
+      margin-top: 30px;
+    }
+    @include media-tablet {
+      margin-top: 20px;
+    }
+  }
+  &__ui-p5 {
+    position: relative;
+    max-width: 960px;
+    margin-top: 35px;
+    padding-left: 30px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none'%3E%3Cg stroke='%23DC0533' stroke-miterlimit='22.926' clip-path='url(%23a)' clip-rule='evenodd'%3E%3Cpath d='M9.924 4.679a1.151 1.151 0 1 1 0 2.303 1.151 1.151 0 0 1 0-2.303Zm1.165 8.927.597.227v1.421H7.934v-1.421l.824-.227V9.882h-.824V8.46h3.155v5.146Z'/%3E%3Cpath d='M5.056 17.59a9.098 9.098 0 1 0-2.862-2.832L.926 18.924l4.131-1.332Z'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h20v20H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    }
+  }
+  &--credit-holydays {
+    .repayment__ui-p3 {
+      max-width: 100%;
+    }
+  }
+}

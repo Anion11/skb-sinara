@@ -1,0 +1,25 @@
+mixin more-banner(mods)
+  -
+    const baseName = 'more-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .more-banner(class=allMods)&attributes(attributes)
+    .more-banner__content
+      +ui-h3('Можно больше', 'more-banner, --bold')
+      +ui-p3('Чтобы баллов было еще больше, подключите услугу «Можно больше».', 'more-banner')
+      +ui-p3('«Можно больше» позволит накопить и активировать до 5000 бонусных баллов вместо 3000 баллов без данной услуги.', 'more-banner')
+      +ui-p3('Стоимость услуги – 299 ₽', 'more-banner')
+        +ui-tooltip('', 'Test', 'more-banner')
+    case pageName
+      when 'cards-universal'
+        .more-banner__image: img(src='../../images/cards/more-banner_img--universal.png', alt='Можно больше')
+      default
+        .more-banner__image: img(src='../../images/cards/more-banner_img.png', alt='Можно больше')
+    block

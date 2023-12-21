@@ -1,0 +1,78 @@
+.mobile-bank {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 24px;
+  background-color: #fff;
+  border: 1px solid $secondary4;
+  border-radius: 24px;
+  @include media-laptop {
+    padding: 30px 50px;
+  }
+  @include media-tablet {
+    padding: 24px 16px;
+    border-radius: 14px;
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @include media-laptop {
+      gap: 14px;
+    }
+  }
+  &__ui-p2 {
+    margin-bottom: 8px;
+  }
+  &__ui-svg {
+    width: 54px;
+    height: 54px;
+    @include media-laptop {
+      width: 46px;
+      height: 46px;
+    }
+  }
+  &__ui-button {
+    @include media-laptop {
+      padding: 12px;
+      border-width: 1px;
+      border-color: $secondary4;
+      border-radius: 10px;
+    }
+    &::before {
+      @include media-laptop {
+        display: none;
+      }
+    }
+    &::after {
+      @include media-laptop {
+        content: '';
+        width: 14px;
+        height: 14px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none'%3E%3Cpath stroke='%231E1E1E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m10.524 3.217-7.07 7.072M4.833 3.23l5.691-.013-.011 5.692'/%3E%3C/svg%3E");
+        background-size: contain;
+      }
+    }
+    &:hover {
+      @include media-laptop {
+        background-color: transparent;
+      }
+    }
+    > div {
+      @include media-laptop {
+        display: none;
+      }
+    }
+    &.ui-button--desktop {
+      @include media-laptop {
+        display: none;
+      }
+    }
+    &.ui-button--mobile {
+      display: none;
+      @include media-laptop {
+        display: inline-flex;
+      }
+    }
+  }
+}

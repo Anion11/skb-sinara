@@ -1,0 +1,96 @@
+-
+  const headerMenu =[
+    { p4: 'Кредиты', link: 'credits.html', dropdown: [
+      { p7: 'Все кредитные продукты', list: [
+        { p4: 'Кредит 0%', link: 'credits-credit0.html' },
+        { p4: 'Быстрый кредит', link: 'credits-credit0.html' },
+        { p4: 'Кредит пенсионный', link: 'credits-credit0.html' },
+        { p4: 'Кредит на большие суммы', link: 'credits-credit0.html' },
+        { p4: 'Кредит для пpедпpинимателей', link: 'credits-credit0.html' }
+      ]},
+      { p7: 'может быть интересно', list: [
+        { p4: 'Способы погашения кредита', link: 'credits-credit0.html' },
+        { p4: 'Сервисный пакет "Управляй Легко"', link: 'credits-credit0.html' },
+        { p4: 'Кредитные каникулы', link: 'credits-credit0.html' },
+        { p4: 'Кредитные каникулы для мобилизованных', link: 'credits-credit0.html' }
+      ]},
+    ]},
+    { p4: 'Карты', link: 'cards.html', dropdown: [
+      { p7: 'Все кредитные продукты', list: [
+        { p4: 'Кредит 0%', link: 'credits-credit0.html' },
+        { p4: 'Быстрый кредит', link: 'credits-credit0.html' },
+        { p4: 'Кредит пенсионный', link: 'credits-credit0.html' },
+        { p4: 'Кредит на большие суммы', link: 'credits-credit0.html' },
+        { p4: 'Кредит для пpедпpинимателей', link: 'credits-credit0.html' }
+      ]},
+      { p7: 'может быть интересно', list: [
+        { p4: 'Способы погашения кредита', link: 'credits-credit0.html' },
+        { p4: 'Сервисный пакет "Управляй Легко"', link: 'credits-credit0.html' },
+        { p4: 'Кредитные каникулы', link: 'credits-credit0.html' },
+        { p4: 'Кредитные каникулы для мобилизованных', link: 'credits-credit0.html' }
+      ]},
+    ]},
+    { p4: 'Вклады и счета', link: 'deposits.html' },
+    { p4: 'Инвестиции', link: '#.html' },
+    { p4: 'Ипотека', link: '#.html' },
+    { p4: 'Услуги и сервисы', link: '#.html' }
+  ]
+
+header.header(class=(headerAbsolute === true ? 'header--absolute' : '')  class=(isNewYear ? 'header--ny-24' : '') class=headerMods)
+  +popups('header')
+  .inner.inner--border
+    .header__wrap
+      a.header__logo(href='/')
+        if isNewYear
+          +ui-svg('icon_logo_ny_24')
+        else
+          +ui-svg('icon_logo')
+      .header__sections
+        a.header__section(href='#.html' class=(siteSection === 'private' ? 'header__section--active' : ''))
+          +ui-p7('Частным клиентам', '--uppercase')
+        a.header__section(href='#.html' class=(siteSection === 'business' ? 'header__section--active' : ''))
+          +ui-p7('Бизнесу', '--uppercase')
+        a.header__section(href='#.html' class=(siteSection === 'about' ? 'header__section--active' : ''))
+          +ui-p7('о банке', '--uppercase')
+      a.header__phone(href='tel:88001000600')
+        +ui-p5('8 800  1000  600')
+      +ui-button({p7: 'онлайн банк', mods: '--bold, --uppercase'}, '--online-bank')
+      +ui-button({p7: 'стать клиентом', mods: '--bold, --uppercase'}, 'header, --arrow')
+      .header-search
+        +ui-svg('icon_search', 'header-search')#headerSearchIcon
+        +ui-input('headerSearch', '', 'header-search')(placeholder='Поиск')
+        .header-search__close
+  .inner
+    .header__wrap
+      ul.header__menu
+        each headerMenuItem in headerMenu
+          li.header__item
+            a.header__link(class=(headerMenuActive === headerMenuItem.p4 ? 'header__link--active' : '') href=headerMenuItem.link)
+              +ui-p4(headerMenuItem.p4, '--link')
+            if headerMenuItem.dropdown
+              .header__dropdown(hidden)
+                .inner
+                  each dropdownItem in headerMenuItem.dropdown
+                    ul.header__list
+                      +ui-p7(dropdownItem.p7, '--uppercase')
+                      each listItem in dropdownItem.list
+                        if listItem.p4
+                          li
+                            a(href=listItem.link)
+                              +ui-p3(listItem.p4)
+                  .header__side
+                    .header__side-image: img(src='../../images/banner_img--credit0.png', alt='Кредит 0%')
+                    +ui-p2('Кредит 0%', '--bold')
+                    +ui-p3('с услугой «Гарантия ставки»', '--secondary3')
+                    +ui-button('', '--arrow-right')
+      .header__links
+        a(href='offices.html' class=(headerMenuActive === 'Офисы и банкоматы' ? 'active' : ''))
+          +ui-p7('Офисы и банкоматы', '--uppercase')
+        +ui-p7('', '--uppercase').header__geo.js-popup(a href='#popupGeo')
+          +ui-svg('icon_geo-tick')
+          ='Санкт-Петеpбуpг'
+        +ui-button({p7: 'Акции', mods: '--uppercase'}, 'header, --event')(href='#')
+        +ui-button({p7: 'Блог', mods: '--uppercase'}, 'header, --blog')(href='#')
+  +mobile-links
+  +menu
+  +popup-geo

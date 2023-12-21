@@ -1,0 +1,169 @@
+.ui-select {
+  position: relative;
+  .ts-wrapper {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      z-index: 1;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 9L12 16L5 9' stroke='%2318181B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+    &.focus:not(.dropdown-top) {
+      &::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+    &.dropdown-top {
+      .ts-dropdown {
+        top: auto;
+        bottom: 100%;
+        border-bottom: 0;
+      }
+      &.focus {
+        .ts-control {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+    &.input-active {
+      .ts-control {
+        background-color: $background1;
+      }
+    }
+  }
+  .ts-control {
+    padding: 15px 36px 15px 16px !important;
+    font-size: 18px;
+    line-height: 1.2;
+    background-color: $background1;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    input {
+      font-size: inherit;
+      line-height: inherit;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: inherit;
+      line-height: inherit;
+      img {
+        width: 34px;
+        height: 34px;
+        margin: -8px 0;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+  }
+  .ts-dropdown {
+    margin: 3px 0;
+    font-size: 18px;
+    background: $background1;
+    padding-right: 24px;
+    border: none;
+    border-radius: 4px;
+    &-content {
+      padding: 17px 0;
+      &::-webkit-scrollbar {
+        width: 3px;
+      }
+      &::-webkit-scrollbar-track {
+        margin: 20px 0;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $primary1;
+        border-radius: 10px;
+      }
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 13px 16px;
+      gap: 12px;
+      img {
+        width: 34px;
+        height: 34px;
+        margin: -8px 0;
+        border-radius: 50%;
+      }
+      &.active {
+        background: transparent;
+        color: inherit;
+      }
+      &.selected {
+        color: $primary1;
+      }
+    }
+  }
+  .just-validate-error-field {
+    ~ .ts-wrapper {
+      .ts-control {
+        border-color: $primary1;
+      }
+    }
+  }
+  .just-validate-error-label {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 16px;
+    font: 12px/1.2 $font;
+    color: $primary1 !important;
+  }
+  &--bg-white {
+    .ts-control {
+      background-color: #fff;
+      border-color: $secondary4;
+    }
+    .ts-wrapper {
+      &::after {
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1461_14494)'%3E%3Cpath d='M5.63115 7.36914L11.3687 13.0941L17.1062 7.36914L18.8687 9.13164L11.3687 16.6316L3.86865 9.13164L5.63115 7.36914Z' fill='%23797979'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1461_14494'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+      }
+      &.input-active {
+        .ts-control {
+          background-color: #fff;
+        }
+      }
+    }
+    .ts-dropdown {
+      margin: 6px 0;
+      background: #fff;
+      &-content {
+        padding: 13px 0;
+      }
+      .option {
+        padding: 9px 16px;
+      }
+    }
+  }
+  &--bold {
+    .ts-control {
+      font-weight: 700;
+    }
+    .ts-dropdown {
+      .option {
+        font-weight: 700;
+      }
+    }
+  }
+  &--fz16 {
+    .ts-control {
+      padding: 17px 16px;
+    }
+    .ts-control,
+    .ts-dropdown {
+      font-size: 16px;
+    }
+  }
+}

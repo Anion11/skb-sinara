@@ -1,0 +1,175 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'cards-yes'
+    const pageTitle = 'Cards yes'
+    const headerAbsolute = true
+    const siteSection = 'private'
+    const headerMenuActive = 'Карты'
+
+    const conditionsItems = {
+      h3: 'Преимущества',
+      items: [
+        {
+          front: [{ icon: 'icon_calendar', p3: 'Не платите проценты' }],
+          back: [{ p3: 'До 56 дней, в том числе за снятие наличных' }]
+        },
+        {
+          front: [{ icon: 'icon_card', p3: 'Обслуживание карты' }],
+          back: [{ p3: '0 ₽ — за второй и последующие месяцы, если сумма покупок более 5 000 ₽/мес*', p5: '149 ₽ — за первый месяц обслуживания карты, а также за второй и последующие, если сумма покупок менее 5 000 ₽/мес.', mobileFullWidth: true }]
+        },
+        {
+          front: [{ icon: 'icon_file', p3: 'Без справки о доходах' }],
+          back: [{ p3: 'При лимите кредитования до 300 000 ₽' }]
+        },
+        { front: [{ icon: 'icon_clock', p3: 'Быстрый выпуск' }],
+          back: [{ p3: 'Моментальное оформление карты' }]
+        }
+      ]
+    }
+
+    const savePointsItems = [
+      { p1: '<span>200</span>', p3: 'приветственных баллов' },
+      { p1: 'до <span>15</span> %', p3: 'за покупки в любимой категории' },
+      { p1: '<span>1</span> %', p3: 'за любые покупки в остальных категориях' },
+      { p1: '<span>1=1</span>', p3: 'перевод баллов в рубли' },
+      { p1: 'до <span>5000</span>', p3: 'бонусных баллов в месяц', tooltip: true }
+    ]
+
+    const stepsData = {
+      tabsHead: [
+        {p4: 'Пластиковая карта'},
+        {p4: 'Цифровая карта'}
+      ],
+      tabGroup: 'yes-card',
+      title: 'Получить карту просто!',
+      items: [
+        { p2: 'Заполните заявку', p4: 'В офисе банка или на сайте' },
+        { p2: 'Получите решение', p4: 'В течение нескольких минут' },
+        { p2: 'Получите карту', p4: 'Карту можно забрать в <a href="#">офисе банка</a>' }
+      ]
+    }
+
+    const pointBannerData = {
+      img: '../../images/usefull_img2.png',
+      p1: 'Накопите 1 000 баллов и компенсируйте любую покупку от 1 000 ₽ за предыдущий месяц',
+      button: 'Оформить карту'
+    }
+
+    const parametersGrid = [
+      {
+        p3: 'Сумма на руки',
+        p1: 'от 51 000 до 3 000 000 ₽'
+      },
+      {
+        p3: 'Срок кредита',
+        p1: 'от 4 до 5 лет'
+      },
+      {
+        itemMods: 'parameters-grid__item--w100 parameters-grid__item--pd-l',
+        table: [
+          {
+            p3_1: 'Валюта',
+            p3_2: 'Рубли',
+          },
+          {
+            p3_1: 'Выпуск/перевыпуск карты',
+            p3_2: 'Бесплатно',
+          },
+          {
+            p3_1: 'Процентная ставка',
+            p3_2: `
+              <ul class="ui-ul">
+                <li>Возраст заемщика — от 23 до 80 лет на момент окончания срока действия кредитного договора;</li>
+                <li>Стаж — не менее 3 месяцев на последнем месте работы;</li>
+                <li>Регистрация и проживание — кредитуемые Субъекты РФ;</li>
+                <li>Гражданство – Российская Федерация.</li>
+              </ul>
+            `
+          },
+        ]
+      }
+    ]
+
+    const parametersListItems = [
+      { p3: 'данные лица, которому выдан документ (ФИО, дата рождения);' },
+      { p3: 'наименование работодателя, сумма выплат и иных вознаграждений за последние 12 месяцев (при стаже работы менее 12 месяцев - за фактическое время работы, минимум - 3 месяца);' },
+      { p3: 'на последней странице - штамп с указанием реквизитов усиленной квалифицированной электронной подписи' }
+    ]
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Кредитная карта «ДА!»')
+        +breadcrumbs-item('Кредитная карта «ДА!»', '/', '--mobile')
+      +banner({h2: 'Кредитная карта «ДА!»', p2: 'Делайте ремонт и <span>обустраивайте ваш дом</span> с&nbsp;кешбэком 7% в категории «Мой дом»', infoItems: [{ p2: 'до<span>15</span>%', p4: 'кешбэк' }, { p2: 'до<span>56</span>дней', p4: 'льготный период' }], image: 'banner_img--credit-card-yes.png', buttons: [{ p3: 'Оформить карту', mods: '--filled, --p64' }, { p3: 'Рассчитать выгоду', mods: '--p64' }]}, '--credit-card-yes, --layout')
+      +section
+        +conditions(conditionsItems)
+      +section
+        +save-points('Копите баллы и возвращайте деньги за покупки', savePointsItems)
+      +section
+        +more-banner
+      +section('--background')
+        +cards-calculator
+      +section
+        +cards-categories
+      +section
+        +point-banner(pointBannerData)
+      +section('--background')
+        +interest-free
+      +section
+        +steps(stepsData)
+      +section('--background, --order-up')
+        +parameters
+      +section('--background, --order-up')
+        +parameters-new('Параметры', [{ p4: 'Условия кредитования' }, { p4: 'Способы погашения кредита' }, { p4: 'Cпособы подтверждения дохода' }, { p4: 'Тарифы и документы'}], 'Распоряжайтесь и управляйте кредитом так, как вам удобно!')
+          +ui-tab-item('--active')
+            .parameters-new__top
+              +ui-h4('Условия по карте', '--bold')
+              .parameters-new__close
+            +parameters-grid(parametersGrid, '--x2')
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Способы погашения кредита', '--bold')
+              .parameters-new__close
+            +repayment([{withoutCommission: true}], 'parameters-new')
+            +repayment([{withCommission: true}], 'parameters-new')
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Cпособы подтверждения дохода', '--bold')
+              .parameters-new__close
+            +ui-h5('Подтвердите свой доход за несколько минут', 'parameters-new, --bold')
+            +ui-accordion({p2: 'Выписка о состоянии счёта ПФР'})
+              +ui-p2('Должна содержать:', 'parameters-new, --bold')
+              +ui-ul(parametersListItems, 'parameters-new')
+              +ui-p3('Срок действия: 6 месяцев')
+            +ui-accordion({p2: 'Справка по форме банка'})
+            +ui-accordion({p2: 'Справка по форме ФНС'})
+            +ui-accordion({p2: 'Выписка по счёту'})
+            +ui-accordion({p2: 'Декларация 3-НДФЛ'})
+            +ui-accordion({p2: 'Подтверждение, что вы получаете пенсию менее 12 месяцев'})
+            +ui-accordion({p2: 'Выписка со счёта для зачисления пенсии'})
+            +ui-accordion({p2: 'Справка организации, назначившей пенсию'})
+            br
+            br
+            +document({p4: 'Шаблон справки по форме банка'})
+            +document({p4: 'Инструкция по получению Извещения о состоянии счета ПФР'})
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Тарифы и документы', '--bold')
+              .parameters-new__close
+            +document({p4: 'Тарифы банка'})
+            +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+            +document({p4: 'Реквизиты для безналичного пополнения счета'})
+            +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+            +document({p4: 'Правила КБО Версии 1.0-8.3'})
+            +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+            +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+            +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+      +section
+        +promo([{activeIncome: true}])
+      +section
+        +usefull([{credit: true}, {reference: true}])

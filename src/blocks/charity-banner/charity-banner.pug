@@ -1,0 +1,17 @@
+mixin charity-banner(mods)
+  -
+    const baseName = 'charity-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .charity-banner(class=allMods)&attributes(attributes)
+    .charity-banner__img: img(src='../../images/deposits/charity-banner.png' alt='')
+    +ui-h3('Благотворительность', 'charity-banner, --bold')
+    +ui-p3('Вкладчик может поручить банку ежемесячно переводить часть дохода в благотворительный фонд «Синара-Фонд» в случае, если выплата процентов осуществляется на счет вклада.', 'charity-banner')
+    block

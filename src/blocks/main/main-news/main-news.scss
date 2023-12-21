@@ -1,0 +1,126 @@
+.main-news {
+  padding: 0 80px;
+  @include media-laptop {
+    padding: 0;
+  }
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+    .ui-button--arrow {
+      @include media-laptop {
+        display: none;
+      }
+    }
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0 50px;
+    @include media-laptop {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      gap: 0 20px;
+    }
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      gap: 24px 0;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 24px 0;
+    @include media-tablet {
+      padding: 0;
+    }
+    &:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+      margin-right: 25px;
+      padding: 30px;
+      background: $gradient1;
+      border-radius: 14px;
+      @include media-laptop {
+        grid-row: span 1;
+        min-height: 250px;
+        margin-right: 0;
+      }
+      @include media-tablet {
+        grid-column: span 1;
+        padding: 24px 20px;
+      }
+      .ui-button--arrow-right {
+        margin-top: auto;
+        background-color: #fff;
+        border-color: #fff;
+        &:hover {
+          background-color: #fff;
+        }
+      }
+    }
+    &:nth-last-child(-n + 2) {
+      border-top: 1px solid $background1;
+      @include media-tablet {
+        display: none;
+      }
+    }
+  }
+  &__ui-p4 {
+    margin-bottom: 16px;
+    @include media-tablet {
+      margin-bottom: 14px;
+    }
+  }
+  &__ui-button {
+    display: none;
+    @include media-laptop {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+    }
+    @include media-tablet {
+      margin-top: 24px;
+    }
+  }
+  &--ny-24 {
+    .main-news__item {
+      .ui-p1  {
+        position: relative;
+      }
+      &:first-child {
+        position: relative;
+        background: linear-gradient(112deg, #b6dcff 0.97%, #d2f1eb 98.83%);
+        &::before {
+          content: '';
+          position: absolute;
+          right: 30px;
+          bottom: 14px;
+          width: 128px;
+          height: 128px;
+          background-image: url('/images/new-year/main-news-ny_24.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          @include media-laptop {
+            bottom: 30px;
+            width: 81px;
+            height: 81px;
+          }
+          @include media-tablet {
+            right: 20px;
+            bottom: 24px;
+          }
+        }
+      }
+    }
+  }
+}

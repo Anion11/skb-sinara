@@ -1,0 +1,99 @@
+.mobile-app {
+  position: relative;
+  margin: 0 80px;
+  padding: 40px 64px;
+  border: 1px solid $secondary4;
+  border-radius: 24px;
+  overflow: hidden;
+  @include media-laptop {
+    min-height: 400px;
+    margin: 0;
+    padding: 40px 24px;
+  }
+  @include media-tablet {
+    padding: 30px 16px 195px;
+    border-radius: 14px;
+  }
+  &__content {
+    max-width: 540px;
+  }
+  &__ui-h5 {
+    margin-bottom: 20px;
+  }
+  &__ui-ul {
+    @include media-laptop {
+      max-width: 340px;
+    }
+  }
+  &__ui-p2 {
+    max-width: 370px;
+    margin-bottom: 68px;
+    @include media-laptop {
+      max-width: unset;
+      margin-bottom: 35px;
+    }
+    @include media-tablet {
+      margin-bottom: 24px;
+    }
+  }
+  &__buttons {
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+    @include media-tablet {
+      gap: 16px;
+    }
+    &--m-col {
+      @include media-tablet {
+        flex-direction: column;
+      }
+    }
+    .ui-button--arrow {
+      &::after {
+        display: block;
+      }
+    }
+    .ui-button--desktop {
+      @include media-tablet {
+        display: none;
+      }
+    }
+    .ui-button--mobile {
+      display: none;
+      @include media-tablet {
+        display: flex;
+      }
+    }
+  }
+  &__image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 493px;
+    @include media-laptop {
+      right: -55px;
+      max-width: 365px;
+    }
+    @include media-tablet {
+      right: -18px;
+      max-width: 273px;
+    }
+  }
+  &--mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &--d-size-s {
+    @media (min-width: ($mediaWidthLaptop + 1)) {
+      padding: 30px 300px 30px 30px;
+    }
+    .mobile-app {
+      &__image {
+        @media (min-width: ($mediaWidthLaptop + 1)) {
+          right: -50px;
+          max-width: 330px;
+        }
+      }
+    }
+  }
+}

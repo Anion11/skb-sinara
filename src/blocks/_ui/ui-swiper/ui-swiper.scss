@@ -1,0 +1,184 @@
+.ui-swiper {
+  &-buttons {
+    display: flex;
+    gap: 10px;
+    .swiper-button {
+      &-prev,
+      &-next {
+        position: relative;
+        top: unset;
+        right: unset;
+        left: unset;
+        width: 48px;
+        height: 48px;
+        margin: 0;
+        background-color: $background1;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px;
+        border-radius: 12px;
+        &::after {
+          display: none;
+        }
+      }
+      &-prev {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24' fill='none'%3E%3Cpath stroke='%231E1E1E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M4.75 12.274h15M10.8 18.299l-6.05-6.024L10.8 6.25'/%3E%3C/svg%3E");
+      }
+      &-next {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%231E1E1E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19.75 11.726h-15M13.7 5.701l6.05 6.024-6.05 6.025'/%3E%3C/svg%3E");
+      }
+    }
+    &--white {
+      .swiper-button {
+        &-prev,
+        &-next {
+          background-color: #fff;
+        }
+      }
+    }
+    &--border {
+      .swiper-button {
+        &-prev,
+        &-next {
+          border: 1px solid $secondary4;
+        }
+      }
+    }
+    &--ny-24 {
+      .swiper-button {
+        &-prev,
+        &-next {
+          &::before {
+            content: '';
+            position: absolute;
+            top: 44px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 90px;
+            background-image: url('/images/new-year/swiper-button-ny_24.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+  &-pagination {
+    .swiper-pagination {
+      position: relative;
+      bottom: auto;
+      line-height: 0;
+      &-bullet {
+        width: 6px;
+        height: 6px;
+        transition: 0.3s;
+        &-active {
+          width: 18px;
+          border-radius: 3px;
+          background-color: $primary1;
+        }
+      }
+    }
+    &--white {
+      .swiper-pagination {
+        &-bullet {
+          background: #fff;
+          opacity: 1;
+          &-active {
+            background-color: $primary1;
+          }
+        }
+      }
+    }
+  }
+  &-bullets {
+    margin-top: 45px;
+    @include media-tablet {
+      margin-top: 25px;
+    }
+    .swiper-pagination {
+      position: relative;
+      bottom: 0;
+      font-size: 0;
+      &-horizontal {
+        .swiper-pagination-bullet {
+          margin: 0 6px;
+        }
+      }
+      &-bullet {
+        position: relative;
+        width: 30px;
+        height: 4px;
+        border-radius: 0;
+        transition: 0.3s;
+        opacity: 1;
+        .anim {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transform: scaleX(0);
+          transform-origin: left;
+          background: red;
+          transition-timing-function: linear;
+          &--active {
+            transform: scaleX(1);
+          }
+        }
+        &-active {
+          width: 60px;
+        }
+      }
+    }
+  }
+  &-fraction {
+    .swiper-pagination {
+      @extend .ui-p4;
+
+      position: relative;
+      bottom: unset;
+      color: $secondary3;
+      &-progress {
+        position: relative;
+        width: 18px;
+        height: 1px;
+        margin: 0 7px;
+        background-color: #d1c9be;
+        &-line {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: red;
+          transition-timing-function: linear;
+          &--active {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &-scrollbar {
+    .swiper-scrollbar {
+      position: unset;
+      z-index: unset;
+      height: 5px;
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      @include media-laptop {
+        height: 3px;
+        margin-top: 15px;
+      }
+      &-drag {
+        background: $primary1;
+        border-radius: inherit;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+mixin card-receiving-places(data, mods)
+  -
+    const baseName = 'card-receiving-places'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .card-receiving-places(class=allMods)&attributes(attributes)
+    .card-receiving-places__head
+      if data.h3
+        +ui-h3(data.h3, 'card-receiving-places, --bold')
+      if data.h6
+        +ui-h6(data.h6, 'card-receiving-places, --bold')
+      if data.p2
+        +ui-p2(data.p2)
+      if data.p4
+        +ui-p4(data.p4)
+    .card-receiving-places__actions
+      each button in data.buttons
+        +ui-button({ p3: button }, '--p44')(href='#')
+    .card-receiving-places__img: img(src='../../images/cards/card-receiving-places.png' alt='Оформление карты доступно на территории Свердловской области')
+    block

@@ -1,0 +1,69 @@
+{
+  "name": "vite-bem-template",
+  "version": "1.0.3",
+  "type": "module",
+  "description": "simple bem pug+scss template",
+  "author": "Alexey Kozyutenko",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gulp pugMixins && vite",
+    "build": "gulp pugMixins && vite build && node .change-path.js",
+    "preview": "vite preview",
+    "block": "node .create-block.js",
+    "page": "node .create-page.js"
+  },
+  "browserslist": [
+    "> 5%",
+    "last 2 version"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Apnoea/vite-bem-template.git"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.37.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-sonarjs": "^0.19.0",
+    "eslint-plugin-unicorn": "^46.0.0",
+    "gulp": "^4.0.2",
+    "pug-lint": "^2.7.0",
+    "sass": "^1.61.0",
+    "stylelint": "^15.4.0",
+    "stylelint-config-standard": "^32.0.0",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^4.6.0",
+    "terser": "^5.19.4",
+    "vite": "^4.2.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-multipage": "^1.0.0",
+    "vite-plugin-pug-transformer": "^1.0.3",
+    "vite-plugin-sass-glob-import": "^2.0.0",
+    "vite-plugin-stylelint": "^4.3.0",
+    "vite-plugin-svg-icons": "^2.0.1"
+  },
+  "dependencies": {
+    "@fancyapps/ui": "^4.0.31",
+    "dayjs": "^1.11.9",
+    "flatpickr": "^4.6.13",
+    "hammerjs": "^2.0.8",
+    "imask": "^6.5.1-alpha.1",
+    "inputmask": "^5.0.8",
+    "just-validate": "^4.2.0",
+    "just-validate-plugin-date": "^1.2.0",
+    "lazysizes": "^5.3.2",
+    "normalize.css": "^8.0.1",
+    "nouislider": "^15.7.0",
+    "scroll-lock": "^2.1.5",
+    "slide-element": "^2.3.1",
+    "swiper": "^9.2.0",
+    "tippy.js": "^6.3.7",
+    "tom-select": "^2.2.2",
+    "wnumb": "^1.2.0"
+  }
+}

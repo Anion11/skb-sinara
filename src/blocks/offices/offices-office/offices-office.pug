@@ -1,0 +1,51 @@
+mixin offices-office(mods)
+  -
+    const baseName = 'offices-office'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const listItems1 = [
+      { p3: 'Внесение наличных' },
+      { p3: 'Бесконтактные карты' },
+      { p3: 'Самоинкассация' },
+      { p3: 'Выдача рублей' },
+      { p3: 'Оплата услуг' }
+    ]
+
+  .offices-office(class=allMods)&attributes(attributes)
+    .offices-office__head
+      .offices-office__back.offices__back
+        +ui-p7('Назад', '--uppercase')
+      .offices-office__swipe.offices__swipe
+    .offices-office__body
+      .offices-office__name
+        +ui-svg('icon_sinara-atm', 'offices-office')
+        .offices-office__wrap
+          +ui-h6('Банкомат №978165974', '--bold')
+          +ui-h6('Банка Открытие', '--bold')
+      +ui-p3('Свердловская обл., г. Екатеринбург, ул. Билимбаевская, д. 15')
+      +ui-p3('Вне помещений кредитной <br>организации в открытом доступе', '--gradient')
+      .offices-office__item
+        +ui-p7('Режим работы', '--uppercase, --secondary3')
+        +ui-p3('ежедневно: 08:00-23:00')
+      .offices-office__item
+        +ui-p7('Типы операций', '--uppercase, --secondary3')
+        +ui-ul(listItems1, 'offices-office')
+      .offices-office__item
+        +ui-p7('Лимит на внесение наличных', '--uppercase, --secondary3')
+        +ui-p3('Одна операция – до 120 000 ₽ В календарный месяц – до 599 000 ₽ в месяц')
+      .offices-office__item
+        +ui-p7('Лимит на снятие наличных:', '--uppercase, --secondary3')
+        +ui-p3('Согласно Тарифному плану, но не более <span class="ui-nowrap">100 000 ₽</span> в сутки')
+      .offices-office__item
+        +ui-p7('Доступно для приема', '--uppercase, --secondary3')
+        .offices-office__icons
+          +ui-svg('icon_rub--office')
+          +ui-svg('icon_usd--office')
+          +ui-svg('icon_eur--office')
+    block

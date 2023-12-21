@@ -1,0 +1,76 @@
+.mobile-links {
+  display: none;
+  @include media-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+  }
+  &__body {
+    display: flex;
+    transform: translateX(100%);
+    width: 0;
+    margin-right: 10px;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    &--active {
+      width: 100%;
+      transform: translateX(0);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: rgba(255 255 255 / 0.80);
+    border: 1px solid $secondary4;
+    border-radius: 12px;
+    backdrop-filter: blur(3px);
+    &::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+    &--circle {
+      border-radius: 50%;
+    }
+    &--user {
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill='%23979797' fill-rule='evenodd' d='M12.002 10.8a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2Zm-8.4 10.8a8.4 8.4 0 0 1 16.8 0h-16.8Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      }
+    }
+    &--home {
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill='%23979797' d='M12.848 2.751a1.2 1.2 0 0 0-1.697 0l-8.4 8.4a1.2 1.2 0 0 0 1.697 1.697l.351-.351V20.4A1.2 1.2 0 0 0 6 21.6h2.4a1.2 1.2 0 0 0 1.2-1.2V18a1.2 1.2 0 0 1 1.2-1.2h2.4a1.2 1.2 0 0 1 1.2 1.2v2.4a1.2 1.2 0 0 0 1.2 1.2H18a1.2 1.2 0 0 0 1.2-1.2v-7.903l.352.351a1.2 1.2 0 0 0 1.697-1.697l-8.4-8.4Z'/%3E%3C/svg%3E");
+      }
+    }
+  }
+  &__toggle {
+    flex-shrink: 0;
+    &::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%231E1E1E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M2.832 8.183h10M6.863 12.2 2.83 8.182l4.033-4.016'/%3E%3C/svg%3E");
+      transition: 0.3s;
+    }
+    &--active {
+      &::before {
+        transform: rotate(180deg)
+      }
+    }
+  }
+}

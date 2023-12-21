@@ -1,0 +1,42 @@
+mixin banner(data, mods)
+  -
+    const baseName = 'banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner(class=allMods)&attributes(attributes)
+    .banner__body
+      if data.h2
+        +ui-h2(data.h2, 'banner, --bold')
+      if data.p2
+        +ui-p2(data.p2, 'banner, --secondary3')
+          if data.tooltip
+            +ui-tooltip('', data.tooltip)
+      if data.infoItems
+        .banner__info
+          each infoItem in data.infoItems
+            .banner__item
+              if infoItem.icon
+                .banner__icon
+                  +ui-svg(infoItem.icon)
+              if infoItem.p2
+                +ui-p2(infoItem.p2)
+              +ui-p4(infoItem.p4, '--secondary3')
+      if data.p6
+        +ui-p6(data.p6, 'banner, --secondary3')
+      if data.image
+        .banner__image: img(src=`../../images/${data.image}`, alt='')
+      if data.buttons
+        .banner__buttons
+          each button in data.buttons
+            if button.mods !== '--text'
+              +ui-button({p3: button.p3}, button.mods)
+            else
+              +ui-button({p3: button.p3}, button.mods)(href='#')
+                +ui-tooltip('', 'tt')

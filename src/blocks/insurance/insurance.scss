@@ -1,0 +1,65 @@
+.insurance {
+  padding: 0 80px;
+  @include media-laptop {
+    padding: 0;
+  }
+  &__body {
+    display: flex;
+    gap: 60px;
+    padding: 45px 60px;
+    border: 1px solid $secondary4;
+    border-radius: 24px;
+    @include media-laptop {
+      gap: 30px;
+      padding: 40px 24px;
+    }
+    @include media-tablet {
+      flex-direction: column;
+      padding: 24px 16px;
+      border-radius: 14px;
+    }
+  }
+  &__image {
+    max-width: 104px;
+  }
+  &__ui-h5 {
+    margin-bottom: 20px;
+    @include media-laptop {
+      margin-bottom: 14px;
+    }
+  }
+  &__ui-p3 {
+    max-width: 870px;
+    a {
+      display: inline;
+      color: $primary1;
+    }
+  }
+  &--ny-24 {
+    .insurance {
+      &__body {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: -24px;
+          right: 24px;
+          width: 112px;
+          height: 112px;
+          background-image: url('/images/new-year/insurance-ny_24.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          @include media-tablet {
+            right: 16px;
+          }
+        }
+      }
+      &__ui-h5 {
+        padding-right: 150px;
+        @include media-tablet {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}

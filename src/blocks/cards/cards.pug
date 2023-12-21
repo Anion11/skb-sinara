@@ -1,0 +1,80 @@
+mixin cards(mods)
+  -
+    const baseName = 'cards'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const items = [
+      { p7: 'Кредитная карта', h3: 'Кредитная карта «ДА!»', p2: 'Карта с льготным периодом на снятие и переводы', info: [{ p2: 'до <span>15</span> %', p3: 'в любимой категории', tooltip: true }, { p2: 'до <span>56</span> дней', p3: 'льготный период' }]},
+      { p7: 'Дебетовая карта', h3: 'Универсальная карта', p2: 'Карта, которая работает на вас каждый день', info: [{ p2: 'от <span>0</span> ₽', p3: 'обслуживание карты', tooltip: true }, { p2: 'до <span>300</span> тыс ₽', p3: 'за покупки в любимых категориях', mods: 'cards__info-item--big' }]},
+      { p7: 'Дебетовая карта', h3: 'Платежный стикер', p2: 'Оплата одним касанием телефона', info: [{ icon: 'icon_rocket', p3: 'моментальный <br> выпуск' }, { p2: 'до <span>5</span> %', p3: 'кешбэк в&nbsp;любимых <br>категориях' }]},
+      { p7: 'Дебетовая карта', h3: 'Единая социальная карта', p2: 'Все бюджетные выплаты и дополнительный доход – на одной карте!', info: [{ p2: '<span>0</span> ₽', p3: 'обслуживание карты' }, { p2: 'до <span>20</span> %', p3: '<span>cash-back</span> на покупки <br>у партнёров', tooltip: true, mods: 'cards__info-item--big' }]},
+      { p7: 'Премиальная карта', h3: 'Премиальная карта', p2: 'Персональные финансовые решения в атмосфере тёплого сервиса', info: [{ p2: 'от <span>2</span> %', p3: 'ставка на весь срок' }, { p2: 'до <span>50</span> тыс ₽', p3: 'кэшбек рублями на счет <br>в месяц', mods: 'cards__info-item--big' }]},
+      { p7: 'Дебетовая карта', h3: 'Зарплатные карты', p2: 'Получайте больше, чем просто зарплату!', info: [{ p2: '<span>0</span> ₽', p3: 'обслуживание карты' }, { p2: 'до <span>20</span> %', p3: 'cash-back у партнёров' }, { p2: 'до <span>1,5</span> %', p3: 'кэшбек от банка' }]},
+      { p7: 'Дебетовая карта', h3: 'Карта Добра БФ «Синара»', p2: 'Карта для самых добрых дел!', info: [{ p2: '<span>0</span> ₽', p3: 'обслуживание карты' }, { p2: '<span>1,3</span> %', p3: 'кешбэк за покупки' }, { p2: '<span>0</span> ₽', p3: 'информирование об&nbsp;операциях', mods: 'cards__info-item--big' }]}
+    ]
+    const tabHeadings = [
+      { p4: 'Все' },
+      { p4: 'Кредитные карты' },
+      { p4: 'Дебетовые карты' },
+      { p4: 'Премиальные карты' }
+    ]
+
+  mixin card(index, p7, h3, p2, info)
+    .cards__item
+      .cards__content
+        +ui-p7(p7, 'cards, --uppercase, --secondary3')
+        +ui-h3(h3, 'cards, --bold')
+        +ui-p2(p2, 'cards, --secondary3')
+        .cards__info
+          each infoItem in info
+            .cards__info-item(class=(infoItem.mods))
+              if infoItem.p2
+                +ui-p2(infoItem.p2)
+              if infoItem.icon
+                .cards__info-icon: +ui-svg(infoItem.icon)
+              +ui-p3(infoItem.p3, 'cards, --secondary3')
+                if infoItem.tooltip
+                  +ui-tooltip('', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere cumque voluptate numquam quam dolor ipsum vero doloribus corrupti omnis, in sint aliquam neque soluta distinctio velit, voluptatum voluptatibus eveniet? Odio.')
+        .cards__buttons
+          if index === 0
+            +ui-button({p3: 'Оформить карту', mods: '--bold'}, 'cards, --filled, --p44')
+          +ui-button({p3: 'Подробнее', mods: '--bold'}, 'cards, --p44')
+          +ui-button('', 'cards, --arrow-right')(href='#')
+      .cards__image
+        if isNewYear
+          img(src=`../../images/new-year/banner_img--card${index}_ny_24.png`, alt=h3)
+        else
+          img(src=`../../images/banner_img--card${index}.png`, alt=h3)
+
+  .cards(class=allMods)&attributes(attributes)
+    .cards__head
+      +ui-h2('Банковские карты для частных лиц', 'cards, --bold')
+      +ui-tab-head(tabHeadings)(data-tab-group='cards')
+    +ui-tab(data-tab-group='cards')
+      +ui-tab-body
+        +ui-tab-item('--active')
+          .cards__body
+            each item, index in items
+              +card(index, item.p7, item.h3, item.p2, item.info)
+        +ui-tab-item
+          .cards__body
+            each item, index in items
+              if item.p7 === 'Кредитная карта'
+                +card(index, item.p7, item.h3, item.p2, item.info)
+        +ui-tab-item
+          .cards__body
+            each item, index in items
+              if item.p7 === 'Дебетовая карта'
+                +card(index, item.p7, item.h3, item.p2, item.info)
+        +ui-tab-item
+          .cards__body
+            each item, index in items
+              if item.p7 === 'Премиальная карта'
+                +card(index, item.p7, item.h3, item.p2, item.info)
+    block

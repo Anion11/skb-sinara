@@ -1,0 +1,64 @@
+.card-receiving-places {
+  position: relative;
+  padding: 50px 740px 50px 80px;
+  background: $gradient2;
+  border-radius: 24px;
+  overflow: hidden;
+  @include media-laptop {
+    padding: 50px 145px 245px 24px;
+  }
+  @include media-tablet {
+    padding: 40px 20px;
+    border-radius: 14px;
+  }
+  > *:not(.card-receiving-places__img) {
+    position: relative;
+    z-index: 1;
+  }
+  &__img {
+    position: absolute;
+    right: 45px;
+    bottom: 34%;
+    transform: translateY(50%);
+    max-width: 682px;
+    @include media-laptop {
+      max-width: 465px;
+      right: -25px;
+      bottom: -73px;
+      transform: none;
+    }
+    @include media-tablet {
+      display: none;
+    }
+  }
+  &__head {
+    max-width: 570px;
+    &:not(:last-child) {
+      margin-bottom: 32px;
+      @include media-tablet {
+        margin-bottom: 24px;
+      }
+    }
+  }
+  &__ui-h3 {
+    &:not(:last-child) {
+      margin-bottom: 14px;
+    }
+  }
+  &__ui-h6 {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+      @include media-tablet {
+        margin-bottom: 14px;
+      }
+    }
+  }
+  &__actions {
+    display: flex;
+    gap: 20px;
+    @include media-tablet {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}

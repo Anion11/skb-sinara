@@ -1,0 +1,60 @@
+.popups-mobile-app {
+  display: none;
+  align-items: center;
+  padding: 16px 14px;
+  background-color: #fff;
+  @include media-tablet {
+    display: flex;
+  }
+  &__ui-svg {
+    width: 46px;
+    height: 46px;
+    margin-right: 14px;
+  }
+  &__ui-p3 {
+    max-width: 150px;
+  }
+  &__ui-button {
+    margin-left: auto;
+    margin-right: 6px;
+    @include media-laptop {
+      padding: 12px;
+      border-width: 1px;
+      border-color: $secondary4;
+      border-radius: 10px;
+    }
+    &::before {
+      @include media-laptop {
+        display: none;
+      }
+    }
+    &::after {
+      @include media-laptop {
+        content: '';
+        width: 14px;
+        height: 14px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none'%3E%3Cpath stroke='%231E1E1E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m10.524 3.217-7.07 7.072M4.833 3.23l5.691-.013-.011 5.692'/%3E%3C/svg%3E");
+        background-size: contain;
+      }
+    }
+    &:hover {
+      @include media-laptop {
+        background-color: transparent;
+      }
+    }
+    > div {
+      @include media-laptop {
+        display: none;
+      }
+    }
+  }
+  &__close {
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none'%3E%3Cpath stroke='%23949494' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='1.5' d='m1.2 1.297 9.674 9.674M1.2 10.874 10.874 1.2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
+    cursor: pointer;
+  }
+}

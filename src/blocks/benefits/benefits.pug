@@ -1,0 +1,35 @@
+mixin benefits(mods, isOnlySlider)
+  -
+    const baseName = 'benefits'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .benefits(class=allMods)&attributes(attributes)
+    .benefits__head
+      +ui-h3('Дополнительные выгоды', '--bold')
+    .benefits__body
+      .benefits__slider.swiper
+        .swiper-wrapper
+          .benefits__slide.swiper-slide
+            +ui-p3('Бесплатно доставим кредит домой или ', 'benefits')
+              span.ui-nowrap в офис
+                +ui-tooltip('', 'После одобрения кредита выберите на странице с предложением «Бесплатная доставка кредита курьером» и с Вами свяжется специалист Банка для уточнения адреса и удобного времени доставки. Доставка доступна только до определенной суммы кредита и действует в следующих <a href="#">городах</a>. На все вопросы ответим по <a href="#">8 800 1000 600</a>', 'benefits')
+            .benefits__image: img(src='../../images/credits-inner/benefits_img1.png', alt='Бесплатно доставим кредит домой или в офис')
+            .swiper-button-next
+          .benefits__slide.swiper-slide
+            +ui-p3('Бесплатно доставим кредит домой или ', 'benefits')
+              span.ui-nowrap в офис
+                +ui-tooltip('', 'После одобрения кредита выберите на странице с предложением «Бесплатная доставка кредита курьером» и с Вами свяжется специалист Банка для уточнения адреса и удобного времени доставки. Доставка доступна только до определенной суммы кредита и действует в следующих <a href="#">городах</a>. На все вопросы ответим по <a href="#">8 800 1000 600</a>', 'benefits')
+            .benefits__image: img(src='../../images/credits-inner/benefits_img1.png', alt='Бесплатно доставим кредит домой или в офис')
+            .swiper-button-prev
+      if !isOnlySlider
+        .benefits__slide
+          +ui-p3('Кредит с сервисным пакетом «Управляй Легко»', 'benefits')
+          .benefits__image: img(src='../../images/credits-inner/benefits_img2.png', alt='Кредит с сервисным пакетом «Управляй Легко»')
+    block

@@ -1,0 +1,62 @@
+.document {
+  --bg: #fff;
+
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: var(--bg);
+  border-radius: 10px;
+  @include media-tablet {
+    padding: 14px;
+  }
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  &__ui-svg {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: 13px;
+    color: $primary1;
+  }
+  &--pd0 {
+    width: fit-content;
+    padding: 0;
+    background: transparent;
+  }
+  &--icon-l {
+    .document__ui-svg {
+      width: 50px;
+      height: 50px;
+      @include media-tablet {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  &--xxl {
+    padding: 24px 36px;
+    @include media-laptop {
+      padding: 24px;
+    }
+    @include media-tablet {
+      padding: 20px 16px;
+    }
+    .document {
+      &__ui-svg {
+        width: 64px;
+        height: 64px;
+        margin-right: 24px;
+        @include media-laptop {
+          width: 50px;
+          height: 50px;
+        }
+        @include media-tablet {
+          width: 40px;
+          height: 40px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

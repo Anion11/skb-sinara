@@ -1,0 +1,531 @@
+mixin parameters(mods)
+  -
+    const baseName = 'parameters'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const tabHeadings = [
+      { p4: 'Условия кредитования' },
+      { p4: 'Cпособы погашения кредита' },
+      { p4: 'Cпособы подтверждения дохода' },
+      { p4: 'Тарифы и документы' }
+    ]
+    const cardsGoodnessTabHeadings = [
+      { p4: 'Условия по карте' },
+      { p4: 'Тарифы и документы' },
+      { p4: 'Вопросы и ответы' }
+    ]
+    const cardsSalaryTabHeadings = [
+      { p4: 'Условия по карте' },
+      { p4: 'Тарифы и документы' }
+    ]
+    const listItemsMobilization = [
+      { p3: 'призваны на военную службу по мобилизации;' },
+      { p3: 'проходите военную службу по контракту, находитесь на военной службе в войсках национальной гвардии РФ, в воинских формированиях и органах, при условии участия в СВО на территориях Украины, ДНР, ЛНР, Херсонской и Запорожской областей;' },
+      { p3: 'являетесь сотрудником пограничной службы, находящимся на территории России и обеспечивающим проведение СВО;' },
+      { p3: 'Гражданство – Российская Федерация' }
+    ]
+    const listItems1 = [
+      { p3: 'Возраст заемщика — от 23 до 80 лет на момент окончания срока действия кредитного договора' },
+      { p3: 'Стаж — не менее 3 месяцев на последнем месте работы' },
+      { p3: 'Регистрация и проживание — кредитуемые Субъекты РФ' },
+      { p3: 'Гражданство – Российская Федерация' }
+    ]
+    const listItems2 = [
+      { p3: 'данные лица, которому выдан документ (ФИО, дата рождения);' },
+      { p3: 'наименование работодателя, сумма выплат и иных вознаграждений за последние 12 месяцев (при стаже работы менее 12 месяцев - за фактическое время работы, минимум - 3 месяца);' },
+      { p3: 'на последней странице - штамп с указанием реквизитов усиленной квалифицированной электронной подписи' }
+    ]
+    const cardsGoodnessLines = [
+      {
+        name: 'Стоимость выпуска карты',
+        descr: '0 ₽/мес.'
+      },
+      {
+        name: 'Стоимость обслуживания карты, в месяц',
+        descr: '100 ₽'
+      },
+      {
+        name: 'Полный пакет «SMS-информирование»',
+        descr: '0 ₽'
+      },
+      {
+        name: 'Кешбэк',
+        descr: '1.3%'
+      },
+      {
+        name: 'Переводы с использованием Системы быстрых платежей',
+        list: [
+          { p3: 'До 100 000 ₽/мес. – 0%' },
+          { p3: 'Свыше 100 000 ₽ /мес., но не более 150 000 ₽ /сутки – 0,5%, max 1 500 ₽' },
+        ]
+      },
+      {
+        name: 'Выдача наличных денежных средств в банкоматах ПАО Банк Синара, АО «Газэнергобанк», ПАО Банк «ФК Открытие», АО «Альфа-Банк»',
+        descr: '0 ₽'
+      },
+    ]
+    const cardsPremiumLines = [
+      {
+        name: 'Cash-back (возврат средств за оплату товаров и услуг картой)',
+        descr: '1%, но не более 50 000 руб./ежемесячно'
+      },
+      {
+        name: 'Дополнительные карты',
+        descr: 'Категории Classic / Gold / Signature / Mir Supreme / Mir Supreme Digital'
+      },
+      {
+        name: 'SMS-информирование об операциях',
+        descr: 'Бесплатно'
+      },
+      {
+        name: 'Выдача наличных в любых банкоматах',
+        descr: 'Бесплатно'
+      },
+      {
+        name: 'Подключение и обслуживание Интернет-банк',
+        descr: 'Бесплатно'
+      },
+      {
+        name: 'Переводы по системе Интернет-банк',
+        descr: 'Бесплатно'
+      },
+      {
+        name: 'Зачисление средств на карту (p2p перевод)',
+        descr: 'Бесплатно'
+      },
+      {
+        name: 'Справка о состоянии счетов',
+        descr: 'Бесплатно'
+      },
+      {
+        name: 'Предоставление выписки по счету за любой период',
+        descr: 'Бесплатно'
+      },
+    ]
+    const cardsUniversalLines = [
+      {
+        name: 'Выпуск карты',
+        descr: 'Бесплатно, 450 ₽ – на пластиковом носителе к цифровой карте Мир'
+      },
+      {
+        name: 'Обслуживание карты',
+        descr: 'Бесплатно',
+        list: [
+          { p3: 'в первый месяц, в котором была получена карта;' },
+          { p3: 'при наличии действующего потребительского кредита;' },
+          { p3: 'при наличии действующего срочного вклада*;' },
+          { p3: 'при остатке не менее 30 000 ₽ и покупках от 15 000 ₽**;' },
+          { p3: 'при отсутствии операций по карте.' },
+        ],
+        descrBot: 'В остальных случаях – 159 ₽/мес'
+      },
+      {
+        name: 'Информирование об операциях с&nbsp;использованием карты',
+        descr: '99 ₽/мес'
+      },
+      {
+        name: '10 бесплатных снятий в сторонних банкоматах',
+        descr: '59 ₽/мес'
+      },
+      {
+        name: 'Можно больше',
+        nameTooltip: 'tt',
+        descr: '299 ₽/мес'
+      },
+      {
+        name: 'Пополнение',
+        descr: 'Бесплатно',
+        list: [
+          { p3: 'с других карт в интернет-банке и мобильном приложении Синара Банк;' },
+          { p3: 'в кассах ПАО Банк Синара;' },
+          { p3: 'в банкоматах ПАО Банк Синара.' },
+        ]
+      },
+      {
+        name: 'Снятие наличных',
+        descr: 'Бесплатно',
+        list: [
+          { p3: 'в банкоматах ПАО Банк Синара, АО «Газэнергобанк»' },
+        ]
+      },
+      {
+        name: 'Лимиты на снятие',
+        list: [
+          { p3: '100 000 ₽/сут. - в банкоматах ПАО Банк Синара, АО «Газэнергобанк»' },
+          { p3: '1 000 000 ₽/сут. – в кассах ПАО Банк Синара и АО «Газэнергобанк»' },
+        ]
+      },
+      {
+        name: 'Переводы в интернет-банке и мобильном приложении',
+        descr: 'С использованием Системы быстрых платежей:',
+        list: [
+          { p3: 'в банкоматах ПАО Банк Синара, АО «Газэнергобанк»' },
+        ]
+      },
+    ]
+
+  case pageName
+    when 'cards-yes'
+      .parameters(class=allMods)&attributes(attributes)
+        .parameters__head
+          +ui-h3('Параметры', 'parameters, --bold')
+          +ui-p1('Распоряжайтесь и управляйте кредитом так, как вам удобно!')
+          +ui-tab-head('', 'parameters')(data-tab-group='credit-parameters')
+            each item, index in tabHeadings
+              .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : ''))
+                +ui-p4(item.p4)
+                +ui-button('', '--arrow-right')
+        +ui-tab(data-tab-group='credit-parameters')
+          +ui-tab-body('parameters')
+            +ui-tab-item('--active')(data-scroll-lock-scrollable)
+              +ui-h4('Условия кредитования', 'parameters, --bold')
+              .parameters__body.parameters__body--grid-x2
+                .parameters__item
+                  +ui-p3('Сумма на руки', 'parameters, --secondary3')
+                  +ui-p1('от 51 000 до 3 000 000 ₽')
+                .parameters__item
+                  +ui-p3('Срок кредита', 'parameters, --secondary3')
+                  +ui-p1('от 4 до 5 лет')
+                .parameters__item.parameters__item--x2column
+                  .parameters__line
+                    +ui-p3('Валюта', '--secondary3')
+                    +ui-p3('Рубли')
+                  .parameters__line
+                    +ui-p3('Выпуск/перевыпуск карты', '--secondary3')
+                    +ui-p3('Бесплатно')
+                  .parameters__line
+                    +ui-p3('Процентная ставка', '--secondary3')
+                    +ui-ul(listItems1)
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              +repayment([{withoutCommission: true}], 'parameters')
+              +repayment([{withCommission: true}], 'parameters')
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h5('Подтвердите свой доход за несколько минут', 'parameters, --bold')
+                .parameters__accordions
+                  +ui-accordion({p2: 'Выписка о состоянии счёта ПФР'})
+                    +ui-p2('Должна содержать:', 'parameters, --bold')
+                    +ui-ul(listItems2, 'parameters')
+                    +ui-p3('Срок действия: 6 месяцев')
+                  +ui-accordion({p2: 'Справка по форме банка'})
+                  +ui-accordion({p2: 'Справка по форме ФНС'})
+                  +ui-accordion({p2: 'Выписка по счёту'})
+                  +ui-accordion({p2: 'Декларация 3-НДФЛ'})
+                  +ui-accordion({p2: 'Подтверждение, что вы получаете пенсию менее 12 месяцев'})
+                  +ui-accordion({p2: 'Выписка со счёта для зачисления пенсии'})
+                  +ui-accordion({p2: 'Справка организации, назначившей пенсию'})
+                .parameters__dosc
+                  +document({p4: 'Шаблон справки по форме банка'})
+                  +document({p4: 'Инструкция по получению Извещения о состоянии счета ПФР'})
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h4('Тарифы и документы', 'parameters, --bold')
+                +document({p4: 'Тарифы банка'})
+                +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+                +document({p4: 'Реквизиты для безналичного пополнения счета'})
+                +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+                +document({p4: 'Правила КБО Версии 1.0-8.3'})
+                +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+                +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+                +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+              .parameters__close
+        block
+    when 'cards-goodness'
+      .parameters(class=allMods)&attributes(attributes)
+        .parameters__head
+          +ui-h3('Параметры', 'parameters, --bold')
+          +ui-tab-head('', 'parameters')(data-tab-group='credit-parameters')
+            each item, index in cardsGoodnessTabHeadings
+              .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : ''))
+                +ui-p4(item.p4)
+                +ui-button('', '--arrow-right')
+        +ui-tab(data-tab-group='credit-parameters')
+          +ui-tab-body('parameters')
+            +ui-tab-item('--active')(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h4('Условия по карте', 'parameters, --bold')
+                .parameters__item
+                  each item in cardsGoodnessLines
+                    .parameters__line.parameters__line--1col-xs
+                      +ui-p3(item.name, '--secondary3')
+                      if item.descr
+                        +ui-p3(item.descr)
+                      if item.list
+                        +ui-ul(item.list)
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h4('Тарифы и документы', 'parameters, --bold')
+                +document({p4: 'Тарифы банка'})
+                +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+                +document({p4: 'Реквизиты для безналичного пополнения счета'})
+                +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+                +document({p4: 'Правила КБО Версии 1.0-8.3'})
+                +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+                +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+                +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h5('Подтвердите свой доход за несколько минут', 'parameters, --bold')
+                .parameters__accordions
+                  +ui-accordion({p2: 'Выписка о состоянии счёта ПФР'})
+                    +ui-p2('Должна содержать:', 'parameters, --bold')
+                    +ui-ul(listItems2, 'parameters')
+                    +ui-p3('Срок действия: 6 месяцев')
+                  +ui-accordion({p2: 'Справка по форме банка'})
+                  +ui-accordion({p2: 'Справка по форме ФНС'})
+                  +ui-accordion({p2: 'Выписка по счёту'})
+                  +ui-accordion({p2: 'Декларация 3-НДФЛ'})
+                  +ui-accordion({p2: 'Подтверждение, что вы получаете пенсию менее 12 месяцев'})
+                  +ui-accordion({p2: 'Выписка со счёта для зачисления пенсии'})
+                  +ui-accordion({p2: 'Справка организации, назначившей пенсию'})
+                .parameters__dosc
+                  +document({p4: 'Шаблон справки по форме банка'})
+                  +document({p4: 'Инструкция по получению Извещения о состоянии счета ПФР'})
+              .parameters__close
+        block
+    when 'cards-salary'
+      .parameters(class=allMods)&attributes(attributes)
+        .parameters__head
+          +ui-h3('Параметры', 'parameters, --bold')
+          +ui-tab-head('', 'parameters')(data-tab-group='credit-parameters')
+            each item, index in cardsSalaryTabHeadings
+              .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : ''))
+                +ui-p4(item.p4)
+                +ui-button('', '--arrow-right')
+        +ui-tab(data-tab-group='credit-parameters')
+          +ui-tab-body('parameters')
+            +ui-tab-item('--active')(data-scroll-lock-scrollable)
+              +parameters-cards-table
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h4('Тарифы и документы', 'parameters, --bold')
+                +document({p4: 'Тарифы банка'})
+                +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+                +document({p4: 'Реквизиты для безналичного пополнения счета'})
+                +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+                +document({p4: 'Правила КБО Версии 1.0-8.3'})
+                +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+                +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+                +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+              .parameters__close
+        block
+    when 'cards-universal'
+      .parameters(class=allMods)&attributes(attributes)
+        .parameters__head
+          +ui-h3('Параметры', 'parameters, --bold')
+          +ui-tab-head('', 'parameters')(data-tab-group='card-parameters')
+            each item, index in [ { p4: 'Условия по карте' }, { p4: 'Тарифы и документы' } ]
+              .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : ''))
+                +ui-p4(item.p4)
+                +ui-button('', '--arrow-right')
+        +ui-tab(data-tab-group='card-parameters')
+          +ui-tab-body('parameters')
+            +ui-tab-item('--active')(data-scroll-lock-scrollable)
+              .parameters__body.parameters__body--grid-x3
+                +ui-h4('Тарифы и документы', 'parameters, --bold')
+                .parameters__item
+                  +ui-p3('Тип', 'parameters, --secondary3')
+                  +ui-p1('Дебетовая карта')
+                .parameters__item
+                  +ui-p3('Тарифный план', 'parameters, --secondary3')
+                  +ui-p1('Универсальный')
+                .parameters__item.parameters__item--x2column-laptop
+                  +ui-p3('Валюта', 'parameters, --secondary3')
+                  +ui-p1('Рубли РФ (₽)')
+                .parameters__item.parameters__item--w100.parameters__item--pd-l
+                  each item in cardsUniversalLines
+                    .parameters__line.parameters__line--1col-xs
+                      +ui-p3(item.name, '--secondary3')
+                        if item.nameTooltip
+                          +ui-tooltip('', 'tt')
+                      +ui-p3('')
+                        if item.descr
+                          p !{item.descr}
+                        if item.list
+                          +ui-ul(item.list)
+                        if item.descrBot
+                          p !{item.descrBot}
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h4('Тарифы и документы', 'parameters, --bold')
+                +document({p4: 'Тарифы банка'})
+                +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+                +document({p4: 'Реквизиты для безналичного пополнения счета'})
+                +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+                +document({p4: 'Правила КБО Версии 1.0-8.3'})
+                +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+                +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+                +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+              .parameters__close
+        block
+    when 'cards-premium'
+      .parameters(class=allMods)&attributes(attributes)
+        .parameters__head
+          +ui-h3('Параметры', 'parameters, --bold')
+        .parameters__item
+          .parameters__lines.parameters__lines--mb30.parameters__lines--scroll
+            .parameters__line.parameters__line--head.parameters__line--1col-xs
+              +ui-p3('Вид операции', '--secondary3')
+              +ui-p3('Стоимость', '--secondary3')
+            each item in cardsPremiumLines
+              .parameters__line.parameters__line--1col-xs.parameters__line--pd-x
+                +ui-p3(item.name, '--secondary3')
+                if item.descr
+                  +ui-p3(item.descr)
+                if item.list
+                  +ui-ul(item.list)
+          +document({p4: 'Подробные тарифы на премиальное обслуживание'})
+        block
+    when 'credits-mobilization'
+      .parameters(class=allMods)&attributes(attributes)
+        .parameters__head
+          +ui-h3('Параметры', 'parameters, --bold')
+          +ui-p1('Распоряжайтесь и управляйте кредитом так, как вам удобно!')
+          +ui-tab-head('', 'parameters')(data-tab-group='credit-parameters')
+            each item, index in tabHeadings
+              .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : ''))
+                +ui-p4(item.p4)
+                +ui-button('', '--arrow-right')
+        +ui-tab(data-tab-group='credit-parameters')
+          +ui-tab-body('parameters')
+            +ui-tab-item('--active')(data-scroll-lock-scrollable)
+              +ui-h4('Условия кредитования', 'parameters, --bold')
+              .parameters__body.parameters__body--grid.parameters__body--mobilization
+                .parameters__item
+                  +ui-svg('icon_medal', 'parameters')
+                  +ui-p3('Кредитные каникулы предоставляются по кредитным договорам (потребительские и ипотечные кредиты), заключенным до дня мобилизации, или до дня участия в СВО, или до дня заключения контракта (для добровольцев).', '--bold')
+                .parameters__item
+                  .parameters__content
+                    +ui-h5('Вы можете получить кредитные каникулы, если:', 'parameters, --bold')
+                    +ui-ul(listItemsMobilization)
+                      +ui-ul(listItemsMobilization)
+                  .parameters__image: img(src='../../images/cards/mobilizations_img.png', alt='')
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              +repayment([{withoutCommission: true}], 'parameters')
+              +repayment([{withCommission: true}], 'parameters')
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h5('Подтвердите свой доход за несколько минут', 'parameters, --bold')
+                .parameters__accordions
+                  +ui-accordion({p2: 'Выписка о состоянии счёта ПФР'})
+                    +ui-p2('Должна содержать:', 'parameters, --bold')
+                    +ui-ul(listItems2, 'parameters')
+                    +ui-p3('Срок действия: 6 месяцев')
+                  +ui-accordion({p2: 'Справка по форме банка'})
+                  +ui-accordion({p2: 'Справка по форме ФНС'})
+                  +ui-accordion({p2: 'Выписка по счёту'})
+                  +ui-accordion({p2: 'Декларация 3-НДФЛ'})
+                  +ui-accordion({p2: 'Подтверждение, что вы получаете пенсию менее 12 месяцев'})
+                  +ui-accordion({p2: 'Выписка со счёта для зачисления пенсии'})
+                  +ui-accordion({p2: 'Справка организации, назначившей пенсию'})
+                .parameters__dosc
+                  +document({p4: 'Шаблон справки по форме банка'})
+                  +document({p4: 'Инструкция по получению Извещения о состоянии счета ПФР'})
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h4('Тарифы и документы', 'parameters, --bold')
+                +document({p4: 'Тарифы банка'})
+                +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+                +document({p4: 'Реквизиты для безналичного пополнения счета'})
+                +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+                +document({p4: 'Правила КБО Версии 1.0-8.3'})
+                +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+                +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+                +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+              .parameters__close
+        block
+    default
+      .parameters(class=allMods)&attributes(attributes)
+        .parameters__head
+          +ui-h3('Параметры', 'parameters, --bold')
+          +ui-p1('Распоряжайтесь и управляйте кредитом так, как вам удобно!')
+          +ui-tab-head('', 'parameters')(data-tab-group='credit-parameters')
+            each item, index in tabHeadings
+              .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : ''))
+                +ui-p4(item.p4)
+                +ui-button('', '--arrow-right')
+        +ui-tab(data-tab-group='credit-parameters')
+          +ui-tab-body('parameters')
+            +ui-tab-item('--active')(data-scroll-lock-scrollable)
+              +ui-h4('Условия кредитования', 'parameters, --bold')
+              .parameters__body.parameters__body--grid-x3
+                .parameters__item
+                  +ui-p3('Сумма на руки', 'parameters, --secondary3')
+                  +ui-p1('от 51 000 до 3 000 000 ₽')
+                .parameters__item
+                  +ui-p3('Срок кредита', 'parameters, --secondary3')
+                  +ui-p1('от 4 до 5 лет')
+                .parameters__item.parameters__item--x2row.parameters__item--x2column-laptop
+                  +ui-p3('При подключении <a href="#">Сервисного пакета «Управляй Легко»</a>', 'parameters, --secondary3, --w100p')
+                  +ui-p1('Снижение ставки на 14.5%')
+                .parameters__item
+                  +ui-p3('Погашение кредита', 'parameters, --secondary3')
+                  +ui-p1('Аннуитетными платежами')
+                .parameters__item
+                  +ui-p3('При соблюдении условий кредита', 'parameters, --secondary3')
+                  +ui-p1('Гарантия ставки 0%')
+                .parameters__item.parameters__item--x2column.parameters__item--x2column-laptop
+                  +ui-h5('Требования к заемщику', 'parameters, --bold')
+                  +ui-ul(listItems1)
+                .parameters__item.parameters__item--x2column-laptop
+                  +ui-h5('Документы', 'parameters, --bold')
+                  .document.parameters__document(class=allMods)
+                    +ui-svg('icon_emblem', 'document')
+                    +ui-p3('Паспорт гражданина РФ')
+                  .document.parameters__document
+                    +ui-svg('icon_doc-plus', 'document')
+                    +ui-p3('Документ, подтверждающий доход')
+                      +ui-tooltip('', 'Test')
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              +repayment([{withoutCommission: true}], 'parameters')
+              +repayment([{withCommission: true}], 'parameters')
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h5('Подтвердите свой доход за несколько минут', 'parameters, --bold')
+                .parameters__accordions
+                  +ui-accordion({p2: 'Выписка о состоянии счёта ПФР'})
+                    +ui-p2('Должна содержать:', 'parameters, --bold')
+                    +ui-ul(listItems2, 'parameters')
+                    +ui-p3('Срок действия: 6 месяцев')
+                  +ui-accordion({p2: 'Справка по форме банка'})
+                  +ui-accordion({p2: 'Справка по форме ФНС'})
+                  +ui-accordion({p2: 'Выписка по счёту'})
+                  +ui-accordion({p2: 'Декларация 3-НДФЛ'})
+                  +ui-accordion({p2: 'Подтверждение, что вы получаете пенсию менее 12 месяцев'})
+                  +ui-accordion({p2: 'Выписка со счёта для зачисления пенсии'})
+                  +ui-accordion({p2: 'Справка организации, назначившей пенсию'})
+                .parameters__dosc
+                  +document({p4: 'Шаблон справки по форме банка'})
+                  +document({p4: 'Инструкция по получению Извещения о состоянии счета ПФР'})
+              .parameters__close
+            +ui-tab-item()(data-scroll-lock-scrollable)
+              .parameters__body
+                +ui-h4('Тарифы и документы', 'parameters, --bold')
+                +document({p4: 'Тарифы банка'})
+                +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+                +document({p4: 'Реквизиты для безналичного пополнения счета'})
+                +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+                +document({p4: 'Правила КБО Версии 1.0-8.3'})
+                +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+                +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+                +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+              .parameters__close
+        block

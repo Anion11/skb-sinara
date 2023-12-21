@@ -1,0 +1,85 @@
+.promotion-banner {
+  padding: 57px 50px 57px 0;
+  @include media-laptop {
+    padding: 50px 0 0;
+  }
+  @include media-tablet {
+    padding-top: 30px;
+    padding-bottom: 94px;
+  }
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: 80px;
+    align-items: center;
+    @include media-laptop {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 50px;
+    }
+    @include media-tablet {
+      gap: 35px;
+    }
+  }
+  &__img {
+    position: absolute;
+    top: -370px;
+    right: -190px;
+    max-width: 1210px;
+    @include media-laptop {
+      top: -55px;
+      right: -210px;
+      max-width: 1000px;
+    }
+    @include media-tablet {
+      top: 153px;
+      right: -252px;
+      width: 680px;
+    }
+  }
+  &__heading {
+    &:not(:last-child) {
+      margin-bottom: 35px;
+      @include media-laptop {
+        margin-bottom: 30px;
+      }
+      @include media-tablet {
+        margin-bottom: 15px;
+      }
+    }
+    .ui-h1 {
+      &:not(:last-child) {
+        margin-bottom: -15px;
+        @include media-tablet {
+          margin-bottom: -10px;
+        }
+      }
+    }
+  }
+  &__inline-img {
+    display: inline-block;
+    max-width: 147px;
+    max-height: 82px;
+    margin-left: 20px;
+    vertical-align: middle;
+    @include media-laptop {
+      max-width: 114px;
+      max-height: 64px;
+    }
+    @include media-tablet {
+      max-width: 53px;
+      max-height: 30px;
+      margin-left: 10px;
+    }
+  }
+  &__promotion-timer {
+    @include media-laptop {
+      max-width: 450px;
+    }
+    @include media-tablet {
+      max-width: 295px;
+      margin: 0 auto;
+    }
+  }
+}

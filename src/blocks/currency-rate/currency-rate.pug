@@ -1,0 +1,44 @@
+mixin currency-rate(mods)
+  -
+    const baseName = 'currency-rate'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .currency-rate(class=allMods)&attributes(attributes)
+    +ui-p3('Курсы валют', 'currency-rate')
+    .currency-rate__currency
+      +ui-svg('icon_usd', 'currency-rate')
+      .currency-rate__value
+        +ui-p6('Валюта', '--secondary3')
+        +ui-p3('USD', '--bold')
+      .currency-rate__value.currency-rate__value--up
+        +ui-p6('Покупка', '--secondary3')
+        +ui-p3('75,50', '--bold')
+      .currency-rate__value.currency-rate__value--down
+        +ui-p6('Продажа', '--secondary3')
+        +ui-p3('87,50', '--bold')
+      .currency-rate__value.currency-rate__value--up
+        +ui-p6('ЦБ', '--secondary3')
+        +ui-p3('87,50', '--bold')
+    .currency-rate__currency
+      +ui-svg('icon_eur', 'currency-rate')
+      .currency-rate__value
+        +ui-p6('Валюта', '--secondary3')
+        +ui-p3('EUR', '--bold')
+      .currency-rate__value.currency-rate__value--up
+        +ui-p6('Покупка', '--secondary3')
+        +ui-p3('75,50', '--bold')
+      .currency-rate__value.currency-rate__value--down
+        +ui-p6('Продажа', '--secondary3')
+        +ui-p3('87,50', '--bold')
+      .currency-rate__value.currency-rate__value--up
+        +ui-p6('ЦБ', '--secondary3')
+        +ui-p3('87,50', '--bold')
+    +ui-p6('Действуют с 17:47 ЕКБ 12.05.2023', 'currency-rate')
+    block

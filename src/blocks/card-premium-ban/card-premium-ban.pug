@@ -1,0 +1,30 @@
+mixin card-premium-ban(mods)
+  -
+    const baseName = 'card-premium-ban'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .card-premium-ban(class=allMods)&attributes(attributes)
+    .card-premium-ban__img: img(src='../../images/cards/card-premium-ban.png' alt='')
+    +ui-h5('Премиальная карта', 'card-premium-ban, --bold')
+    +ui-ul('', 'card-premium-ban')
+      li
+        +ui-p3('Cash-back 1% на все товары')
+          =' '
+          span.ui-nowrap и услуги
+            +ui-tooltip('', 'tt')
+      li: +ui-p3('Не требуется поддерживать остаток на счете')
+      li: +ui-p3('Доступен выпуск цифровой карты Mir Supreme Digital')
+      li
+        +ui-p3('Снятие наличных без ')
+          =' '
+          span.ui-nowrap комиссий
+            +ui-tooltip('', 'tt')
+      li: +ui-p3(' Категория основной карты - Mir Supreme')
+    block

@@ -1,0 +1,111 @@
+mixin main-usefull(mods)
+  -
+    const baseName = 'main-usefull'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .main-usefull(class=allMods)&attributes(attributes)
+    .main-usefull__head
+      +ui-h3('Может быть полезно', '--bold')
+    .main-usefull__body.main-usefull__body--with-currency
+      +currency-rate('main-usefull').main-usefull__item.main-usefull__item--x2row.main-usefull__item--x2clm
+      +mobile-bank.main-usefull__item.main-usefull__item--x2row.main-usefull__item--app
+      a.main-usefull__item.main-usefull__item--x2row.js-popup(a href='#popupFeedback')
+        +ui-p3('Служба заботы о&nbsp;клиентах', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('Всегда рядом', 'main-usefull, --secondary3')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-care_ny_24.png', alt='')
+          else
+            +ui-svg('icon_mail', 'main-usefull')
+
+      .main-usefull__item.main-usefull__item--x3row.main-usefull__item--offices(class=(isNewYear ? 'main-usefull__item--offices-ny-24' : ''))
+        +ui-p3('Офисы и&nbsp;банкоматы', 'main-usefull')
+        +ui-button({p4: 'Перейти', mods: '--bold'}, 'main-usefull, --arrow')
+        .main-usefull__descr
+          +ui-svg('icon_geo', 'main-usefull')
+      a.main-usefull__item.main-usefull__item--x2row(href='#')
+        +ui-p3('Ваша безопасность', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('Рекомендации по защите денег от мошенников', 'main-usefull, --secondary3')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-safety_ny_24.png', alt='')
+          else
+            +ui-svg('icon_safe', 'main-usefull')
+      a.main-usefull__item.main-usefull__item--x2clm(href='#')
+        +ui-p3('О банке', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('Банк Синара — свой для каждого', 'main-usefull, --secondary3, --no-wrap')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-about_ny_24.png', alt='')
+          else
+            +ui-svg('icon_bank', 'main-usefull')
+      a.main-usefull__item(href='#')
+        +ui-p3('Реквизиты', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('для зачисления средств в&nbsp;рублях и валюте', 'main-usefull, --secondary3')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-requisites_ny_24.png', alt='')
+          else
+            +ui-svg('icon_file', 'main-usefull')
+    block
+    br
+    br
+    br
+    br
+    br
+    .main-usefull__body
+      +mobile-bank.main-usefull__item.main-usefull__item--x2row.main-usefull__item--app
+      a.main-usefull__item.main-usefull__item--x2row.js-popup(a href='#popupFeedback')
+        +ui-p3('Служба заботы о&nbsp;клиентах', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('Всегда рядом', 'main-usefull, --secondary3')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-care_ny_24.png', alt='')
+          else
+            +ui-svg('icon_mail', 'main-usefull')
+
+      .main-usefull__item.main-usefull__item--x3row.main-usefull__item--offices(class=(isNewYear ? 'main-usefull__item--offices-ny-24' : ''))
+        +ui-p3('Офисы и&nbsp;банкоматы', 'main-usefull')
+        +ui-button({p4: 'Перейти', mods: '--bold'}, 'main-usefull, --arrow')
+        .main-usefull__descr
+          +ui-svg('icon_geo', 'main-usefull')
+      a.main-usefull__item.main-usefull__item--x2row(href='#')
+        +ui-p3('Ваша безопасность', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('Рекомендации по защите денег от мошенников', 'main-usefull, --secondary3')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-safety_ny_24.png', alt='')
+          else
+            +ui-svg('icon_safe', 'main-usefull')
+      a.main-usefull__item.main-usefull__item--x2clm(href='#')
+        +ui-p3('О банке', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('Банк Синара — свой для каждого', 'main-usefull, --secondary3, --no-wrap')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-about_ny_24.png', alt='')
+          else
+            +ui-svg('icon_bank', 'main-usefull')
+      a.main-usefull__item(href='#')
+        +ui-p3('Реквизиты', 'main-usefull')
+        .main-usefull__descr
+          +ui-p5('для зачисления средств в&nbsp;рублях и валюте', 'main-usefull, --secondary3')
+          if isNewYear
+            .main-usefull__icon
+              img(src='../../images/new-year/main-usefull-requisites_ny_24.png', alt='')
+          else
+            +ui-svg('icon_file', 'main-usefull')
+    block

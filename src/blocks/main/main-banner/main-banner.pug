@@ -1,0 +1,49 @@
+mixin main-banner(mods)
+  -
+    const baseName = 'main-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const slideItems = [
+      { h2: 'Кредит <span>0</span> %', iconIndex: '0', },
+      //- { h2: 'Вклад «Приветственный»' },
+      { h2: 'Кредитная карта «ДА!»', iconIndex: '2',  },
+      //- { h2: 'Кредитная карта «ДА!»' },
+      { h2: 'Накопительный счёт <br>"Курс на&nbsp;мечту', iconIndex: '6',  },
+      //- { h2: 'Интернет-банк и&nbsp;мобильное приложение', iconIndex: '1',  },
+      { h2: 'Переводы в юанях', iconIndex: '5',  },
+      { h2: 'Доставим домой или на работу', iconIndex: '7',  },
+    ]
+
+  .main-banner(class=allMods class=(isNewYear ? 'main-banner--ny-24' : ''))&attributes(attributes)
+    .main-banner__slider.swiper
+      .swiper-wrapper
+        +banner({h2: 'Кредит <span>0</span> %', p2: 'с услугой «Гарантия ставки»', infoItems: [{ p2: 'до<span>5</span>лет', p4: 'срок кредита' }, { p2: 'до<span>3</span>млн ₽', p4: 'сумма на руки' }], image: 'banner_img--credit0-ny.png', buttons: [{ p3: 'Подробнее', mods: '--filled, --p64' }]}, 'main-banner').swiper-slide
+        //- +banner({h2: 'Вклад «Приветственный»', p2: 'Здорово быть первым! Повышенная ставка для новых клиентов.', infoItems: [{ p2: 'до<span>9.7</span>%', p4: 'ставка на весь срок' }, { p2: 'до<span>10 000</span>₽', p4: 'сумма вклада' }], image: 'banner_img--deposit-welcome.png', buttons: [{ p3: 'Подробнее', mods: '--filled, --p64' }]}, 'main-banner, --deposit-welcome').swiper-slide
+        +banner({h2: 'Кредитная карта «ДА!»', p2: 'Обновите гардероб с кешбэком до 4% <br> в категории «Одежда и обувь»', infoItems: [{ p2: 'до<span>15</span>%', p4: 'кешбэк' }, { p2: 'до<span>56</span>дней', p4: 'льготный период' }], image: 'banner_img--credit-card-yes-ny.png', buttons: [{ p3: 'Подробнее', mods: '--filled, --p64' }]}, 'main-banner, --credit-card-yes').swiper-slide
+        //- +banner({h2: 'Кредитная карта «ДА!»', p2: 'описательный текст про шопинг', infoItems: [{ p2: 'до<span>15</span>%', p4: 'кешбэк' }, { p2: 'до<span>56</span>дней', p4: 'льготный период' }, { p2: 'до<span>0</span>₽', p4: 'обслуживание карты'}], image: 'banner_img--credit-card-yes2.png', buttons: [{ p3: 'Подробнее', mods: '--filled, --p64' }]}, 'main-banner, --credit-card-yes').swiper-slide
+        +banner({h2: 'Накопительный счёт <br> «Курс на мечту»', p2: 'Повышенная ставка для новых клиентов', infoItems: [{ p2: 'до<span>14</span>%', p4: 'ставка' }, { p2: 'от<span>0</span>₽', p4: 'минимальная сумма' }], image: 'banner_img--deposit-dream-course-ny.png', buttons: [{ p3: 'Подробнее', mods: '--filled, --p64' }] }, 'main-banner, --deposit-dream-course').swiper-slide
+        //- +banner({h2: 'Интернет-банк <br>и Мобильное приложение', p2: 'Управляйте финансами не выходя из дома!', image: 'banner_img--internet-bank.png', buttons: [{ p3: 'Подробнее', mods: '--filled, --p64' }]}, 'main-banner, --internet-bank').swiper-slide
+        +banner({h2: 'Переводы в юанях', p2: 'По реквизитам на&nbsp;зарубежные счета', infoItems: [{ p2: '<span>0</span>₽', p4: 'обслуживание счёта' }, { p2: '<span>24 / 7</span>', p4: 'конвертация' }], image: 'banner_img--yuan-transfer-ny.png', buttons: [{ p3: 'Подробнее', mods: '--filled, --p64' }]}, 'main-banner, --yuan-transfer').swiper-slide
+        +banner({h2: 'Доставим домой или на работу', p2: 'Бесплатная доставка в Москве и ряде городов МО',
+          tooltip: 'После одобрения кредита выберите на странице с предложением «Бесплатная доставка кредита курьером» и с Вами свяжется специалист Банка для уточнения адреса и удобного времени доставки. Доставка действует в следующих <a href=&quot;#popupCities&quot; class=&quot;js-popup&quot;>городах</a>. На все вопросы ответим по <a href=&quot;tel:8 800 1000 600&quot;> 8 800 1000 600</a>',
+          image: 'banner_img--delivery-ny.png', buttons: [{ p3: 'Оформить кредит', mods: '--filled, --p64' }]}, 'main-banner, --delivery').swiper-slide
+      +ui-swiper-pagination('main-banner')
+      +ui-swiper-buttons('main-banner, --white')
+      block
+    .main-banner__ny-img
+      img(src='../../images/main-banner-thumbs-ny_24.png', alt='')
+    .main-banner__thumbs.swiper
+      .swiper-wrapper
+        each item, index in slideItems
+          .main-banner__thumb.swiper-slide
+            .main-banner__icon: img(src=`../../images/main/main-banner_icon${item.iconIndex}.png`, alt='')
+            +ui-p4(item.h2, 'main-banner')
+            .main-banner__progress
+              .main-banner__progress-line
+    +popup-cities

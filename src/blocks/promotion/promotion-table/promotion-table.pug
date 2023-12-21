@@ -1,0 +1,25 @@
+mixin promotion-table(mods)
+  -
+    const baseName = 'promotion-table'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .promotion-table.js-table(class=allMods)&attributes(attributes)
+    -for(let i=0; i<3; i++)
+      .promotion-table__col.js-column
+        .promotion-table__cell.promotion-table__cell--head.js-cell: +ui-p3(`Заголовок ${i+1}`, '--secondary4')
+        if i === 0
+          -for(let j=0; j<4; j++)
+            .promotion-table__cell.js-cell: +ui-p3(`Lorem ipsum ${j+1}`, '--secondary3')
+        else
+          -for(let j=0; j<4; j++)
+            .promotion-table__cell.js-cell
+              .promotion-table__cell-head: +ui-p3(`Lorem ipsum ${j+1}`, '--secondary3')
+              .promotion-table__cell-value: +ui-p3(`dolor sit amet ${j+1}`)
+    block

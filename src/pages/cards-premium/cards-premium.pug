@@ -1,0 +1,151 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'cards-premium'
+    const pageTitle = 'Премиальная карта'
+    const headerAbsolute = true
+    const siteSection = 'private'
+    const headerMenuActive = 'Карты'
+
+    const conditionsItems = {
+      h3: 'Комплекс банковских услуг в&nbsp;атмосфере «тёплого сервиса»',
+      items: [
+        {
+          front: [{ icon: 'icon_clock', p3: 'Оперативность' }],
+          back: [{ p3: 'Профессиональное решение финансовых вопросов в любое удобное для Вас время.', mobileFullWidth: true }]
+        },
+        {
+          front: [{ icon: 'icon_limit', p3: 'Доверительное отношение' }],
+          back: [{ p3: 'Возможны встречи с высшим руководством банка при принятии значимых решений.' }]
+        },
+        {
+          front: [{ icon: 'icon_person', p3: 'Индивидуальный подход' }],
+          back: [{ p3: 'Специальные условия по банковским продуктам.' }]
+        },
+        { front: [{ icon: 'icon_bank', p3: 'Комфорт обслуживания' }],
+          back: [{ p3: 'Cовременный банковский офис в центре города с удобной парковкой и зонами повышенного сервиса.' }]
+        },
+        {
+          front: [{ icon: 'icon_safe', p3: 'Безопасность' }],
+          back: [{ p3: 'Максимальная защита любых сведений о клиентах и совершаемых сделок – наше незыблемое правило.' }]
+        }
+      ]
+    }
+
+    const privilegeData = {
+      title: 'Привилегии для вас',
+      items: [
+        {
+          name: 'Повышенный кешбэк',
+          descr: 'От платежной системы Мир',
+          img: '../../images/cards/privilege_1.png'
+        },
+        {
+          name: 'Сейфовые ячейки',
+          descr: 'Аренда сейфовых ячеек –скидка до 50%',
+          img: '../../images/cards/privilege_2.png'
+        },
+        {
+          name: 'Привилегии',
+          descr: 'Привилегии и бонусы для держателей премиальных карт',
+          img: '../../images/cards/privilege_3.png'
+        },
+      ]
+    }
+
+    const tableData = {
+      thead: [
+        {
+          mods: 'ui-secondary3 ui-table__head',
+          th: [
+            { text: 'Вид операции' },
+            { text: 'Стоимость' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Cash-back (возврат средств за оплату товаров и услуг картой)' },
+            { text: '1%, но не более 50 000 руб./ежемесячно' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Дополнительные карты' },
+            { text: 'Категории Classic / Gold / Signature / Mir Supreme / Mir Supreme Digital' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'SMS-информирование об операциях' },
+            { text: 'Бесплатно' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Выдача наличных в любых банкоматах' },
+            { text: 'Бесплатно' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Подключение и обслуживание Интернет-банк' },
+            { text: 'Бесплатно' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Переводы по системе Интернет-банк' },
+            { text: 'Бесплатно' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Зачисление средств на карту (p2p перевод)' },
+            { text: 'Бесплатно' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Справка о состоянии счетов' },
+            { text: 'Бесплатно' },
+          ]
+        },
+        {
+          td: [
+            { mods: 'ui-secondary3', text: 'Предоставление выписки по счету за любой период' },
+            { text: 'Бесплатно' },
+          ]
+        },
+      ]
+    }
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Премиальная карта')
+        +breadcrumbs-item('Премиальная карта', '/', '--mobile')
+      +banner({h2: 'Премиальная карта', p2: 'Персональные финансовые решения в&nbsp;атмосфере тёплого сервиса', infoItems: [{ p2: 'до<span>50</span>тыс ₽', p4: 'кэшбек рублями на счет в&nbsp;месяц' }], image: 'banner_img--cards-premium.png'}, '--cards-premium, --layout')
+      +section
+        +conditions(conditionsItems)
+      +section('--l-pd-x')
+        +card-premium-ban
+      +section
+        +privilege(privilegeData)
+      +section
+        +elite-bank
+      +section('--background, --order-up')
+        +parameters
+      +section('--background')
+        +section-head: +ui-h3('Тарифы на обслуживание', '--bold')
+        +section-box
+          +ui-table(tableData, '--all-pd')
+          br
+          br
+          +document({p4:'Подробные тарифы на премиальное обслуживание'}, '--pd0')
+      +section('--l-pd-x')
+        +contacts

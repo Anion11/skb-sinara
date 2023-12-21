@@ -1,0 +1,25 @@
+mixin questions(mods)
+  -
+    const baseName = 'questions'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .questions(class=allMods)&attributes(attributes)
+    .questions__head
+      +ui-h3('Основные вопросы', '--bold')
+    .questions__body
+      +ui-accordion({p2: 'Где посмотреть график платежей?'})
+        +ui-p3('Нет, подключение пакета возможно только при выдаче кредита.')
+      +ui-accordion({p2: 'Возможно ли досрочное погашение кредита?'})
+        +ui-p3('Нет, подключение пакета возможно только при выдаче кредита.')
+      +ui-accordion({p2: 'Требуется ли залог при выдаче кредита?'})
+        +ui-p3('Нет, подключение пакета возможно только при выдаче кредита.')
+      +ui-accordion({p2: 'Возможно ли подключить пакет «Управляй Легко» если ранее он не был подключен?'})
+        +ui-p3('Нет, подключение пакета возможно только при выдаче кредита.')
+    block

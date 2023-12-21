@@ -1,0 +1,22 @@
+-const isNewYear = true
+block variables
+include ../blocks/mixins
+
+doctype html
+html(lang='ru')
+  block head
+    head
+      meta(charset='utf-8')
+      title=pageTitle
+      meta(content='width=device-width, initial-scale=1' name='viewport')
+      meta(content='ie=edge' http-equiv='x-ua-compatible')
+      link(href='https://sinara.ru/local/templates/main/media/img/favicon/apple-touch-icon.png' rel='icon' type='image/x-icon')
+  body
+    .wrapper(class=wrapperMods)
+      block header
+        include ../blocks/header/header
+      block content
+      block footer
+        include ../blocks/footer/footer
+    block scripts
+      script(type='module' src='../../js/index.js')

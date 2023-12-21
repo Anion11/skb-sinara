@@ -1,0 +1,193 @@
+.main-calculator {
+  &__ui-h3 {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: 500px 580px;
+    justify-content: space-between;
+    padding: 50px 40px;
+    background-color: #fff;
+    border-radius: 24px;
+    @include media-laptop {
+      grid-template-columns: 100%;
+      gap: 30px;
+      padding: 40px 30px 30px;
+    }
+    @include media-tablet {
+      margin: 0 -20px;
+      padding: 30px 20px;
+    }
+  }
+  &__item {
+    position: relative;
+    .ui-tab-head {
+      @include media-tablet {
+        width: 100%;
+      }
+      &:not(:first-child) {
+        margin-top: 30px;
+      }
+      .ui-tab-head__item {
+        @include media-tablet {
+          display: flex;
+          justify-content: center;
+          width: calc((100% - 3px) / 2);
+        }
+      }
+    }
+  }
+  &__ui-h5 {
+    span {
+      @include media-tablet {
+        display: none;
+      }
+    }
+  }
+  &__ui-p3 {
+    margin-top: 30px;
+    margin-bottom: 14px;
+    @include media-laptop {
+      margin-top: 24px;
+    }
+    @include media-tablet {
+      margin-top: 20px;
+    }
+  }
+  &__ui-input {
+    position: relative;
+    .ui-svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      padding: 12px;
+      cursor: pointer;
+      &.svg--icon_minus {
+        left: 4px;
+      }
+      &.svg--icon_plus {
+        right: 4px;
+      }
+    }
+    input {
+      padding-left: 55px;
+      font: 700 18px/1.2 $font;
+      border-radius: 10px;
+      @include media-tablet {
+        font-size: 15px;
+      }
+    }
+  }
+  &__limits {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+  &__period {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    @include media-tablet {
+      flex-wrap: nowrap;
+      gap: 10px;
+      margin-top: 30px;
+      padding-bottom: 10px;
+      overflow-x: auto;
+    }
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $background1;
+      border-radius: 10px;
+    }
+    .ui-radio {
+      width: 68px;
+      flex-shrink: 0;
+      @include media-tablet {
+        width: 60px;
+      }
+      label {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  }
+  &__checkboxes,
+  &__switches {
+    position: static;
+    &:not(:first-child) {
+      margin-top: 30px;
+    }
+  }
+  &__ui-checkbox,
+  &__ui-switch {
+    &:not(:first-child) {
+      margin-top: 24px;
+      @include media-laptop {
+        margin-top: 16px;
+      }
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    background-color: $background1;
+    border-radius: 20px;
+    @include media-laptop {
+      padding: 35px 30px 30px;
+    }
+    @include media-tablet {
+      padding: 26px 16px;
+    }
+  }
+  &__line {
+    display: flex;
+    justify-content: space-between;
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
+  }
+  &__ui-button {
+    width: 100%;
+    margin-top: 35px;
+    @include media-laptop {
+      margin-top: 25px;
+    }
+  }
+  &__ui-p5 {
+    position: relative;
+    margin-top: 24px;
+    padding-left: 24px;
+    @include media-tablet {
+      max-width: 300px;
+      margin-top: 19px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 17px;
+      height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='18' fill='none'%3E%3Ccircle cx='8.5' cy='9' r='8' stroke='%23DC0533'/%3E%3Cg clip-path='url(%23a)'%3E%3Cpath fill='%23DC0533' d='M9.068 4.502a.883.883 0 0 1 .34.043.828.828 0 0 1 .291.168.745.745 0 0 1 .19.262.69.69 0 0 1 .054.312v-.002c-.013.27-.14.525-.354.712a1.205 1.205 0 0 1-.792.29h-.023a.849.849 0 0 1-.346-.037.794.794 0 0 1-.294-.172.71.71 0 0 1-.184-.272.66.66 0 0 1-.036-.318v.004a.994.994 0 0 1 .355-.714c.216-.185.504-.285.8-.277h-.002Zm-1.8 7.998c-.46 0-.799-.261-.476-1.409l.53-2.036c.092-.326.107-.456 0-.456-.395.09-.768.244-1.104.453l.012-.007L6 8.693c1.122-.874 2.413-1.387 2.966-1.387.461 0 .538.509.307 1.292l-.605 2.14c-.108.378-.062.509.045.509.386-.08.744-.247 1.041-.486l-.002.003.261.326C8.921 12.107 7.73 12.5 7.268 12.5Z'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M6 4.5h4v8H6z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    }
+    &.ui-p5--center {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+  &__ui-tooltip {
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,18 @@
+mixin payment-sticker(mods)
+  -
+    const baseName = 'payment-sticker'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .payment-sticker(class=allMods)&attributes(attributes)
+    .payment-sticker__content
+      +ui-p2('Оформите платежный стикер в любом <a class="ui-primary1" href="#">офисе</a> Банка Синара или закажите в мобильном приложении, интернет-банке')
+    .payment-sticker__image
+      img(src='../../images/payment-sticker_img.png', alt='')
+    block

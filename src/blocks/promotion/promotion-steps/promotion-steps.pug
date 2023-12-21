@@ -1,0 +1,34 @@
+mixin promotion-steps(mods)
+  -
+    const baseName = 'promotion-steps'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      'Оформите кредит в Банке Синара в период с 01.08.23 г. по 31.08.23 на сумму от 100 000 ₽',
+      'Используйте весь кредитный лимит в период акции',
+      'Оформите Сервисный пакет <a href="#">«Управляй Легко»</a> и Пакет услуг <a href="#">«Всё включено»</a>',
+      'В период проведения акции не допускайте просрочек по кредиту',
+      'До 10.10.23 внесите первый платеж',
+    ]
+
+  .promotion-steps(class=allMods)&attributes(attributes)
+    .swiper-wrapper
+      each item, index in data
+        .promotion-steps__item.swiper-slide
+          .promotion-steps__container
+            .promotion-steps__progress
+              svg(viewbox='0 0 50 50', fill='none', xmlns='http://www.w3.org/2000/svg')
+                circle(cx='25', cy='25', r='24', stroke='var(--primary1)', stroke-opacity='0.2', stroke-width='2', stroke-linecap='round')
+              svg.promotion-steps__circle(viewbox='0 0 50 50', fill='none', xmlns='http://www.w3.org/2000/svg')
+                circle(cx='25', cy='25', r='24', stroke='var(--primary1)', stroke-width='2', stroke-linecap='round')
+              +ui-p4(`0${index+1}`, 'promotion-steps, --bold')
+            +ui-p3(item, 'promotion-steps')
+    +ui-swiper-pagination('promotion-steps')
+    block

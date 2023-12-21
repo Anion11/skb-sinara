@@ -1,0 +1,94 @@
+.offices-office {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 110px;
+  z-index: 10;
+  width: 100%;
+  background-color: $background1;
+  padding: 40px 5px 40px 24px;
+  border-radius: 24px;
+  &__head {
+    margin-bottom: 24px;
+    @include media-laptop {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0;
+      padding: 35px 0;
+      background-color: #fff;
+    }
+    @include media-tablet {
+      padding: 40px 0 20px;
+    }
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: calc(var(--height) - 120px - 110px);
+    padding-right: 15px;
+    overflow: auto;
+    @include media-laptop {
+      height: auto;
+      padding-right: 0;
+      overflow: visible;
+    }
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $secondary1;
+      border-radius: 10px;
+    }
+  }
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  &__ui-svg {
+    width: 50px;
+    height: 60px;
+    color: #fff;
+  }
+  &__wrap {
+    display: grid;
+    gap: 5px;
+  }
+  .ui-p3 {
+    &--gradient {
+      padding: 14px 16px;
+      background: $gradient1;
+      border-radius: 10px;
+    }
+  }
+  &__item {
+    display: grid;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid $secondary4;
+  }
+  &__ui-ul {
+    li {
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+    }
+  }
+  &__icons {
+    display: flex;
+    gap: 10px;
+    .ui-svg {
+      width: 35px;
+      height: 22px;
+      color: $primary1;
+    }
+  }
+}

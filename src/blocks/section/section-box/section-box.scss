@@ -1,0 +1,26 @@
+.section-box {
+  position: relative;
+  padding: 45px 40px 50px;
+  background: #fff;
+  border-radius: 24px;
+  @include media-laptop {
+    padding: 50px 30px 40px;
+  }
+  @include media-tablet {
+    padding: 30px 20px;
+  }
+  &--p60-177 {
+    padding: 60px 177px;
+    @include media-laptop {
+      padding: 55px 24px;
+    }
+    @include media-tablet {
+      padding: 40px 20px;
+    }
+  }
+  &--m-inset {
+    @include media-tablet {
+      margin: 0 -20px;
+    }
+  }
+}

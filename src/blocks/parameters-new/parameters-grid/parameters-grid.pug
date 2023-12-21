@@ -1,0 +1,47 @@
+mixin parameters-grid(items, mods)
+  -
+    const baseName = 'parameters-grid'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .parameters-grid(class=allMods)&attributes(attributes)
+    each item in items
+      .parameters-grid__item(class=item.itemMods class=item.table ? 'parameters-grid__item--gap0' : '')
+        if item.icon
+          +ui-svg(item.icon, 'parameters-grid')
+        if item.h5
+          +ui-h5(item.h5, 'parameters-grid, --bold')
+        if item.list
+          +ui-ul(item.list, 'parameters-grid')
+            each innerList in item.list
+              if innerList.list
+                +ui-ul(innerList.list, '--li-mb16')
+        if item.p3
+          -const p3Mods = item.p3Mods === undefined ? '--secondary3' : item.p3Mods
+          +ui-p3(item.p3, `parameters-grid, ${p3Mods}`)
+        if item.p1
+          +ui-p1(item.p1, 'parameters-grid')
+        if item.table
+          each tableLine in item.table
+            .parameters-grid__line(class=tableLine.mods)
+              +ui-p3(tableLine.p3_1, '--secondary3')
+              +ui-p3(tableLine.p3_2)
+        if item.docs
+          each doc in item.docs
+            .document.document--icon-l.document--pd0.parameters-grid__document
+              +ui-svg(doc.icon, 'document')
+              +ui-p3(doc.name)
+                if doc.nameNowrap
+                  =' '
+                  span.ui-nowrap !{doc.nameNowrap}
+                   if doc.nameTooltip
+                      +ui-tooltip('', doc.nameTooltip)
+        if item.img
+          .parameters-grid__img: img(src=item.img alt='')
+    block

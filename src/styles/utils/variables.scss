@@ -1,0 +1,44 @@
+:root {
+  // fonts
+  --font: 'Coco Sharp', 'Arial', sans-serif;
+  --font-bebas-neue: 'Bebas Neue', 'Arial', sans-serif;
+
+  // colors
+  --accent1: #fc0;
+  --background1: #f2f2f2;
+  --background2: #fafafa;
+  --primary1: #dc0533;
+  --primary2: #f31e4c;
+  --secondary1: #1e1e1e;
+  --secondary2: #2c2c2c;
+  --secondary3: #797979;
+  --secondary4: #d9d9d9;
+
+  // gradients
+  --gradient1: linear-gradient(112.35deg, #f8cfd6 0.97%, #fff3cc 98.83%);
+  --gradient2: linear-gradient(112.35deg, #cbdfd1 0.97%, #f2e6ac 98.83%);
+}
+
+// fonts
+$font: var(--font);
+$fontBebasNeue: var(--font-bebas-neue);
+
+// colors
+$accent1: var(--accent1);
+$background1: var(--background1);
+$background2: var(--background2);
+$primary1: var(--primary1);
+$primary2: var(--primary2);
+$secondary1: var(--secondary1);
+$secondary2: var(--secondary2);
+$secondary3: var(--secondary3);
+$secondary4: var(--secondary4);
+
+// gradients
+$gradient1: var(--gradient1);
+$gradient2: var(--gradient2);
+
+// media
+$mediaWidthLaptop: 1365px;
+$mediaWidthTablet: 767px;
+$mediaWidthMobile: 320px;

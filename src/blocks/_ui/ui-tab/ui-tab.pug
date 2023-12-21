@@ -1,0 +1,65 @@
+mixin ui-tab(mods)
+  -
+    const baseName = 'ui-tab'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-tab(class=allMods)&attributes(attributes)
+    block
+
+mixin ui-tab-head(tabHeadingItems, mods)
+  -
+    const baseName = 'ui-tab-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-tab-head(class=allMods)&attributes(attributes)
+    each item, index in tabHeadingItems
+      .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : '') class=item.mods)
+        if item.p4
+          +ui-p4(item.p4)
+        if item.p7
+          +ui-p7(item.p7)
+    block
+
+mixin ui-tab-body(mods)
+  -
+    const baseName = 'ui-tab-body'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-tab-body(class=allMods)&attributes(attributes)
+    block
+
+mixin ui-tab-item(mods)
+  -
+    const baseName = 'ui-tab-body__item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-tab-body__item(class=allMods)&attributes(attributes)
+    block

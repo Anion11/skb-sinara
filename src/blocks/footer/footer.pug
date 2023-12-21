@@ -1,0 +1,111 @@
+-
+  const menuItems = [
+    { p7: 'Частным клиентам', list: [
+      { p4: 'Кредиты', link: '#' },
+      { p4: 'Карты', link: '#' },
+      { p4: 'Вклады и счета', link: '#' },
+      { p4: 'Инвестиции', link: '#' },
+      { p4: 'Ипотека', link: '#' },
+      { p4: 'Страхование', link: '#' },
+      { p4: 'Услуги и сервисы', link: '#' }
+    ]},
+    { p7: 'Бизнесу', list: [
+      { p4: 'Зарплатный проект', link: '#' },
+      { p4: 'Делобанк', link: '#' },
+      { p4: 'Кредиты', link: 'credits.html' },
+      { p4: 'Торговые системы', link: '#' },
+      { p4: 'Депозиты', link: '#' },
+      { p4: 'Депозитарий', link: '#' },
+      { p4: 'Эквайринг', link: '#' },
+      { p4: 'Быстрые платежи', link: '#' },
+      { p4: 'Инкассация', link: '#' },
+      { p4: 'Депозитарий', link: '#' },
+      { p4: 'Международные расчеты', link: '#' },
+      { p4: 'Банковские гарантии', link: '#' },
+      { p4: 'Партнерская программа по кредитованию', link: '#' },
+      { p4: 'Операции с иностранной валютой', link: '#' },
+      { p4: 'Валютный контроль', link: '#' }
+    ]},
+    { p7: 'О Банке', list: [
+      { p4: 'О Банке', link: '#' },
+      { p4: 'Вакансии', link: '#' },
+      { p4: 'Партнерам', link: '#' },
+      { p4: 'Карта сайта', link: '#' },
+      { p4: 'Реквизиты', link: '#' },
+      { p4: 'Пресс центр', link: '#' },
+      { p4: 'Вопросы и ответы', link: '#' },
+      { p4: 'Раскрытие информации', link: '#' }
+    ]},
+  ]
+
+footer.footer(class=(isNewYear ? 'footer--ny-24' : ''))
+  .inner
+    .footer__wrap.footer__wrap--flex
+      .footer__search
+        +ui-input(placeholder='Чем вам помочь?')
+      .footer__phones
+        a(href='tel:88001000600')
+          +ui-h5('8 800 1000 600', '--white')
+          +ui-p4('Бесплатно по России', '--secondary3')
+        a(href='tel:83433557575')
+          +ui-h5('+7 343 355 75 75', '--white')
+          +ui-p4('Для звонков из-за границы', '--secondary3')
+    .footer__wrap.footer__wrap--menu
+      each item, index in menuItems
+        .footer__wrap
+          a.footer__heading(href='#')
+            +ui-p7(item.p7, 'footer, --secondary3, --uppercase')
+          .footer__menu(class=(index === 1 ? 'footer__menu--x2' : ''))
+            each link in item.list
+              a(href=link.link)
+                +ui-p4(link.p4, '--white')
+    .footer__wrap.footer__wrap--grid
+      .footer__buttons
+        +ui-button({p4: 'Блог'}, '--blog')
+        +ui-button({p4: 'Акции'}, '--event')
+        +ui-button({p4: 'Служба заботы о клиентах'}, '--service')
+      .footer__socials
+        a.footer__social(href='#')
+          +ui-svg('icon_tg')
+        a.footer__social(href='#')
+          +ui-svg('icon_vk')
+        a.footer__social(href='#')
+          +ui-svg('icon_ok')
+        a.footer__social(href='#')
+          +ui-svg('icon_dzen')
+    .footer__wrap.footer__wrap--grid
+      .footer__wrap
+        a.footer__document(href='#')
+          +ui-p5('Документы и раскрытие информации профессионального участника рынка ценных бумаг', 'footer, --secondary3')
+        a.footer__document(href='#')
+          +ui-p5('Раскрытие ПАО Банк Синара информации об ООО «Компания БКС» в соответствии с требованиями Базовых стандартов защиты прав и интересов получателей финансовых услуг', 'footer, --secondary3')
+      .footer__wrap
+        a.footer__document(href='#')
+          +ui-p5('Раскрытие ПАО Банк Синара информации в соответствии с требованиями Базовых стандартов защиты прав и интересов получателей финансовых услуг', 'footer, --secondary3')
+        a.footer__document(href='#')
+          +ui-p5('Информация о процентных ставках по договорам банковского вклада с физическими лицами', 'footer, --secondary3')
+        a.footer__document(href='#')
+          +ui-p5('Информация по минимальной гарантированной ставке по вкладам', 'footer, --secondary3')
+        a.footer__document(href='#')
+          +ui-p5('Раскрытие информации на странице ООО «Интерфакс-ЦРКИ»', 'footer, --secondary3')
+    .footer__wrap.footer__wrap--grid
+      .footer__info
+        .footer__image.footer__image--insurance
+          img(src='../../images/insurance.png', alt='Банковская группа Синара')
+        .footer__wrap
+          .footer__wrap.footer__wrap--flex
+            .footer__image.footer__image--group
+              img(src='../../images/sinara_group.png', alt='Банковская группа Синара')
+            +ui-p3('Банковская группа Синара', '--white')
+          .footer__links
+            a.footer__link(href='#')
+              +ui-p5('Банк Синара', '--white')
+            a.footer__link(href='#')
+              +ui-p5('СКБ-финанс', '--white')
+            a.footer__link(href='#')
+              +ui-p5('Газэнергобанк', '--white')
+            a.footer__link(href='#')
+              +ui-p5('SKB Lab', '--white')
+      .footer__copyrights
+        +ui-p6('© ПАО Банк Синара, 2023 Универсальная лицензия № 705 Центрального банка Российской Федерации', 'footer, --secondary3')
+        +ui-p6('Разработано в <a href="https://dterra.ru/">D’Terra</a>', 'footer, --secondary3')

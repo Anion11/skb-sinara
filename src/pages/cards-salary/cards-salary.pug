@@ -1,0 +1,75 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'cards-salary'
+    const pageTitle = 'Зарплатные карты'
+    const headerAbsolute = true
+    const siteSection = 'private'
+    const headerMenuActive = 'Карты'
+
+    const conditionsItems = {
+      h3: 'Всегда бесплатно',
+      items: [
+        {
+          front: [{ icon: 'icon_card', p3: 'Выпуск карты и&nbsp;обслуживание' }],
+          back: [{ p3: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }]
+        },
+        {
+          front: [{ icon: 'icon_laptop', p3: 'Выпуск дополнительной цифровой карты Мир' }],
+          back: [{ p3: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }]
+        },
+        {
+          front: [{ icon: 'icon_atm', p3: 'Выдача наличных в банкоматах Банка Синара и банкоматах партнёров' }],
+          back: [{ p3: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }]
+        },
+        { front: [{ icon: 'icon_transfer', p3: 'Переводы по номеру телефона до 100 000 ₽/мес.' }],
+          back: [{ p3: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }]
+        },
+        {
+          front: [{ icon: 'icon_terminal', p3: 'Бесплатные снятия в сторонних банкоматах' }],
+          back: [{ p3: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }]
+        }
+      ],
+      p5: 'Для оформления зарплатной карты обратитесь к своему работодателю. Дополнительную цифровую карту Мир можно оформить самостоятельно в интернет-банке или в мобильном приложении.'
+    }
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Зарплатные карты')
+        +breadcrumbs-item('Зарплатные карты', '/', '--mobile')
+      +banner({h2: 'Зарплатные карты', p2: 'Получайте больше, чем просто зарплату!', infoItems: [{ p2: 'до<span>20</span>%', p4: 'кэшбек у партнёров' }, { p2: 'до<span>1,5</span>%', p4: 'кэшбек от банка' }], image: 'banner_img--cards-salary.png'}, '--cards-salary, --layout')
+      +section
+        +conditions(conditionsItems)
+      +section
+        +mobile-app
+      +section('--background, --order-up')
+        +parameters
+      +section('--background, --order-up')
+        +parameters-new('Параметры', [{ p4: 'Условия по карте' }, { p4: 'Тарифы и документы' }])
+          +ui-tab-item('--active')
+            .parameters-new__top
+              +ui-h4('Условия по карте', '--bold')
+              .parameters-new__close
+            +parameters-cards-table
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Тарифы и документы', '--bold')
+              .parameters-new__close
+            +document({p4: 'Тарифы банка'})
+            +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+            +document({p4: 'Реквизиты для безналичного пополнения счета'})
+            +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+            +document({p4: 'Правила КБО Версии 1.0-8.3'})
+            +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+            +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+            +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+      +section
+        +promo([{activeIncome: true}])
+      +section
+        +questions
+      +section
+        +usefull([{credit: true}, {reference: true}])

@@ -1,0 +1,48 @@
+mixin all-at-once(mods)
+  -
+    const baseName = 'all-at-once'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const list = [
+      { text: 'ЖКХ', num: '(4900)' },
+      { text: 'Игры по подписке/Приложения', num: '(5968)' },
+      { text: 'Цветы и подарки', num: '(5193, 5947, 5992)' },
+      { text: 'Duty-free', num: '(5309)' },
+      { text: 'Бары и доставка еды', num: '(5811, 5813)' },
+      { text: 'Сервисы Яндекс', num: '(3990)', tooltip: 'tt' },
+      { text: 'Красота и здоровье', num: '(5977, 7230, 7297, 7298)' },
+      { text: 'Автоуслуги', num: '(5511, 5531, 5532, 5533, 7531, 7534, 7535, 7538, 7542)' },
+      { text: 'Книги и канцелярские товары', num: '(5111, 5192, 5942, 5943, 5970)' },
+      { text: 'Товары для спорта', num: '(5655, 5940, 5941)' },
+      { text: 'Ветеринарные услуги и зоомагазины', num: '(0742, 5995)' },
+      { text: 'Образование', num: '(8211, 8220, 8241, 8244, 8249, 8299, 8351)' },
+      { text: 'Оптика', num: '(8043)' },
+      { text: 'Химчистки', num: '(7216, 7217)' },
+    ]
+
+  .all-at-once(class=allMods)&attributes(attributes)
+    .all-at-once__head
+      +ui-h3('Когда хочется всё и&nbsp;сразу', 'all-at-once, --bold')
+      .all-at-once__descr
+        +ui-p3('Пользуетесь картами разных банков, чтобы получать больше кешбэка? Забудьте про это! Теперь достаточно только «Универсальной» карты, чтобы в разы увеличить количество бонусных баллов.')
+        +ui-p3('Стоимость услуги')
+          span.ui-nowrap – 399 ₽
+            +ui-tooltip('', 'tt')
+      .all-at-once__img: img(src='../../images/cards/all-at-once.png', alt='')
+    +section-box
+      +ui-p1('Подключите услугу «Все в одной» и получайте 4% с каждой покупки в категориях:', 'all-at-once, --bold')
+      +ui-ul('', 'all-at-once')
+        each item in list
+          li
+            +ui-p3(item.text)
+              span.ui-secondary3 !{item.num}
+                if item.tooltip
+                  +ui-tooltip('', item.tooltip)
+    block

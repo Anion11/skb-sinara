@@ -1,0 +1,46 @@
+mixin contacts(mods)
+  -
+    const baseName = 'contacts'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .contacts(class=allMods)&attributes(attributes)
+    +ui-h3('Контакты', 'contacts, --bold')
+    .contacts__wrapper
+      .contacts__box
+        +ui-svg('icon_geo')
+        .contacts__content
+          .contacts__item
+            +ui-p4('Телефон', '--secondary3')
+            +ui-p3('+7 (343) 355-73-54')
+          .contacts__item
+            +ui-p4('Адрес', '--secondary3')
+            +ui-p3('Екатеринбург, ул. Куйбышева, 75 Отдельные парковка и вход')
+          .contacts__item
+            +ui-p4('Руководитель', '--secondary3')
+            +ui-p3('Юлия Михайловна Трушникова')
+          .contacts__item
+            +ui-p4('График', '--secondary3')
+            +ui-p3('пн-пт: 9:00 - 19:00 <br> сб: 10:00 - 17:00 <br> вс: выходной')
+      .contacts__box
+        +ui-svg('icon_geo')
+        .contacts__content
+          .contacts__item
+            +ui-p4('Телефон', '--secondary3')
+            +ui-p3('+7 (343) 355-73-54')
+          .contacts__item
+            +ui-p4('Адрес', '--secondary3')
+            +ui-p3('Екатеринбург, ул. Мира, 19 (главный корпус УрФУ)')
+          .contacts__item
+            +ui-p4('Руководитель', '--secondary3')
+            +ui-p3('Лилия Римовна Камалтдинова')
+          .contacts__item
+            +ui-p4('График', '--secondary3')
+            +ui-p3('пн-пт: 9:00 - 18:00 <br> сб-вс: выходные')
+    block

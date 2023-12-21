@@ -1,0 +1,28 @@
+mixin main-news(mods)
+  -
+    const baseName = 'main-news'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .main-news(class=allMods class=(isNewYear ? 'main-news--ny-24' : ''))&attributes(attributes)
+    .main-news__head
+      +ui-h3('Новости', '--bold')
+      +ui-button({p4: 'Все новости'}, '--arrow')(href='#')
+    .main-news__body
+      -for (items = 0; items < 5; items++)
+        a.main-news__item(href='#')
+          +ui-p4('13 апреля 2023', 'main-news, --secondary3')
+          if items === 0
+            +ui-p1('Владельцы кредитной карты «ДА!» могут снимать наличные без комиссии', '--bold')
+          else
+            +ui-p3('Владельцы кредитной карты «ДА!» могут снимать наличные без комиссии')
+          if items === 0
+            +ui-button('', '--arrow-right')
+    +ui-button({p3: 'Все новости'}, 'main-news, --p44')
+    block

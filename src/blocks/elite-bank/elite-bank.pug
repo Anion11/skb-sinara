@@ -1,0 +1,19 @@
+mixin elite-bank(mods)
+  -
+    const baseName = 'elite-bank'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .elite-bank(class=allMods)&attributes(attributes)
+    .elite-bank__logo: img(src='../../images/cards/elite-bank_logo.png' alt='Elite Bank')
+    +ui-p2('', 'elite-bank')
+      p Для успешных людей, которые ценят удобство и дорожат своим временем, уже более 15 лет действует программа Elite-bank.
+      p Elite-bank - это уникальный формат банковского сервиса, где клиентам предлагают не стандартные операции и услуги, а персональные финансовые решения в атмосфере тёплого сервиса.
+    .elite-bank__img: img(src='../../images/cards/elite-bank_img.png' alt='Elite Bank')
+    block

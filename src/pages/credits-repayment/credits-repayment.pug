@@ -1,0 +1,24 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'credits-repayment'
+    const pageTitle = 'Credits repayment'
+    const headerAbsolute = true
+    const siteSection = 'private'
+    const headerMenuActive = 'Кредиты'
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Способы погашения кредита')
+        +breadcrumbs-item('Способы погашения кредита', '/', '--mobile')
+      +banner({h2: 'Способы погашения кредита', p2: 'Вносите платежи по кредиту с комфортом', image: 'banner_img--repayment.png'}, '--layout')
+      +section
+        +repayment([{withoutCommission: true}])
+      +section
+        +repayment([{withCommission: true}])
+      +section
+        +usefull([{mobile_bank: true}, {reference: true}])

@@ -1,0 +1,173 @@
+.ui-accordion {
+  --wrap-bg: #fff;
+  &:not(:last-child) {
+    border-bottom: 1px solid $secondary4;
+  }
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 30px 0;
+    cursor: pointer;
+    @include media-laptop {
+      padding: 24px 0;
+    }
+    @include media-tablet {
+      gap: 40px;
+      padding: 12px 0;
+    }
+    &--active {
+      .ui-accordion__toggle {
+        &::after {
+          transform: translateY(-50%) rotate(135deg);
+        }
+      }
+    }
+  }
+  &__toggle {
+    flex-shrink: 0;
+    position: relative;
+    margin-left: 22px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background-color: $secondary1;
+      border-radius: 10px;
+      @include media-tablet {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none'%3E%3Cpath fill='%23fff' d='M9.357.357h2v19.286h-2z'/%3E%3Cpath fill='%23fff' d='M.358 10.643v-2h19.286v2z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+      transition: 0.3s;
+      @include media-tablet {
+        width: 22px;
+        height: 22px;
+        background-size: 12px;
+      }
+    }
+  }
+  &__body {
+    display: none;
+    padding-bottom: 24px;
+    @include media-tablet {
+      padding-bottom: 12px;
+    }
+  }
+  &__wrap {
+    padding: 24px 32px;
+    background-color: var(--wrap-bg);
+    border-radius: 14px;
+    @include media-laptop {
+      padding: 24px;
+    }
+    @include media-tablet {
+      padding: 16px;
+    }
+  }
+  &--pl25 {
+    padding-left: 25px;
+  }
+  &--bg-white {
+    background: #fff;
+    border-radius: 14px;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+      border-bottom: 0;
+    }
+    .ui-accordion {
+      &__head {
+        padding: 16px;
+      }
+      &__wrap {
+        padding-top: 0;
+      }
+    }
+  }
+  &--pd-l {
+    .ui-accordion {
+      &__head {
+        padding: 30px 80px;
+        gap: 177px;
+        @include media-laptop {
+          padding: 24px;
+          gap: 65px;
+        }
+        @include media-tablet {
+          padding: 20px 12px;
+          gap: 30px;
+        }
+      }
+      &__wrap {
+        padding: 0 80px;
+        @include media-laptop {
+          padding: 0 24px;
+        }
+        @include media-tablet {
+          padding: 0 12px;
+        }
+      }
+    }
+  }
+  &--arrow {
+    .ui-accordion {
+      &__head {
+        &--active {
+          .ui-accordion__toggle {
+            &::after {
+              transform: translateY(-50%) rotate(90deg);
+            }
+          }
+        }
+      }
+      &__toggle {
+        &::before {
+          content: none;
+        }
+        &::after {
+          width: 48px;
+          height: 48px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none'%3E%3Crect width='47' height='47' x='.5' y='-.5' fill='%23fff' stroke='%23D9D9D9' rx='9.5' transform='matrix(1 0 0 -1 0 47)'/%3E%3Cpath stroke='%231E1E1E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M31.75 24.274h-15M25.701 30.299l6.05-6.024-6.05-6.025'/%3E%3C/svg%3E");
+          background-size: contain;
+          background-repeat: no-repeat;
+          @include media-tablet {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+  &--mt20 {
+    margin-top: 20px;
+  }
+  &--p30 {
+    .ui-accordion__head {
+      padding: 30px;
+      @include media-laptop {
+        padding: 20px;
+      }
+      @include media-tablet {
+        padding: 20px 15px;
+      }
+    }
+  }
+}

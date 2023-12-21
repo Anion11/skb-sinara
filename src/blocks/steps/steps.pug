@@ -1,0 +1,44 @@
+mixin steps(data, mods, type)
+  -
+    const baseName = 'steps'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const defaultData = {
+      title: 'Получить кредит просто!',
+      items: [
+        { p2: '5 минут', p4: 'Заполните заявку на&nbsp;сайте' },
+        { p2: '2 минуты', p4: 'Получите решение по кредиту' },
+        { p2: 'Получите деньги', p4: 'В мобильном приложении, в <a href="#">офисе банка</a> или курьером в городах, где доступна доставка', mods: 'steps__item--x2' }
+      ]
+    }
+
+    const stepsData = data || defaultData
+
+  .steps(class=allMods)&attributes(attributes)
+    .steps__head
+      +ui-h3(stepsData.title, '--bold')
+    if stepsData.tabsHead
+      +ui-tab-head(data.tabsHead, `steps ${data.tabsHeadMods ? data.tabsHeadMods : ''}`)(data-tab-group=stepsData.tabGroup)
+      +ui-tab(data-tab-group=stepsData.tabGroup)
+        +ui-tab-body
+          each tab, index in stepsData.tabsHead
+            +ui-tab-item((index === 0 ? '--active' : ''))
+              .steps__body
+                each item, index in stepsData.items
+                  .steps__item(class=item.mods)
+                    +ui-p2(item.p2, 'steps, --bold')
+                    +ui-p4(item.p4, 'steps')
+    else
+      .steps__body
+        each item, index in stepsData.items
+          .steps__item(class=item.mods)
+            +ui-p2(item.p2, 'steps, --bold')
+            +ui-p4(item.p4, 'steps')
+    block

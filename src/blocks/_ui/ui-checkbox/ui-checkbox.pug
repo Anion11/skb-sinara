@@ -1,0 +1,22 @@
+mixin ui-checkbox(id, text, mods, tooltip)
+  -
+    const baseName = 'ui-checkbox'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-checkbox(class=allMods)
+    input(id=id name=id type='checkbox')&attributes(attributes)
+    if text.p4
+      label(for=id)
+        +ui-p4(text.p4, text.mods)
+    else
+      label(for=id)!=text
+    if tooltip
+      +ui-tooltip('', tooltip)
+      block

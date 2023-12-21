@@ -1,0 +1,23 @@
+mixin popups(mods)
+  -
+    const baseName = 'popups'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popups(class=allMods)&attributes(attributes)
+    if mods === 'header'
+      .popups__item
+        +popups-mobile-app
+    else
+      .inner
+        .popups__item
+          +popups-geo
+        .popups__item
+          +popups-cookies
+    block

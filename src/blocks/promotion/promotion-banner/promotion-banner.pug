@@ -1,0 +1,24 @@
+mixin promotion-banner(mods)
+  -
+    const baseName = 'promotion-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .promotion-banner(class=allMods)&attributes(attributes)
+    .promotion-banner__img: img(src='../../images/promotion-template/promotion-banner_bg.png' alt='')
+    .promotion-banner__inner
+      .promotion-banner__content
+        .promotion-banner__heading
+          +ui-h1('', '--bold')
+            span.ui-nowrap Поймайте
+              img.promotion-banner__inline-img(src='../../images/promotion-template/promotion-banner.png' alt='')
+          .ui-h1.ui-h1--bold.ui-h1--l суперудачу!
+        +ui-p1('Возьмите кредит и получите шанс его не платить', '--secondary2')
+      +promotion-timer('promotion-banner')
+    block

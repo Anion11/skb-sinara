@@ -1,0 +1,30 @@
+mixin main-articles(mods)
+  -
+    const baseName = 'main-articles'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .main-articles(class=allMods class=(isNewYear ? 'main-articles--ny-24' : ''))&attributes(attributes)
+    .main-articles__head
+      +ui-h3('Статьи', '--bold')
+      +ui-button({p4: 'Все статьи'}, '--arrow')(href='#')
+    .main-articles__body
+      .main-articles__slider.swiper
+        .swiper-wrapper
+          -for (items = 0; items < 4; items++)
+            a.main-articles__slide.swiper-slide(href='#')
+              .main-articles__image: img(src='../../images/main/main-promo_img.jpg', alt='')
+              .main-articles__content
+                .main-articles__line
+                  +ui-p4('27.08.2023', '--secondary3')
+                  +ui-p4('10 мин', 'main-articles, --secondary3')
+                +ui-p2('Переоформить кредит на другого человека и еще одна строка', 'main-articles, --bold')
+                +ui-button({p3: 'Читать'}, '--p44')
+      +ui-button({p3: 'Все статьи'}, 'main-promo, --p44')
+    block

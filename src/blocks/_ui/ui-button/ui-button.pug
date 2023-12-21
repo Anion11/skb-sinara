@@ -1,0 +1,31 @@
+mixin ui-button(text, mods)
+  -
+    const baseName = 'ui-button'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  if (attributes.href)
+    a.ui-button(class=allMods)&attributes(attributes)
+      if text.p3
+        +ui-p3(text.p3, '--bold')
+      if text.p4
+        +ui-p4(text.p4, text.mods)
+      if text.p7
+        +ui-p7(text.p7, text.mods)
+      block
+
+  else
+    button.ui-button(class=allMods)&attributes(attributes)
+      if text.p3
+        +ui-p3(text.p3, '--bold')
+      if text.p4
+        +ui-p4(text.p4, text.mods)
+      if text.p7
+        +ui-p7(text.p7, text.mods)
+      block

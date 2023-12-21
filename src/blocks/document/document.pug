@@ -1,0 +1,21 @@
+mixin document(title, mods, icon)
+  -
+    const baseName = 'document'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  a.document(href='#' class=allMods)&attributes(attributes)
+    +ui-svg(icon || 'icon_file--white', 'document')
+    if title.p2
+      +ui-p2(title.p2)
+    if title.p3
+      +ui-p3(title.p3)
+    if title.p4
+      +ui-p4(title.p4)
+    block

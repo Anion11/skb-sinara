@@ -1,0 +1,39 @@
+.charity-banner {
+  position: relative;
+  min-height: 355px;
+  padding: 60px 500px 155px 50px;
+  background: $gradient1;
+  border-radius: 24px;
+  @include media-laptop {
+    padding: 40px 30px 250px;
+  }
+  @include media-tablet {
+    padding: 40px 20px 240px;
+  }
+  &__img {
+    position: absolute;
+    right: 50px;
+    bottom: 50%;
+    transform: translateY(50%);
+    max-width: 432px;
+    @include media-laptop {
+      right: 30px;
+      bottom: 15px;
+      transform: none;
+      max-width: 300px;
+    }
+    @include media-tablet {
+      right: 30px;
+      max-width: 280px;
+    }
+  }
+  &__ui-p3 {
+    max-width: 600px;
+    &:not(:first-child) {
+      margin-top: 24px;
+      @include media-tablet {
+        margin-top: 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.do-good {
+  position: relative;
+  min-height: 290px;
+  padding: 60px 70px 70px 345px;
+  background: $gradient1;
+  border-radius: 25px;
+  @include media-laptop {
+    padding: 165px 43px 40px;
+  }
+  @include media-tablet {
+    padding: 130px 20px 40px;
+    border-radius: 14px;
+  }
+  &__img {
+    position: absolute;
+    top: 63px;
+    left: 40px;
+    max-width: 274px;
+    @include media-laptop {
+      top: 40px;
+      left: 24px;
+      max-width: 183px;
+    }
+    @include media-tablet {
+      top: 20px;
+      left: 4px;
+      max-width: 153px;
+    }
+  }
+  &__ui-h5 {
+    &:not(:last-child) {
+      margin-bottom: 14px;
+    }
+  }
+}

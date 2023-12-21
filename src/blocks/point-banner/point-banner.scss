@@ -1,0 +1,93 @@
+.point-banner {
+  padding: 0 80px;
+  @include media-laptop {
+    padding: 0;
+  }
+  &__body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 165px;
+    padding: 50px 60px 50px 200px;
+    border-radius: 24px;
+    @include media-laptop {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 50px 50px 40px 200px;
+    }
+    @include media-tablet {
+      align-items: center;
+      padding: 18px 16px 40px;
+      border-radius: 14px;
+      text-align: center;
+    }
+    &--bg2 {
+      background: $gradient2;
+    }
+  }
+  &__image {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    max-width: 140px;
+    @include media-laptop {
+      top: 20px;
+      transform: translate(0);
+    }
+    @include media-tablet {
+      position: static;
+    }
+  }
+  &__ui-p1 {
+    max-width: 600px;
+  }
+  &__ui-button {
+    margin-left: auto;
+    flex-shrink: 0;
+    @include media-laptop {
+      margin-left: 0;
+    }
+    @include media-tablet {
+      width: 100%;
+    }
+  }
+  &--fl-d-col {
+    .point-banner {
+      &__ui-p1 {
+        max-width: none;
+      }
+      &__body {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        @include media-tablet {
+          align-items: center;
+        }
+      }
+    }
+  }
+  &--px-0 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  &--d-size-s {
+    .point-banner {
+      &__body {
+        @media (min-width: ($mediaWidthLaptop + 1)) {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+        }
+      }
+      &__ui-button {
+        margin-left: 0;
+      }
+      &__image {
+        top: 30px;
+        transform: none;
+      }
+    }
+  }
+}

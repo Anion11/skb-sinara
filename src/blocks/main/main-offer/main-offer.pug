@@ -1,0 +1,106 @@
+mixin main-offer(mods)
+  -
+    const baseName = 'main-offer'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .main-offer(class=allMods class=(isNewYear ? 'main-offer--ny-24' : ''))&attributes(attributes)
+    -const img = isNewYear ? '../../images/new-year/main-offer_img_ny_24.png' : '../../images/main/main-offer_img.png'
+    if isNewYear
+      .main-offer__ny-decor
+    .main-offer__offer
+      .main-offer__image.main-offer__image--small: img(src=img, alt='У нас есть персональное предложение для вас')
+      .main-offer__content
+        +ui-h5('У нас есть персональное предложение для вас', 'main-offer, --bold')
+        form.main-offer__form(action='')
+          +ui-input('mainOfferPhone', 'Введите свой номер телефона', 'main-offer', 'phone')(required)
+          +ui-input('mainOfferBirth', 'Дата рождения', 'main-offer', 'birthDate')(required)
+          +ui-input('mainOfferName', 'Введите ФИО', 'main-offer', 'fullName')(required)
+          +ui-button({p3: 'Посмотреть'}, 'main-offer, --filled, --p64')(disabled)
+          +ui-checkbox('mainOfferagreement', 'Я принимаю условия <a href="">соглашения</a>', 'main-offer')(required)
+  br
+  .main-offer(class=allMods class=(isNewYear ? 'main-offer--ny-24' : ''))&attributes(attributes)
+    if isNewYear
+      .main-offer__ny-decor
+    .main-offer__offer
+      .main-offer__image.main-offer__image--small: img(src=img, alt='У нас есть персональное предложение для вас')
+      .main-offer__content
+        +ui-h5('Подтвердите телефон', 'main-offer, --bold')
+        form.main-offer__form.main-offer__form--flex(action='')
+          .main-offer__code
+            .main-offer__code-input
+              +ui-input('mainOfferCode1', '', 'main-offer, --code', 'code')(required pattern='[0-9]*' inputmode='numeric')
+              +ui-input('mainOfferCode2', '', 'main-offer, --code', 'code')(required pattern='[0-9]*' inputmode='numeric')
+              +ui-input('mainOfferCode3', '', 'main-offer, --code', 'code')(required pattern='[0-9]*' inputmode='numeric')
+              +ui-input('mainOfferCode4', '', 'main-offer, --code', 'code')(required pattern='[0-9]*' inputmode='numeric')
+            +ui-p4('изменить телефон', '--primary1')
+          .main-offer__text
+            +ui-p3('Введите код подтверждения, направленный на номер +7&nbsp;999&nbsp;XXX&nbsp;XX&nbsp;56')
+            +ui-p3('Время для повторной отправки смс <span>2:00</span>')
+  br
+  .main-offer(class=allMods)&attributes(attributes)
+    .main-offer__head
+      +ui-h3('Персональные предложения для вас', '--bold')
+    .main-offer__body
+      .main-offer__item
+        .main-offer__title
+          +ui-h6('Кредит 0%', 'main-offer, --bold')
+          +ui-p3('с услугой «Гарантия ставки»', '--secondary3')
+        .main-offer__info
+          .main-offer__info-item
+            +ui-p3('до')
+              span 3
+              ='млн ₽'
+            +ui-p4('сумма на руки', '--secondary3')
+          .main-offer__info-item
+            +ui-p3('от')
+              span 5,7
+              ='%'
+            +ui-p4('ставка на весь срок', '--secondary3')
+        +ui-button({p3: 'Получить деньги'}, '--p44')
+        .main-offer__image.main-offer__image--banner: img(src='../../images/banner_img--credit0.png', alt='Кредит 0%')
+      .main-offer__item
+        .main-offer__title
+          +ui-h6('Кредитная карта «ДА!»', 'main-offer, --bold')
+        .main-offer__info
+          .main-offer__info-item
+            +ui-p3('до')
+              span 15
+              ='% кешбэк'
+            +ui-p4('в любимой категории', '--secondary3')
+          .main-offer__info-item
+            +ui-p3('до')
+              span 56
+              ='дней'
+            +ui-p4('грейс период на ВСЕ', '--secondary3')
+        +ui-button({p3: 'Получить карту'}, '--p44')
+        .main-offer__image.main-offer__image--banner: img(src='../../images/banner_img--credit-card-yes2.png', alt='')
+  br
+  .main-offer--single(cass=allMods)&attributes(attributes)
+    .main-offer__head
+      +ui-h3('Персональные предложения для вас', '--bold')
+    .main-offer__body.main-offer__body--single
+      .main-offer__item
+        .main-offer__title
+          +ui-h6('Кредит 0%', 'main-offer, --bold')
+          +ui-p3('с услугой «Гарантия ставки»', '--secondary3')
+        .main-offer__info
+          .main-offer__info-item
+            +ui-p3('до')
+              span 3
+              ='млн ₽'
+            +ui-p4('сумма на руки', '--secondary3')
+          .main-offer__info-item
+            +ui-p3('от')
+              span 5,7
+              ='%'
+            +ui-p4('ставка на весь срок', '--secondary3')
+        +ui-button({p3: 'Получить деньги'}, '--p44')
+        .main-offer__image.main-offer__image--banner: img(src='../../images/banner_img--credit0.png', alt='Кредит 0%')
+    block

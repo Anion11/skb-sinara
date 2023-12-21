@@ -1,0 +1,132 @@
+.promotion-steps {
+  position: relative;
+  @include media-tablet {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 17px;
+  }
+  .swiper-wrapper {
+    box-sizing: inherit;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    @include media-tablet {
+      display: flex;
+      gap: unset;
+    }
+  }
+  &__progress {
+    display: grid;
+    grid-template-areas: 'main';
+    align-items: center;
+    justify-items: center;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    @include media-tablet {
+      display: block;
+      width: auto;
+      height: auto;
+      align-self: end;
+    }
+    svg {
+      grid-area: main;
+      transform: rotate(-90deg);
+      @include media-tablet {
+        display: none;
+        grid-area: unset;
+        overflow: visible;
+        pointer-events: none;
+      }
+      circle {
+        @include media-tablet {
+          stroke-width: 0.7;
+          transform: scaleY(-1);
+          transform-origin: center;
+        }
+      }
+      &.promotion-steps__circle {
+        @include media-tablet {
+          display: block;
+          position: absolute;
+          top: -5px;
+          left: -5px;
+          width: calc(100% + 10px);
+          height: calc(100% + 10px);
+        }
+      }
+    }
+  }
+  &__ui-p4 {
+    grid-area: main;
+    @include media-tablet {
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 120%;
+      color: $primary1;
+    }
+  }
+  &__ui-p3 {
+    @include media-tablet {
+      align-self: start;
+    }
+  }
+  &__item {
+    width: auto;
+    height: auto;
+    @include media-tablet {
+      position: relative;
+    }
+    &::before {
+      display: block;
+      width: 100%;
+      padding-bottom: 100%;
+      @include media-tablet {
+        content: '';
+      }
+    }
+    &.swiper-slide:not(.swiper-slide-active) {
+      pointer-events: unset;
+      @include media-tablet {
+        pointer-events: none;
+      }
+    }
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 36px;
+    background: linear-gradient(144deg, rgb(255 243 204 / 0.07) 0%, rgb(248 207 214 / 0.57) 100%), var(--background1);
+    border-radius: 24px;
+    @include media-laptop {
+      padding-right: 65px;
+    }
+    @include media-tablet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-rows: 45.3% 1fr;
+      justify-content: center;
+      gap: 10px;
+      padding: 28px;
+      background: linear-gradient(317deg, #F4DDE1 15.21%, rgb(248 207 214 / 0.00) 85.16%), #FFF;
+      border-radius: 50%;
+      text-align: center;
+    }
+    a {
+      color: $primary1;
+    }
+  }
+  &__ui-swiper-pagination {
+    display: none;
+    margin-top: 24px;
+    @include media-tablet {
+      display: block;
+    }
+  }
+}

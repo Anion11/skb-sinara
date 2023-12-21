@@ -1,0 +1,27 @@
+mixin parameters-new(title, headItems, subtitle, mods)
+  -
+    const baseName = 'parameters-new'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .parameters-new(class=allMods)&attributes(attributes)
+    .parameters-new__head
+      +ui-h3(title, 'parameters-new, --bold')
+      +ui-p1(subtitle)
+    .parameters-new__body
+      +ui-tab(data-tab-group='parameters-new')
+        +ui-tab-head('', 'parameters-new')(data-tab-group='parameters-new')
+          each item, index in headItems
+            .ui-tab-head__item(class=(index === 0 ? 'ui-tab-head__item--active' : '') class=item.mods)
+              if item.icon
+                +ui-svg(item.icon, 'parameters-new')
+              +ui-p4(item.p4)
+              +ui-button('', '--arrow-right')
+        +ui-tab-body('parameters-new')(data-tab-group='parameters-new')
+          block

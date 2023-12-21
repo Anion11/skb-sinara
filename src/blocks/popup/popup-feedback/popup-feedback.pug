@@ -1,0 +1,49 @@
+mixin popup-feedback(mods)
+  -
+    const baseName = 'popup-feedback'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const tabHeadings = [
+      { p4: 'Физическое лицо' },
+      { p4: 'Юридическое лицо или ИП' }
+    ]
+
+  +popup('popupFeedback', '--small, --feedback').popup-feedback(class=allMods)&attributes(attributes)
+    .popup-feedback__head
+      +ui-h3('Обратная связь', '--bold')
+    .popup-feedback__body
+      +ui-tab(data-tab-group='popup-feedback')
+        +ui-tab-head(tabHeadings, 'popup-feedback')
+        +ui-tab-body
+          -for (items = 0; items < 2; items++)
+            +ui-tab-item(class=(items === 0 ? 'ui-tab-body__item--active' : ''))
+              form
+                .popup-feedback__line
+                  +ui-select('', '1', '2', '3', '4')(placeholder='Тема вашего сообщения' required)
+                if items === 1
+                  .popup-feedback__line
+                    +ui-input('feedbackName', 'Наименование компании или ИНН', 'name')(placeholder='' required)
+                .popup-feedback__line
+                  +ui-input('feedbackFullName', 'ФИО', '--background1', 'fullName')(placeholder='' required)
+                .popup-feedback__line
+                  +ui-input('feedbackPhone', 'Телефон', '--background1', 'phone')(placeholder='' required)
+                .popup-feedback__line
+                  +ui-input('feedbackMail', 'Email', '--background1', 'email')(placeholder='' required)
+                .popup-feedback__line
+                  +ui-textarea(placeholder='Ваше сообщение')
+                .popup-feedback__line.popup-feedback__line--info
+                  if items === 0
+                    +ui-p5('Не забудьте прикрепить документы, подтверждающие наличие проблемы (выписки, скриншоты и т.д.).', 'popup-feedback, --info')
+                  +ui-p5('Общий размер файлов не должен превышать 14 MB. Можно прикрепить файлы только в формате JPG, PNG и PDF', 'popup-feedback')
+                .popup-feedback__line
+                  +ui-input('feedbackFile', '', '--file', 'file')(multiple)
+                .popup-feedback__line
+                  +ui-checkbox(`feedbackAgree${items}`, 'Я принимаю условия')(required)
+                +ui-button({p3: 'Отправить'})(type='submit')
+    block

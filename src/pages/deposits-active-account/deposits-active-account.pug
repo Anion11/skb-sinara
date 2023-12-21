@@ -1,0 +1,253 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'deposits-active-account'
+    const pageTitle = 'Вклад "Активный счёт!"'
+    const headerAbsolute = true
+    const siteSection = 'private'
+    const headerMenuActive = 'Вклады и счета'
+
+  -
+    const calc = [{
+      deposit: {
+        title: 'Рассчитайте свой доход от вклада',
+        inputs: [
+          {
+            name: 'Сумма вклада',
+            value: '1500000',
+            min: 1000,
+            max: 100000000,
+            botLimit: 'от 1 000 ₽',
+            topLimit: 'до 100 млн ₽'
+          },
+          {
+            name: 'С ежемесячным пополнением',
+            value: '6000',
+            min: 0,
+            max: 100000,
+            botLimit: 'от 0 ₽',
+            topLimit: 'до 100 тыс ₽'
+          },
+        ],
+        checkboxes: [
+          { id: 'capitalization', label: 'Капитализация процентов', tooltip: 'tt' }
+        ],
+        info: [
+          { name: 'Ставка', value: 'до 10 %' },
+          { name: 'Доход по вкладу', value: '430 521 ₽' },
+          { name: 'Срок', value: '1080 дней' },
+          { name: 'Сумма в конце срока', value: '1 930 521 ₽' },
+        ],
+      }
+    }]
+
+    const parametersHeadings = [
+      { p4: 'Процентные ставки по вкладу'},
+      { p4: 'Условия вклада'},
+      { p4: 'Тарифы и документы'},
+    ]
+
+    const parametersTable = [
+      { p3_1: 'Валюта вклада', p3_2: 'рубли (₽), доллары ($)' },
+      { p3_1: 'Выплата процентов', p3_2: 'В конце срока' },
+      { p3_1: 'Капитализация процентов', p3_2: 'Не производится' },
+      { p3_1: 'Пополнение вклада', p3_2: 'Не производится' },
+      { p3_1: 'Расходные операции', p3_2: 'Не разрешены, кроме востребования вклада' },
+      { p3_1: 'Пролонгация', p3_2: 'Осуществляется не более 5 раз. Процентная ставка по Вкладу после пролонгации устанавливается в размере, соответствующем размеру ставок, действующих в Банке на дату пролонгации' },
+      { p3_1: 'Досрочное расторжение', p3_2: 'Проценты рассчитываются по ставке вклада «До востребования»' },
+      { p3_1: 'Особые условия', p3_2: 'Заключение договора вклада осуществляется с любым обратившимся клиентом физическим лицом - пользователем системы дистанционного банковского обслуживания Синара Банк, путем обмена электронными документами' },
+    ]
+
+    const parametersTab = [
+      { p3: 'Сумма вклада', p1: 'от 10 000 ₽ до 3 млн. ₽, от 300 $ до 5 млн. $' },
+      { p3: 'Срок вклада', p1: '30 дней, 90 дней, 180 дней, 367 дней, 546 дней, 720 дней, 1080 дней' },
+      { table: parametersTable, itemMods: 'parameters-grid__item--x2' }
+    ]
+
+    const tableData = {
+      style: 'min-width: 665px;',
+      thead: [
+        {
+          mods: 'ui-secondary3',
+          th: [
+            { text: 'Минимальный остаток' },
+            { text: 'С 1 по 180 дней' },
+            { text: 'С 181 по 1080 дней' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'от 10 000 ₽' },
+            { text: '4.5%' },
+            { text: '1%' },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 100 000 ₽' },
+            { text: '4.8%' },
+            { text: '1%' },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 300 000 ₽' },
+            { text: '5%' },
+            { text: '1%' },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 700 000 ₽' },
+            { text: '5.2%' },
+            { text: '1%' },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 1 000 000 ₽' },
+            { text: '5%' },
+            { text: '1%' },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 5 000 000 ₽' },
+            { text: '4.5%' },
+            { text: '1%' },
+          ]
+        },
+      ]
+    }
+
+    const privilegeData = {
+      title: 'Преимущества счёта',
+      items: [
+        {
+          name: 'Стабильность',
+          descr: 'Выплата процентов - ежемесячно, путем зачисления на накопительный счет',
+          img: '../../images/deposits/privilege_1.png'
+        },
+        {
+          name: 'Гибкие условия',
+          descr: 'Вы можете пополнять счет или снимать денежные средства в любое время без ограничений по сумме',
+          img: '../../images/deposits/privilege_2.png'
+        },
+        {
+          name: 'Надежная защита',
+          descr: 'Денежные средства на счете застрахованы государственной системой страхования вкладов',
+          img: '../../images/deposits/privilege_3.png'
+        },
+      ]
+    }
+
+    const instructionData_1 = [
+      {
+        img: '../../images/deposits/instruction_mob-1.png',
+        title: 'Откройте новый продукт',
+        descr: 'Нажмите на «+» внизу главной страницы, далее «Открыть новый продукт» и «Открыть вклад»'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-14.png',
+        title: 'Выберите вклад',
+        descr: 'На открывшейся странице выберите тип открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-15.png',
+        title: 'Заполните форму',
+        descr: 'Выберите счет в разделах «Источник первоначального взноса» и «Счет для зачисления средств при закрытии вклада» и укажите сумму открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-15.png',
+        title: 'Откройте вклад',
+        descr: 'При заполнении всех полей кнопка «Открыть вклад» становится доступной'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-5.png',
+        title: 'Введите код из SMS',
+        descr: 'Вклад открыт!'
+      }
+    ]
+
+    const instructionData_2 = [
+      {
+        img: '../../images/deposits/instruction_tablet-15.png',
+        title: 'Откройте новый продукт',
+        descr: 'Нажмите на «+» внизу главной страницы, далее «Открыть новый продукт» и «Открыть вклад»'
+      },
+      {
+        img: '../../images/deposits/instruction_tablet-16.png',
+        title: 'Выберите вклад',
+        descr: 'На открывшейся странице выберите тип открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_tablet-17.png',
+        title: 'Заполните форму',
+        descr: 'Выберите счет в разделах «Счет списания» и «Счет зачисления после закрытия» и укажите сумму открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_tablet-18.png',
+        title: 'Введите код из SMS',
+        descr: 'Вклад открыт!'
+      }
+    ]
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item(pageTitle)
+        +breadcrumbs-item(pageTitle, '/', '--mobile')
+      +banner({h2: 'Вклад "Активный счёт!"', p2: 'Онлайн-накопление с возможностью снятия и пополнения', infoItems: [{ p2: 'до<span>5.2</span>%', p4: 'ставка на весь срок' }, { p2: 'от<span>10 000</span>₽', p4: 'сумма вклада' }], image: 'banner_img--deposit-active-account.png'}, '--deposit-active-account, --layout')
+      +section('--background')
+        +section-head: +ui-h3('Онлайн-накопление с возможностью снятия и&nbsp;пополнения', '--bold')
+        +main-calculator(calc)
+      +section('--background, --order-up')
+        +parameters-new('Параметры', parametersHeadings)
+          +ui-tab-item('--active')
+            .parameters-new__top
+              +ui-h4('Процентные ставки по&nbsp;вкладу', '--bold')
+              .parameters-new__close
+            +ui-tab(data-tab-group='inside-params')
+              +ui-tab-body
+                +ui-tab-item('--active')
+                  +ui-table(tableData, '--m-scroll, --bg-white')(data-scroll-lock-scrollable)
+                +ui-tab-item
+                  +ui-table(tableData, '--m-scroll, --bg-white')(data-scroll-lock-scrollable)
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Условия вклада', '--bold')
+              .parameters-new__close
+            +parameters-grid(parametersTab ,'--x2')
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Тарифы и документы', '--bold')
+              .parameters-new__close
+            +document({p4: 'Тарифы банка'})
+            +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+            +document({p4: 'Реквизиты для безналичного пополнения счета'})
+            +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+            +document({p4: 'Правила КБО Версии 1.0-8.3'})
+            +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+            +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+            +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+      +section
+        +privilege(privilegeData)
+      +section('--l-pd-x')
+        +section-head
+          +ui-h3('Открыть счет просто!', '--bold')
+          +ui-tab-head([{ p4: 'Mobile' }, { p4: 'Desktop' }], 'section-head, --no-outside,  --m-2col')(data-tab-group='instruction')
+        +ui-tab(data-tab-group='instruction')
+          +ui-tab-body
+            +ui-tab-item('--active')
+              +instruction(instructionData_1)
+            +ui-tab-item
+              +instruction(instructionData_2)
+      +section
+        +questions
+      +section
+        +usefull([{credit: true}, {reference: true}])

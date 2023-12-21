@@ -1,0 +1,384 @@
+mixin menu(mods)
+  -
+    const baseName = 'menu'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const tabHeadings = [
+      { p7: 'Частным клиентам' },
+      { p7: 'Бизнесу' },
+      { p7: 'О банке' }
+    ]
+
+  .menu(class=allMods hidden)&attributes(attributes)
+    .menu__head
+      .menu__button(data-menu='cards')
+        +ui-svg('icon_menu-card')
+        +ui-p8('Карты')
+      .menu__button(data-menu='deposits')
+        +ui-svg('icon_menu-chart')
+        +ui-p8('Вклады')
+      .menu__button.menu__button--main(data-menu='main')
+        span
+        span
+        span
+      .menu__button(data-menu='credits')
+        +ui-svg('icon_menu-wallet')
+        +ui-p8('Кредиты')
+          +ui-svg('icon_star--red')
+      a.menu__button(href='offices.html')
+        +ui-svg('icon_menu-geo')
+        +ui-p8('Банкоматы')
+
+    .menu__body(data-menu='cards' data-scroll-lock-scrollable)
+      .menu__top
+        +ui-h4('Карты', '--bold')
+        .menu__swipe
+        .menu__close
+      +ui-p2('Кредитные карты', '--bold')
+      .menu__menu
+        .menu__item.menu__item--x6t.menu__item--bg2.menu__item--banner
+          +ui-p1('Кредитная <br>карта «ДА!»', '--bold')
+          .menu__image
+            img(src='../../images/menu_banner1.png', alt='Кредитная карта «ДА!»')
+      +ui-p2('Дебетовые карты', '--bold')
+      .menu__menu
+        .menu__item.menu__item--x3t
+          +ui-p3('Универсальная карта', 'menu')
+          .menu__image
+            img(src='../../images/menu_cards1.png', alt='Универсальная карта')
+        .menu__item.menu__item--x3t
+          +ui-p3('Единая социальная карта', 'menu')
+          .menu__image
+            img(src='../../images/menu_cards2.png', alt='Единая социальная карта')
+        .menu__item.menu__item--x3t
+          +ui-p3('Премиальная карта', 'menu')
+          .menu__image
+            img(src='../../images/menu_cards3.png', alt='Карта Elitebank')
+        .menu__item.menu__item--x3t
+          +ui-p3('Зарплатные карты', 'menu')
+          .menu__image
+            img(src='../../images/menu_cards4.png', alt='Зарплатные карты')
+        .menu__item.menu__item--x6t.menu__item--banner
+          +ui-p3('Карта Добра БФ «Синара»', 'menu')
+          .menu__image
+            img(src='../../images/menu_cards5.png', alt='Карта Добра БФ «Синара»')
+      +ui-button({p7: 'Все карты', mods: '--bold, --uppercase'}, 'menu')
+
+    .menu__body(data-menu='deposits' data-scroll-lock-scrollable)
+      .menu__top
+        +ui-h4('Вклады и счета', '--bold')
+        .menu__swipe
+        .menu__close
+      +ui-p2('Вклады', '--bold')
+      .menu__menu
+        .menu__item.menu__item--x6t.menu__item--bg1.menu__item--banner
+          +ui-p1('Вклад <br>«Приветственный»', '--bold')
+          .menu__image
+            img(src='../../images/menu_banner2.png', alt='Вклад «Приветственный»')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Вклад «Исполнение желаний+»', 'menu')
+          .menu__image
+            img(src='../../images/menu_deposits1.png', alt='Вклад «Исполнение желаний+»')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Вклад "Исполнение желаний"', 'menu')
+          .menu__image
+            img(src='../../images/menu_deposits2.png', alt='Вклад "Исполнение желаний"')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Вклад "Обыкновенное чудо!"', 'menu')
+          .menu__image
+            img(src='../../images/menu_deposits3.png', alt='Вклад "Обыкновенное чудо!"')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Вклад "Максимальный"', 'menu')
+          .menu__image
+            img(src='../../images/menu_deposits4.png', alt='Вклад "Максимальный"')
+        .menu__item.menu__item--x6t.menu__item--banner
+          +ui-p3('Вклад "Пенсионный!!"', 'menu')
+          .menu__image
+            img(src='../../images/menu_deposits5.png', alt='Вклад "Пенсионный!!"')
+        +ui-button({p7: 'Все вклады', mods: '--bold, --uppercase'}, 'menu').menu__item--x6t
+      +ui-p2('Счета', '--bold')
+      .menu__menu
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Накопительный счёт "Курс на мечту"', 'menu')
+          .menu__image
+            img(src='../../images/menu_deposits7.png', alt='Накопительный счёт "Курс на мечту"')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Накопительный счёт «Активный доход»', 'menu')
+          .menu__image
+            img(src='../../images/menu_deposits6.png', alt='Накопительный счёт «Активный доход»')
+      +ui-button({p7: 'Все счета', mods: '--bold, --uppercase'}, 'menu')
+
+    .menu__body(data-menu='main' data-scroll-lock-scrollable)
+      .menu__top
+        +ui-h4('Меню', '--bold')
+        .menu__swipe
+        .menu__close
+      .menu__search
+        +ui-input('', '', '--background1')(placeholder='Чем вам помочь?')
+      +ui-tab('menu')
+        +ui-tab-head(tabHeadings)
+        +ui-tab-body
+          +ui-tab-item('--active')
+            .menu__menu
+              .menu__item.menu__item--x3t
+                +ui-p3('Инвестиции')
+                .menu__image: img(src='../../images/menu_img1_1.png', alt='Инвестиции')
+              .menu__item.menu__item--x3t
+                +ui-p3('Ипотека')
+                .menu__image: img(src='../../images/menu_img1_2.png', alt='Ипотека')
+              .menu__item.menu__item--x3t.menu__button(data-menu='main/services')
+                +ui-p3('Услуги и сервисы')
+                .menu__image: img(src='../../images/menu_img1_3.png', alt='Услуги и сервисы')
+              .menu__item.menu__item--x3t
+                +ui-p3('Блог')
+                +ui-p5('Свежая информация', 'menu, --secondary3')
+                +ui-svg('icon_blog', 'menu')
+              .menu__item.menu__item--x6t.menu__item--bg1.menu__item--banner
+                +ui-p1('Кредит', '--bold')
+                  span  0
+                  =' %'
+                +ui-p4('с услугой «Гарантия ставки»')
+                .menu__image: img(src='../../images/banner_img--credit0.png', alt='Кредит')
+              .menu__item.menu__item--x3t
+                +ui-p3('Служба заботы о клиентах')
+                +ui-p5('Всегда рядом', 'menu, --secondary3')
+                +ui-svg('icon_support', 'menu')
+              .menu__item.menu__item--x3t
+                +ui-p3('Офисы и банкоматы')
+                +ui-p5('Более 1000 отделений', 'menu, --secondary3')
+                +ui-svg('icon_geo', 'menu')
+              .menu__item.menu__item--x6t.menu__item--bg2.menu__item--small-banner
+                +ui-p3('Акции и спецпредложения')
+                .menu__image: img(src='../../images/menu_img1_4.png', alt='Акции и спецпредложения')
+          +ui-tab-item
+            .menu__menu
+              .menu__item.menu__item--x6t.menu__item--bg1.menu__item--banner
+                +ui-p1('Зарплатный проект', '--bold')
+                .menu__image: img(src='../../images/menu_img2_0.png', alt='')
+              .menu__item.menu__item--x3t
+                +ui-p3('Кредитование')
+                .menu__image: img(src='../../images/menu_img2_1.png', alt='')
+              .menu__item.menu__item--x3t
+                +ui-p3('Депозиты и векселя')
+                .menu__image: img(src='../../images/menu_img2_2.png', alt='')
+              .menu__item.menu__item--x3t.menu__item--delobank
+                +ui-svg('icon_delobank')
+                +ui-button('', '--arrow45')
+              .menu__item.menu__item--x3t.menu__button(data-menu='main/other-products')
+                +ui-p3('Другие продукты')
+                .menu__image: img(src='../../images/menu_img2_3.png', alt='')
+          +ui-tab-item
+            .menu__menu
+              .menu__item.menu__item--x3t.menu__button(data-menu='main/about')
+                +ui-p3('О банке')
+                .menu__image: img(src='../../images/menu_img3_1.png', alt='')
+              .menu__item.menu__item--x3t
+                +ui-p3('Пресс-центр')
+                .menu__image: img(src='../../images/menu_img3_2.png', alt='')
+              .menu__item.menu__item--x2t.menu__item--x3m
+                +ui-p3('Раскрытие информации')
+                +ui-svg('icon_file', 'menu')
+              .menu__item.menu__item--x2t.menu__item--x3m
+                +ui-p3('Реквизиты')
+                +ui-svg('icon_bank', 'menu')
+              .menu__item.menu__item--x2t.menu__item--x3m
+                +ui-p3('Вопросы и ответы')
+                +ui-svg('icon_services', 'menu')
+              .menu__item.menu__item--x3t
+                +ui-p3('Партнерам')
+                +ui-svg('icon_partners', 'menu')
+              .menu__item.menu__item--x3t.menu__item--x6m.menu__item--small
+                +ui-p3('Вакансии')
+                +ui-svg('icon_services', 'menu')
+      .menu__menu
+        .menu__item.menu__item--x4t.menu__item--currency-rate
+          +currency-rate
+        .menu__item.menu__item--x2t.menu__item--geo.js-popup(href='#popupGeo')
+          +ui-p7('Выберите город', '--secondary3, --uppercase')
+          +ui-p7('', '--bold, --uppercase')
+            +ui-svg('icon_geo-tick')
+            ='Санкт-Петеpбуpг'
+          +ui-button('', 'menu, --arrow-right')
+      .menu__phones
+        a(href='tel:88001000600')
+          +ui-h5('8 800 1000 600')
+            +ui-p4('Бесплатно по России', '--secondary3')
+        a(href='tel:83433557575')
+          +ui-h5('+7 343 355 75 75')
+            +ui-p4('Для звонков из-за границы', '--secondary3')
+
+    .menu__body(data-menu='credits' data-scroll-lock-scrollable)
+      .menu__top
+        +ui-h4('Кредиты', '--bold')
+        .menu__swipe
+        .menu__close
+      .menu__menu
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Быстрый кредит', 'menu')
+          .menu__image
+            img(src='../../images/banner_img--credit1.png', alt='Инвестиции')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Кредит пенсионный', 'menu')
+          .menu__image
+            img(src='../../images/banner_img--credit2.png', alt='Инвестиции')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Кредит на большие суммы', 'menu')
+          .menu__image
+            img(src='../../images/banner_img--credit3.png', alt='Инвестиции')
+        .menu__item.menu__item--x3t.menu__item--h160
+          +ui-p3('Кредит для пpедпpинимателей', 'menu')
+          .menu__image
+            img(src='../../images/banner_img--credit4.png', alt='Инвестиции')
+        .menu__item.menu__item--x6t.menu__item--bg1.menu__item--banner
+          +ui-p1('Кредит', '--bold')
+            span  0
+            =' %'
+          +ui-p4('с услугой «Гарантия ставки»')
+          .menu__image
+            img(src='../../images/banner_img--credit0.png', alt='Кредит')
+      +ui-button({p7: 'Все кредиты', mods: '--bold, --uppercase'}, 'menu')
+
+    .menu__body(data-menu='main/services' data-scroll-lock-scrollable)
+      .menu__top
+        .menu__back
+        +ui-h4('Услуги и сервисы', '--bold')
+        .menu__swipe
+        .menu__close
+      .menu__menu
+        .menu__item.menu__item--x3t.menu__item--bg2
+          +ui-p3('Система быстрых платежей')
+          +ui-svg('icon_sbp', 'menu')
+        .menu__item.menu__item--x3t.menu__item--bg1
+          +ui-p3('Интернет-банк и Мобильное приложение')
+          +ui-svg('icon_login', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x3m
+          +ui-p3('Пакет услуг')
+          +ui-svg('icon_services', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x3m
+          +ui-p3('Оплата услуг')
+          +ui-svg('icon_card', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x2m
+          +ui-p3('Аренда сейфовых ячеек')
+          +ui-svg('icon_rent', 'menu')
+        .menu__item.menu__item--x3t.menu__item--x2m
+          +ui-p3('Денежны переводы')
+          +ui-svg('icon_transfer', 'menu')
+        .menu__item.menu__item--x3t.menu__item--x2m
+          +ui-p3('Госуслуги')
+          +ui-svg('icon_gosuslugi', 'menu')
+      +ui-h4('Платить легко', 'menu, --bold')
+      .menu__menu.menu__menu--white
+        .menu__item.menu__item--x2t
+          +ui-svg('icon_google-pay', '')
+          +ui-p3('Google Pay')
+        .menu__item.menu__item--x2t
+          +ui-svg('icon_apple-pay', '')
+          +ui-p3('Apple Pay')
+        .menu__item.menu__item--x2t
+          +ui-svg('icon_sbp-pay', '')
+          +ui-p3('СбПэй')
+        .menu__item.menu__item--x2t
+          +ui-svg('icon_wallet-pay', '')
+          +ui-p3('Кошелек Pay')
+        .menu__item.menu__item--x2t
+          +ui-svg('icon_mir-pay', '--mir')
+          +ui-p3('Mir Pay')
+        .menu__item.menu__item--x2t
+          +ui-svg('icon_samsung-pay', '')
+          +ui-p3('Samsung Pay')
+      +mobile-bank('menu')
+
+    .menu__body(data-menu='main/other-products' data-scroll-lock-scrollable)
+      .menu__top
+        .menu__back
+        +ui-h4('Другие продукты', '--bold')
+        .menu__swipe
+        .menu__close
+      .menu__menu
+        .menu__item.menu__item--x3t.menu__item--bg2
+          +ui-p3('Торговые системы')
+          +ui-svg('icon_chart', 'menu')
+        .menu__item.menu__item--x3t.menu__item--bg1
+          +ui-p3('Депозитарий')
+          +ui-svg('icon_box', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x2m
+          +ui-p3('Эквайринг')
+          +ui-svg('icon_card', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x2m
+          +ui-p3('Быстрые платежи')
+          +ui-svg('icon_clock', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x2m
+          +ui-p3('Валютный контроль')
+          +ui-svg('icon_chart2', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x3m
+          +ui-p3('Международные расчеты')
+          +ui-svg('icon_world', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x3m
+          +ui-p3('Инкассация')
+          +ui-svg('icon_delivery', 'menu')
+        .menu__item.menu__item--x2t.menu__item--x3m
+          +ui-p3('Операции с иностранной валютой')
+          +ui-svg('icon_dollar', 'menu')
+        .menu__item.menu__item--x3t.menu__item--x3m
+          +ui-p3('Банковские гарантии')
+          +ui-svg('icon_safe', 'menu')
+        .menu__item.menu__item--x3t.menu__item--x6m.menu__item--small
+          +ui-p3('Партнерская программа по кредитованию')
+          +ui-svg('icon_partners', 'menu')
+      +mobile-bank('menu')
+
+    .menu__body(data-menu='main/about' data-scroll-lock-scrollable)
+      .menu__top
+        .menu__back
+        +ui-h4('О банке', '--bold')
+        .menu__swipe
+        .menu__close
+      .menu__menu
+        .menu__item.menu__item--x3t
+          +ui-p3('Миссия и философия банка')
+          +ui-svg('icon_bank', 'menu')
+        .menu__item.menu__item--x3t
+          +ui-p3('Истоpия')
+          +ui-svg('icon_book', 'menu')
+        .menu__item.menu__item--x3t
+          +ui-p3('Клиенты Банка')
+          +ui-svg('icon_partners', 'menu')
+        .menu__item.menu__item--x3t
+          +ui-p3('Рейтинги')
+          +ui-svg('icon_star', 'menu')
+        .menu__item.menu__item--x6t.menu__item--small
+          +ui-p3('Участие Банка в ассоциациях и организациях')
+          +ui-svg('icon_emblem', 'menu')
+        .menu__item.menu__item--x3t
+          +ui-p3('Финансовые показатели')
+          +ui-svg('icon_coins', 'menu')
+        .menu__item.menu__item--x3t
+          +ui-p3('Филиалы')
+          +ui-svg('icon_geo', 'menu')
+        .menu__item.menu__item--x3t
+          +ui-p3('Дата внесения сведений в Книгу ГРКО')
+          +ui-svg('icon_calendar', 'menu')
+        .menu__item.menu__item--x3t
+          +ui-p3('Безопасность клиента')
+          +ui-svg('icon_safe', 'menu')
+        .menu__item.menu__item--x6t.menu__item--small
+          +ui-p3('Благотворительность')
+          +ui-svg('icon_heart', 'menu')
+      +ui-h6('Документы', 'menu, --bold')
+      +document({p4:'Лицензии и свидетельства'}, 'menu')
+      +document({p4:'Тендеры'}, 'menu')
+      +document({p4:'Аудиторская организация'}, 'menu')
+      +ui-h6('Реквизиты', 'menu, --bold')
+      +ui-p4('Реквизиты', 'menu')
+      +ui-p4('Информация о подразделениях Банка России,осуществляющих надзор за деятельностью Банка', 'menu')
+      +ui-p4('Удостоверяющий центр', 'menu')
+      +ui-h6('Лица', 'menu, --bold')
+      +ui-p4('Акционеры', 'menu')
+      +ui-p4('Лица, ответственные за полноту, достоверностьи актуальность публикуемых сведений', 'menu')
+    block

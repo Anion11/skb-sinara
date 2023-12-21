@@ -1,0 +1,38 @@
+.save-points {
+  &__head {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__body {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 40px;
+    @include media-laptop {
+      grid-auto-flow: unset;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 45px 60px;
+    }
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+  &__ui-p1 {
+    margin-bottom: 14px;
+    span {
+      font: 44px/1.2 $font;
+      @include media-laptop {
+        font-size: 40px;
+      }
+      @include media-tablet {
+        font-size: 26px;
+      }
+    }
+  }
+}

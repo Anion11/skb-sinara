@@ -1,0 +1,42 @@
+mixin conditions(data, mods)
+  -
+    const baseName = 'conditions'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .conditions(class=allMods)&attributes(attributes)
+    if data.h3
+      .conditions__head
+        +ui-h3(data.h3, '--bold')
+    .conditions__body
+      if data.items
+        each slider, index in data.items
+          .conditions__slider.swiper
+            .swiper-wrapper
+              each item in slider.front
+                .conditions__slide.swiper-slide
+                  if item.icon
+                    +ui-svg(item.icon, 'conditions')
+                  if item.p3
+                    +ui-p3(item.p3)
+                  +ui-button('', 'conditions, --arrow-right')
+                  .swiper-button-next
+              each item in slider.back
+                .conditions__slide.swiper-slide(class=(item.mobileFullWidth ? `conditions__slide--w100` : ''))
+                  if item.p3
+                    +ui-p3(item.p3)
+                  if item.p5
+                    +ui-p5(item.p5, 'conditions, --secondary3')
+                  +ui-button('', 'conditions, --cross')
+                  .swiper-button-prev
+    if data.p5
+      .conditions__footer
+        +ui-info('conditions')
+          +ui-p5(data.p5, '--secondary3')
+    block

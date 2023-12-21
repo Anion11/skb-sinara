@@ -1,0 +1,21 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'deposits'
+    const pageTitle = 'Deposits'
+    const siteSection = 'private'
+    const headerMenuActive = 'Вклады и счета'
+
+block content
+  main
+    .inner
+      +breadcrumbs
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Вклады и счета')
+        +breadcrumbs-item('Вклады и счета', '/', '--mobile')
+      +deposits
+      +section('--background, --m-m0')
+        +documents
+      +section
+        +insurance

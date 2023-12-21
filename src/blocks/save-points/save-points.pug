@@ -1,0 +1,23 @@
+mixin save-points(title, items, mods)
+  -
+    const baseName = 'save-points'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .save-points(class=allMods)&attributes(attributes)
+    .save-points__head
+      +ui-h3(title, '--bold')
+    .save-points__body
+      each item in items
+        .save-points__item
+          +ui-p1(item.p1, 'save-points, --primary1')
+          +ui-p3(item.p3)
+            if item.tooltip
+              +ui-tooltip('', 'Test')
+    block

@@ -1,0 +1,114 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'payment-sticker'
+    const pageTitle = 'Платежный стикер'
+
+    const conditionsItems = {
+      h3: 'Преимущества',
+      items: [
+        {
+          front: [{ icon: 'icon_nfc', p3: 'Бесконтактная оплата' }],
+          back: [{ p3: 'Оплатить покупку можно в&nbsp;одно касание, приложив смартфон к&nbsp;терминалу', mobileFullWidth: true }]
+        },
+        {
+          front: [{ icon: 'icon_coins', p3: 'До 5% бонусных баллов за&nbsp;покупки' }],
+          back: [{ p3: 'Оплачивая стикером, возможно получать до&nbsp;5&nbsp;000 бонусными баллами ежемесячно. 1&nbsp;бонусный балл = 1₽', mobileFullWidth: true }]
+        },
+        {
+          front: [{ icon: 'icon_clock', p3: 'Мгновенный выпуск' }],
+          back: [{ p3: 'В отделении в день обращения', mobileFullWidth: true }]
+        },
+        { front: [{ icon: 'icon_safe', p3: 'Безопасное использование' }],
+          back: [{ p3: 'На стикере отсутствуют данные карты и&nbsp;владельца', mobileFullWidth: true }]
+        },
+        {
+          front: [{ icon: 'icon_card', p3: 'Дебетовая карта уменьшенных размеров' }],
+          back: [{ p3: 'Стикер со&nbsp;встроенным NFC-чипом бесконтактной оплаты и&nbsp;клейкой основой для&nbsp;любой поверхности' }]
+        }
+      ]
+    }
+
+    const parametersGrid = [
+      {
+        p3: 'Тип',
+        p1: 'Платежный стикер'
+      },
+      {
+        p3: 'Тарифный план',
+        p1: 'Универсальный'
+      },
+      {
+        itemMods: 'parameters-grid__item--t-w100',
+        p3: 'Валюта',
+        p1: 'Рубли РФ (₽)'
+      },
+      {
+        itemMods: 'parameters-grid__item--w100 parameters-grid__item--pd-l',
+        table: [
+          {
+            p3_1: 'Выпуск стикера',
+            p3_2: '790 ₽',
+          },
+          {
+            p3_1: 'Обслуживание стикера',
+            p3_2: '49 ₽/мес.',
+          },
+        ]
+      }
+    ]
+
+    const instructionData = [
+      {
+        img: '../../images/payment-sticker/instruction_1.png',
+        title: 'Приклейте стикер на&nbsp;заднюю часть смартфона',
+        descr: 'Отделите стикер от&nbsp;карточки и&nbsp;снимите защитный слой с&nbsp;клейкой стороны'
+      },
+      {
+        img: '../../images/payment-sticker/instruction_2.png',
+        title: 'Установите ПИН-код',
+        descr: 'В мобильном приложении Банка Синара на&nbsp;главной странице выберите платежный стикер → нажмите на&nbsp;иконку платежного стикера → нажмите на&nbsp;шестерёнку в&nbsp;правом верхнем углу → перейдите в&nbsp;раздел «ПИН-код» → установите ПИН-код'
+      },
+      {
+        img: '../../images/payment-sticker/instruction_3.png',
+        title: 'Приложите стикер на&nbsp;телефоне к&nbsp;терминалу для&nbsp;оплаты покупок',
+        descr: 'Удерживайте телефон в&nbsp;течение нескольких секунд, до&nbsp;звукового сигнала'
+      },
+    ]
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Платежный стикер')
+        +breadcrumbs-item('Платежный стикер', '/', '--mobile')
+      +banner({h2: 'Платежный стикер', p2: 'Оплата одним касанием телефона', infoItems: [{ icon: 'icon_rocket', p4: 'моментальный <br>выпуск' }, { p2: 'до<span>5</span>%', p4: 'кешбэк в&nbsp;любимых <br>категориях' }], image: 'banner_img--payment-sticker.png'}, '--payment-sticker, --layout')
+      +section
+        +conditions(conditionsItems)
+      +section
+        +section-head
+          +ui-h3('Как пользоваться стикером', '--bold')
+        +instruction(instructionData, '--imgs-w100, --text-max-w')
+      +section('--background')
+        +parameters-new('Параметры', [{ p4: 'Условия' }, { p4: 'Тарифы и документы'}])
+          +ui-tab-item('--active')
+            .parameters-new__top
+              +ui-h4('Условия', '--bold')
+              .parameters-new__close
+            +parameters-grid(parametersGrid, '--x3')
+            +section-footnote('--max-w900')
+              +ui-info: +ui-p5('Остальные условия такие же как и по <a class="ui-primary1" href="#">Универсальной карте</a>', '--secondary3')
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Тарифы и документы', '--bold')
+              .parameters-new__close
+            +document({p4: 'Тарифы банка'})
+            +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+            +document({p4: 'Реквизиты для безналичного пополнения счета'})
+      +section
+        +payment-sticker
+      +section
+        +questions
+

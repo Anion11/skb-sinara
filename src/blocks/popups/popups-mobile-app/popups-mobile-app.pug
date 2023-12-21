@@ -1,0 +1,18 @@
+mixin popups-mobile-app(mods)
+  -
+    const baseName = 'popups-mobile-app'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popups-mobile-app(class=allMods)&attributes(attributes)
+    +ui-svg('icon_sinara', 'popups-mobile-app')
+    +ui-p3('Установите мобильный банк', 'popups-mobile-app, --bold')
+    +ui-button('', 'popups-mobile-app, --download')
+    .popups-mobile-app__close
+    block

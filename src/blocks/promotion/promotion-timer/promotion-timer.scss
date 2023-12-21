@@ -1,0 +1,220 @@
+.promotion-timer {
+  position: relative;
+  padding: 35px;
+  background: #E2DDD6;
+  border-radius: 16px;
+  @include media-laptop {
+    padding: 30px 35px;
+  }
+  @include media-tablet {
+    padding: 25px 20px;
+  }
+  &__head {
+    margin-bottom: 20px;
+    text-align: center;
+    @include media-tablet {
+      margin-bottom: 16px;
+    }
+  }
+  &__p2 {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+  &__foot {
+    margin-top: 20px;
+    text-align: center;
+    @include media-tablet {
+      margin-top: 16px;
+    }
+  }
+  &__ui-button {
+    @include media-tablet {
+      width: 100%;
+    }
+  }
+  &__timer {
+    position: relative;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px 10px 10px;
+    background:  linear-gradient(180deg, #1A1A1A 0%, #000 100%);
+    color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    @include media-laptop {
+      padding: 15px 6px 8px;
+      gap: 10px;
+    }
+    @include media-tablet {
+      padding: 12px 6px 7px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 14px;
+      background: linear-gradient(180deg, #8D8D8E 0%, rgb(65 65 67 / 0.00) 98.96%);
+      @include media-tablet {
+        height: 10px;
+      }
+    }
+  }
+  &__item {
+    text-align: center;
+    &:not(:first-child) {
+      .promotion-timer__numbers {
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: -4px;
+          transform: translate(-100%, -50%);
+          width: 8px;
+          height: 27px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='27' fill='none'%3E%3Cpath fill='url(%23a)' d='M7.078.506H.387v6.816h6.691V.506Z'/%3E%3Cpath fill='url(%23b)' d='M7.078 19.556H.387v6.816h6.691v-6.816Z'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='3.707' x2='3.756' y1='.428' y2='7.267' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F2F2F2'/%3E%3Cstop offset='.989' stop-color='%23E6E6E6'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='3.707' x2='3.756' y1='19.482' y2='26.321' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F2F2F2'/%3E%3Cstop offset='.989' stop-color='%23E6E6E6'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+          background-size: contain;
+          background-repeat: no-repeat;
+          @include media-tablet {
+            right: -1px;
+            width: 6px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    &[hidden] {
+      + .promotion-timer__item .promotion-timer__numbers {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+  &__numbers {
+    display: flex;
+    gap: 4px;
+    @include media-laptop {
+      gap: 2px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 5px;
+      @include media-tablet {
+        margin-bottom: 2px;
+      }
+    }
+  }
+  &__number {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 69px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='37' height='71' fill='none'%3E%3Cpath fill='url(%23a)' d='M33.681 70.116H3.155C.829 70.116 0 69.239 0 66.643V4.657C0 1.898.828.892 3.346.892H33.65c2.485 0 3.154 1.006 3.154 3.7v61.921c.032 2.759-.637 3.603-3.123 3.603Z'/%3E%3Cpath fill='url(%23b)' d='M33.426 69.694H3.41c-2.294 0-3.09-.877-3.09-3.44V4.98c0-2.726.828-3.732 3.281-3.732h29.826c2.454 0 3.091 1.006 3.091 3.635v61.24c0 2.758-.637 3.57-3.09 3.57Z'/%3E%3Cpath fill='%23000' d='M32.758 69.142H4.143c-2.326 0-3.155-.876-3.155-3.472V5.63c0-2.758.829-3.764 3.346-3.764h28.424c2.485 0 3.154 1.006 3.154 3.7v60.006c0 2.726-.669 3.57-3.154 3.57Z'/%3E%3Cpath fill='url(%23c)' d='M31.897 68.039H4.971c-2.198 0-2.963-.844-2.963-3.376V6.442c0-2.694.796-3.667 3.154-3.667h26.735c2.358 0 2.964.973 2.964 3.57V64.5c.032 2.726-.606 3.538-2.964 3.538Z'/%3E%3Cpath fill='url(%23d)' d='M31.356 67.52H5.576c-2.102 0-2.867-.844-2.867-3.343V6.83c0-2.628.765-3.602 3.027-3.602h25.62c2.262 0 2.868.974 2.868 3.537V64.08c-.032 2.629-.638 3.44-2.868 3.44Z'/%3E%3Cpath fill='url(%23e)' d='M31.516 65.637H5.323c-1.466 0-2.263-.39-2.645-1.428 0 2.466.764 3.31 2.868 3.31h25.779c2.23 0 2.835-.811 2.867-3.375-.318 1.103-1.083 1.493-2.676 1.493Z'/%3E%3Cpath fill='url(%23f)' d='M5.513 4.981h26.034c1.561 0 2.326.455 2.677 1.526-.032-2.37-.67-3.278-2.868-3.278H5.736c-2.199 0-2.963.876-3.027 3.278.382-1.071 1.243-1.526 2.804-1.526Z'/%3E%3Cpath fill='url(%23g)' d='M4.653 40.843H2.709l-.701-.585v-9.833l.7-.552h1.945v3.992l-.574 1.103v.812l.574 1.103v3.96Z'/%3E%3Cpath fill='url(%23h)' d='M32.248 40.843h1.944l.7-.585v-9.833l-.7-.552h-1.944v3.992l.574 1.103v.812l-.574 1.103v3.96Z'/%3E%3Cpath fill='%23000' d='M4.08 30.425H.987v9.833H4.08v-9.833Z'/%3E%3Cpath fill='url(%23i)' d='M3.727 30.717h-2.07v9.217h2.07v-9.217Z'/%3E%3Cpath fill='%23000' d='M35.911 30.425h-3.09v9.833h3.09v-9.833Z'/%3E%3Cpath fill='url(%23j)' d='M35.243 30.717h-2.071v9.217h2.071v-9.217Z'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='18.199' x2='18.688' y1='.31' y2='69.621' gradientUnits='userSpaceOnUse'%3E%3Cstop/%3E%3Cstop offset='.989' stop-color='%23666'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='18.183' x2='18.666' y1='.677' y2='69.225' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%230D0D0D'/%3E%3Cstop offset='.995' stop-color='%23262626'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' x1='18.442' x2='18.442' y1='3.085' y2='68.247' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23383838'/%3E%3Cstop offset='.995' stop-color='%231A1A1A'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' x1='18.449' x2='18.449' y1='3.502' y2='67.707' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='.005' stop-color='%231F1F1F'/%3E%3Cstop offset='1' stop-color='%23080808'/%3E%3C/linearGradient%3E%3ClinearGradient id='e' x1='18.449' x2='18.449' y1='64.544' y2='67.534' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23030303'/%3E%3Cstop offset='.785'/%3E%3C/linearGradient%3E%3ClinearGradient id='f' x1='18.452' x2='18.452' y1='3.241' y2='6.523' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23737373'/%3E%3Cstop offset='.081' stop-color='%23676767'/%3E%3Cstop offset='.312' stop-color='%234B4B4B'/%3E%3Cstop offset='.543' stop-color='%23363636'/%3E%3Cstop offset='.773' stop-color='%232A2A2A'/%3E%3Cstop offset='1' stop-color='%23262626'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='3.321' x2='3.321' y1='29.542' y2='40.819' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23030303'/%3E%3Cstop offset='.27' stop-color='%230A0A0A'/%3E%3Cstop offset='.673' stop-color='%231E1E1E'/%3E%3Cstop offset='.989' stop-color='%23333'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' x1='33.577' x2='33.577' y1='29.542' y2='40.819' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23030303'/%3E%3Cstop offset='.27' stop-color='%230A0A0A'/%3E%3Cstop offset='.673' stop-color='%231E1E1E'/%3E%3Cstop offset='.989' stop-color='%23333'/%3E%3C/linearGradient%3E%3ClinearGradient id='i' x1='2.693' x2='2.693' y1='30.618' y2='40.151' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23404040'/%3E%3Cstop offset='.073' stop-color='%23333'/%3E%3Cstop offset='.194' stop-color='%23737373'/%3E%3Cstop offset='.201' stop-color='%23717171'/%3E%3Cstop offset='.413' stop-color='%23333'/%3E%3Cstop offset='.842' stop-color='%23050505'/%3E%3Cstop offset='.995' stop-color='%231A1A1A'/%3E%3C/linearGradient%3E%3ClinearGradient id='j' x1='34.203' x2='34.203' y1='30.618' y2='40.151' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23404040'/%3E%3Cstop offset='.073' stop-color='%23333'/%3E%3Cstop offset='.194' stop-color='%23737373'/%3E%3Cstop offset='.201' stop-color='%23717171'/%3E%3Cstop offset='.413' stop-color='%23333'/%3E%3Cstop offset='.842' stop-color='%23050505'/%3E%3Cstop offset='.995' stop-color='%231A1A1A'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    font: 70px/0.8 $fontBebasNeue;
+    perspective: 100vw;
+    perspective-origin: 50% 50%;
+    @include media-tablet {
+      width: 24px;
+      height: 44px;
+      font-size: 40px;
+    }
+    .base {
+      display: block;
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+      @include media-tablet {
+        top: 10px;
+      }
+    }
+    .flap {
+      position: absolute;
+      top: 5px;
+      left: 3px;
+      width: calc(100% - 6px);
+      height: 50%;
+      display: none;
+      background-color: #1D1D1D;
+      transform-origin: 50% 100%;
+      backface-visibility: hidden;
+      overflow: hidden;
+      @include media-tablet {
+        top: 4px;
+      }
+      &::before {
+        content: attr(data-content);
+        position: absolute;
+        left: 50%;
+      }
+      &.front::before,
+      &.under::before {
+        top: 100%;
+        transform: translate(-50%, -50%);
+      }
+      &.back {
+        transform: rotateY(180deg);
+        animation: flip-down-back 0.5s linear both;
+        &::before {
+          top: 100%;
+          transform:  translate(-50%, -50%) rotateZ(180deg);
+        }
+      }
+      &.over {
+        z-index: 2;
+      }
+      &.under {
+        z-index: 1;
+        animation: fade-under 0.5s linear both;
+      }
+      &.front {
+        animation: flip-down-front 0.5s linear both;
+      }
+    }
+  }
+}
+
+@keyframes flip-down-front {
+  0% {
+    transform: rotateX(0deg);
+    background-color: #1D1D1D;
+    color: #fff;
+  }
+  100% {
+    transform: rotateX(-180deg);
+    background-color: #090909;
+    color: #fff;
+  }
+}
+@keyframes flip-down-back {
+  0% {
+    transform: rotateY(180deg) rotateX(0deg);
+    background-color: #1D1D1D;
+    color: #fff;
+  }
+  100% {
+    transform: rotateY(180deg) rotateX(180deg);
+    background-color: #090909;
+    color: #fff;
+  }
+}
+@keyframes fade-under {
+  0% {
+    background-color: #1D1D1D;
+    color: #fff;
+  }
+  100% {
+    background-color: #090909;
+    color: #fff;
+  }
+}

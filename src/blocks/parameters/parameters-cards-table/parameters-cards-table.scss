@@ -1,0 +1,134 @@
+.parameters-cards-table {
+  &__wrapper {
+    @include media-laptop {
+      margin: 0 -24px;
+      padding: 0 24px;
+      overflow-y: auto;
+    }
+    @include media-tablet {
+      margin: 0 -15px;
+      padding: 0 15px 20px;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+      height: 3px;
+      @include media-tablet {
+        display: block;
+      }
+    }
+    &::-webkit-scrollbar-track {
+      margin: 0 20px;
+      background-color: $background1;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $primary1;
+      border-radius: 10px;
+    }
+  }
+  &__body {
+    position: relative;
+    @include media-laptop {
+      min-width: 1245px;
+    }
+    @include media-tablet {
+      min-width: 738px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      width: calc(100% - 384px);
+      background: #fff;
+      border-radius: 14px;
+      @include media-laptop {
+        width: calc(100% - 350px);
+      }
+      @include media-tablet {
+        width: calc(100% - 220px);
+        background: $background1;
+      }
+    }
+  }
+  &__ui-h4 {
+    display: none;
+    margin-bottom: 20px;
+    @include media-tablet {
+      display: block;
+    }
+  }
+  &__line {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 384px 1fr 1fr;
+    @include media-laptop {
+      grid-template-columns: 350px 1fr 1fr;
+    }
+    @include media-tablet {
+      grid-template-columns: 220px 1fr 1fr;
+    }
+    &:not(:last-child) {
+      .parameters-cards-table {
+        &__cell {
+          border-bottom: 1px solid $background1;
+          @include media-tablet {
+            border-color: #fff;
+          }
+          &:first-child {
+            border-color: #E4E4E4;
+          }
+          &--bb0 {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  &__cell {
+    padding: 20px;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:not(:first-child):not(:last-child) {
+      border-right: 1px solid $background1;
+      @include media-tablet {
+        border-color: #fff;
+      }
+    }
+    .ui-p3 {
+      .ui-ul,
+      p {
+        &:not(:last-child) {
+          margin-bottom: 14px;
+        }
+      }
+      .ui-ul {
+        li {
+          &:not(:last-child) {
+            margin-bottom: 14px;
+          }
+        }
+      }
+    }
+    &--head {
+      text-align: center;
+    }
+    &--span2 {
+      grid-column: span 2;
+      text-align: center;
+      .ui-p3 {
+        padding: 14px 70px;
+        background: $background1;
+        border-radius: 10px;
+        @include media-tablet {
+          padding: 14px 20px;
+          background: #fff;
+        }
+      }
+    }
+  }
+}

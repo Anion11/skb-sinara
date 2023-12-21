@@ -1,0 +1,44 @@
+mixin offices-filter(mods)
+  -
+    const baseName = 'offices-filter'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .offices-filter(class=allMods)&attributes(attributes)
+    button.offices-filter__button.offices-filter__button--check
+    form.offices-filter__body(data-scroll-lock-scrollable)
+      .offices-filter__head
+        .offices-filter__swipe.offices__swipe
+        .offices-filter__close
+          +ui-svg('icon_close')
+      .offices-filter__content
+        .offices-filter__section
+          .offices-filter__list.offices-filter__list--buttons
+            +ui-checkbox('openNow', {p4: 'Банк Синара'}, 'offices-filter, --white')(checked)
+            +ui-checkbox('clockRound', {p4: 'Газэнергобанк'}, 'offices-filter, --white')
+            +ui-checkbox('weekendsWork', {p4: 'Инвестиционный банк'}, 'offices-filter, --white')(checked)
+        .offices-filter__section
+          +ui-p3('Банки-партнеры', 'offices-filter, --bold')
+          .offices-filter__list
+            +ui-checkbox('weekends', 'Работает по выходным', 'offices-filter, --white')(checked)
+            +ui-checkbox('rub', 'Выдача рублей', 'offices-filter, --white')
+            +ui-checkbox('deposit', 'Внесение наличных', 'offices-filter, --white')(checked)
+            +ui-checkbox('services', 'Оплата услуг', 'offices-filter, --white')
+            +ui-checkbox('issuance', 'Выдача валюты', 'offices-filter, --white')
+            +ui-checkbox('transfers', 'Денежные переводы', 'offices-filter, --white')
+          .offices-filter__list.offices-filter__list--hidden
+            +ui-checkbox('services2', 'Оплата услуг', 'offices-filter, --white')
+            +ui-checkbox('issuance2', 'Выдача валюты', 'offices-filter, --white')
+            +ui-checkbox('transfers2', 'Денежные переводы', 'offices-filter, --white')
+      .offices-filter__actions
+        .offices-filter__buttons
+          +ui-button({p3: 'Показать еще'}, '--p44, --border-primary1').ui-button--show-more
+          +ui-button({p3: 'Сбросить фильтр'}, '--p44, --border-secondary1')(type='submit')
+        +offices-banner('offices-filter')
+    block

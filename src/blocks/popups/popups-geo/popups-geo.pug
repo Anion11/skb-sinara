@@ -1,0 +1,20 @@
+mixin popups-geo(mods)
+  -
+    const baseName = 'popups-geo'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popups-geo(class=allMods)&attributes(attributes)
+    .popups-geo__text
+      +ui-p5('Ваш город:', 'popups-geo, --secondary4')
+      a.js-popup(a href='#popupGeo')
+        +ui-p7('Санкт-Петербург?', '--uppercase, --white')
+    +ui-button({p7: 'Да', mods: '--bold, --uppercase'}, 'popups-geo, --filled')
+    +ui-button({p7: 'Нет', mods: '--bold, --uppercase'}, 'popups-geo, --bg-white')
+    block

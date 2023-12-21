@@ -1,0 +1,62 @@
+mixin repayment(items, mods)
+  -
+    const baseName = 'repayment'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .repayment(class=allMods)&attributes(attributes)
+    each item in items
+      if item.withoutCommission
+        .repayment__head
+          if pageName === 'credits-inner'
+            +ui-h5('Погашение без комиссии', '--bold')
+          else
+            +ui-h3('Погашение без комиссии', '--bold')
+        .repayment__body
+          .repayment__item
+            +ui-p1('В <a href="#">банкоматах</a> ПАО Банк Синара', 'repayment')
+            +ui-p3('Внесение наличных в банкоматах с&nbsp;функцией приема денег (cash-in)', 'repayment, --secondary3')
+            +ui-svg('icon_atm', 'repayment')
+          .repayment__item
+            +ui-p1('В <a href="#">офисах</a> ПАО Банк Синара и АО «Газэнергобанк»', 'repayment')
+            +ui-svg('icon_geo', 'repayment')
+          .repayment__item
+            +ui-p1('Переводы по Системе быстрых платежей', 'repayment')
+            +ui-p3('По номеру телефона до&nbsp;100&nbsp;000&nbsp;₽, свыше – комиссия&nbsp;0,5%, максимум 500&nbsp;₽', 'repayment, --secondary3')
+            .repayment__image.repayment__image--sbp: img(src='../../images/sbp.png', alt='')
+          .repayment__item.repayment__item--x3
+            +ui-p1('Сервис КИВИ', 'repayment')
+            +ui-p3('В салонах связи Tele2. Для пополнения потребуется номер карты или номер вашего счёта, который начинается с 40817810 и содержит 20 знаков', 'repayment, --w465, --secondary3')
+            +ui-button('', 'repayment, --arrow-right')
+            .repayment__image.repayment__image--qiwi: img(src='../../images/qiwi.png', alt='')
+          .repayment__item.repayment__item--x3.repayment__item--internet-bank
+            +ui-p1('В <a href="#">интернет-банке</a> или <a href="#">мобильном&nbsp;приложении</a>', 'repayment')
+            +ui-p3('Перевод с другого счёта в Банке Синара на счёт для оплаты кредита', 'repayment, --secondary3')
+            +ui-button('', 'repayment, --arrow-right')
+            .repayment__image.repayment__image--internet-bank: img(src='../../images/internet-bank-qr.png', alt='')
+
+      if item.withCommission
+        .repayment__head
+          if pageName === 'credits-inner'
+            +ui-h5('Погашение c комиссией', '--bold')
+          else
+            +ui-h3('Погашение c комиссией', '--bold')
+        .repayment__body
+          .repayment__item.repayment__item--x3
+            +ui-p1('Другие банки', 'repayment')
+            +ui-p3('Пополнение по реквизитам счёта, номеру карты или номеру телефона. Комиссия взимается в соответствие с тарифами другого банка', 'repayment, --w465, --secondary3')
+            +ui-svg('icon_bank', 'repayment')
+          .repayment__item.repayment__item--x3
+            +ui-p1('Сервис «Погашение кредитов» от «Золотой Короны»', 'repayment, --w380')
+            +ui-p3('В пунктах партнеров МТС, Билайн, Kari, НОУ-ХАУ и банках от 0 Р. Для пополнения потребуется номер кредитного договора, счета, номер телефона и ФИО получателя', 'repayment, --w465, --secondary3')
+            +ui-button('', 'repayment, --arrow-right')
+            .repayment__image.repayment__image--gold-crown: img(src='../../images/gold-crown.png', alt='')
+        .repayment__foot
+          +ui-p5('Длительность операционного дня банка устанавливается с 00:00 до 20:00 по московскому времени. Банк принимает текущим рабочим днем документы Клиента и иных лиц, поступившие в течение операционного дня, установленного Банком. Распоряжения и документы Клиента, поступившие после окончания операционного дня, считаются принятыми Банком следующим рабочим днем.', 'repayment, --secondary3')
+    block

@@ -1,0 +1,29 @@
+mixin popup-certificates(mods)
+  -
+    const baseName = 'popup-certificates'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  +popup('popupCertificates', '--certificates').popup-certificates(class=allMods)&attributes(attributes)
+    .popup-certificates__body
+      .popup-certificates__image: img(src='../../../images/popup-certificates_img.png', alt='')
+      .popup-certificates__content
+        +ui-h4('Сертификаты не установлены', 'popup-certificates, --bold')
+        +ui-p3('Для получения защищенного и безопасного доступа к веб-ресурсам Банка Синара используйте браузеры с поддержкой российских сертификатов: Яндекс Браузер или Атом, либо установите сертификат на ваше устройство для доступа к веб-ресурсам с любого браузера')
+        .popup-certificates__buttons
+          +ui-button({p4: 'Установить сертификат', mods: '--bold'}, 'popup-certificates, --filled')
+          +ui-button({p4: 'Установить Яндекс Браузер', mods: '--bold'}, 'popup-certificates, --yabrowser')
+          +ui-button({p4: 'Установить браузер АТОМ', mods: '--bold'}, 'popup-certificates, --atom')
+  .certificate-check.certificate-check--active
+    .certificate-check__wrap
+      .certificate-check__preloader
+        .certificate-check__circle
+          span
+      +ui-p5('Выполняем проверку наличия российского сертификата на вашем устройстве', 'certificate-check')
+    block

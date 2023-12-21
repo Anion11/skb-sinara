@@ -1,0 +1,26 @@
+mixin offices-banner(mods)
+  -
+    const baseName = 'offices-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  a.offices-banner(href='#' class=allMods)&attributes(attributes)
+    .offices-banner__body
+      .offices-banner__close
+      +ui-p1('Кредит <span>0</span> %', 'offices-banner, --bold, --primary1')
+      +ui-p6('с услугой «Гарантия ставки»')
+      .offices-banner__info
+        .offices-banner__item
+          +ui-p6('до <span>5</span> лет')
+          +ui-p6('срок кредита', '--secondary3')
+        .offices-banner__item
+          +ui-p6('до <span>3</span> млн ₽')
+          +ui-p6('максимальная сумма', '--secondary3')
+    .offices-banner__image: img(src='../../images/offices/offices-banner_img1.png', alt='')
+    block

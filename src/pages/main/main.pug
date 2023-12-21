@@ -1,0 +1,37 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'main'
+    const pageTitle = 'Main'
+    const headerAbsolute = true
+    const siteSection = 'private'
+
+block content
+  main
+    .inner
+      +main-banner
+      a.become-customer(href='#')
+        +ui-p2('Стать клиентом банка Синара')
+        .become-customer__image
+          if isNewYear
+            img(src='../../images/new-year/become-customer_img_ny_24.png', alt='Стать клиентом банка Синара')
+          else
+            img(src='../../images/main/become-customer_img.png', alt='Стать клиентом банка Синара')
+      +section
+        +main-offer
+      +section
+        +main-products
+      +section(`${isNewYear ? '--background, --ny-24-garland' : '--background'}`)
+        +main-calculator([{credit: true}, {deposit: { period: true, checkboxes: [{ id: 'newClient', label: 'Новый клиент'}]}}])
+      +section
+        +main-promo
+      +section
+        +main-news
+      +section
+        +main-articles
+      +section
+        +main-usefull
+    +popups
+    +popup-feedback
+    +popup-feedback-success

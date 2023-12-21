@@ -1,0 +1,43 @@
+.popup-holidays-docs {
+  &.popup {
+    @include media-tablet {
+      padding-top: 20px;
+    }
+  }
+  &__head {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 25px;
+    }
+    .ui-h4 {
+      @include media-tablet {
+        padding-right: 30px;
+      }
+    }
+  }
+  &__line {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 40px;
+    padding: 16px 20px;
+    &:not(:last-child) {
+      border-bottom: 1px solid $secondary4;
+    }
+    &:first-child {
+      background-color: $background1;
+      border: none;
+      border-radius: 14px;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  &__ui-p3 {
+    margin-top: 25px;
+  }
+}

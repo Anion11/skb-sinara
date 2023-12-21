@@ -1,0 +1,63 @@
+.credit-holidays-table {
+  overflow: hidden;
+  &__head {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__body {
+    @include media-laptop {
+      overflow: auto;
+    }
+  }
+  &__line {
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    margin: 0 80px;
+    padding: 20px 0;
+    gap: 20px;
+    @include media-laptop {
+      margin: 0 15px;
+    }
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      margin: 0;
+    }
+    &:first-child {
+      @include media-tablet {
+        display: none;
+      }
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid $background1;
+      @include media-tablet {
+        border-bottom: none;
+      }
+    }
+    &--black-bg {
+      margin: 0;
+      padding: 17px 80px 15px;
+      background-color: $secondary2;
+      border-radius: 6px;
+      @include media-laptop {
+        padding: 17px 15px 15px;
+      }
+    }
+  }
+  &__ui-p3 {
+    @include media-tablet {
+      padding: 16px;
+      color: #fff !important;
+      background-color: $secondary2;
+      border-radius: 6px;
+    }
+  }
+  &__footnote {
+    max-width: 1260px;
+    margin-top: 45px;
+  }
+}

@@ -1,0 +1,48 @@
+mixin money-scheme(mods)
+  -
+    const baseName = 'money-scheme'
+
+    function addMods(baseName, mods) {
+      let allMods = ''
+      if (typeof mods !== 'undefined' && mods) {
+        const modsList = mods.split(',')
+        for (const element of modsList) {
+          allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+        }
+        allMods = allMods.trim()
+      }
+      return allMods
+    }
+    const allMods = addMods(baseName, mods)
+
+    const data = [
+      {
+        sum: '50 000 ₽',
+        descr: 'Сумма на начало месяца',
+      },
+      {
+        sum: '3 000 ₽',
+        descr: 'Сумма, которую вы сняли со счёта 10&nbsp;числа. На счёте у вас осталось 47&nbsp;000&nbsp;₽',
+        mods: '--gradient2, --bot',
+      },
+      {
+        sum: '10 000 ₽',
+        descr: 'Сумма, которую вы внеслина счёт 25&nbsp;числа. На счёте у вас осталось 57&nbsp;000&nbsp;₽',
+        mods: '--gradient1',
+      },
+      {
+        sum: '47 000 ₽',
+        descr: 'Минимальная сумма, которая была у вас в текущем месяце. Именно на эту сумму будет начислен процент',
+        mods: '--gradient1, --stripes, --bot',
+      },
+    ]
+
+  .money-scheme(class=allMods)&attributes(attributes)
+    .money-scheme__container
+      each item in data
+        .money-scheme__item(class=addMods('money-scheme__item', item.mods))
+          .money-scheme__content
+            +ui-p2(item.sum, 'money-scheme, --bold')
+            +ui-p4(item.descr, 'money-scheme, --secondary3')
+          .money-scheme__strip
+    block

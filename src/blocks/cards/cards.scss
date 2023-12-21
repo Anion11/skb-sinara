@@ -1,0 +1,203 @@
+.cards {
+  &__head {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__ui-h2 {
+    margin-bottom: 30px;
+    @include media-laptop {
+      max-width: 470px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__body {
+    display: grid;
+    gap: 30px;
+    @include media-laptop {
+      gap: 20px;
+    }
+    @include media-tablet {
+      gap: 16px;
+    }
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 430px;
+    background-color: $background1;
+    border-radius: 24px;
+    overflow: hidden;
+    @include media-tablet {
+      height: 290px;
+      border-radius: 14px;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 40px 80px;
+    @include media-laptop {
+      padding: 35px 24px 40px;
+    }
+    @include media-tablet {
+      padding: 24px 15px;
+    }
+  }
+  &__ui-p7 {
+    margin-bottom: 24px;
+    padding: 6px 12px 5px;
+    background-color: #fff;
+    border-radius: 20px;
+    @include media-laptop {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      margin-bottom: 0;
+    }
+    @include media-tablet {
+      position: static;
+      margin-bottom: 10px;
+    }
+  }
+  &__ui-h3 {
+    margin-bottom: 6px;
+    @include media-laptop {
+      max-width: 520px;
+      margin-bottom: 8px;
+    }
+  }
+  &__ui-p2 {
+    max-width: 570px;
+    @include media-laptop {
+      max-width: 425px;
+    }
+    @include media-tablet {
+      max-width: 160px;
+    }
+  }
+  &__info {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    @include media-laptop {
+      gap: 30px;
+    }
+    @include media-tablet {
+      display: none;
+    }
+    .ui-p2 {
+      span {
+        font-size: 38px;
+        @include media-laptop {
+          font-size: 34px;
+        }
+      }
+    }
+    .ui-p3 {
+      @include media-laptop {
+        max-width: 120px;
+      }
+      span {
+        color: $primary1;
+      }
+      br {
+        @include media-laptop {
+          display: none;
+        }
+      }
+    }
+  }
+  &__info-item {
+    &--big {
+      .ui-p3 {
+        @include media-laptop {
+          max-width: 200px;
+        }
+      }
+    }
+  }
+  &__info-icon {
+    width: 28px;
+    height: 28px;
+    margin: 10px 0 13px;
+    @include media-laptop {
+      width: 26px;
+      height: 26px;
+      margin: 8px 0 13px;
+    }
+    @include media-tablet {
+      width: 19px;
+      height: 19px;
+    }
+  }
+  &__ui-p3 {
+    margin-top: 6px;
+  }
+  &__buttons {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    z-index: 1;
+    margin-top: auto;
+    @include media-tablet {
+      position: static;
+    }
+  }
+  &__ui-button {
+    &.ui-button--filled {
+      @include media-tablet {
+        display: none;
+      }
+    }
+    &.ui-button--p44 {
+      @include media-tablet {
+        display: none;
+      }
+      &:not(.ui-button--filled) {
+        background-color: $background1;
+        &:hover {
+          background-color: $primary1;
+        }
+      }
+    }
+    &.ui-button--arrow-right {
+      display: none;
+      position: static;
+      @include media-tablet {
+        display: inline-flex;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+  &__image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 740px;
+    pointer-events: none;
+    @include media-laptop {
+      right: -125px;
+      max-width: 500px;
+    }
+    @include media-tablet {
+      right: -40px;
+      max-width: 275px;
+    }
+  }
+}

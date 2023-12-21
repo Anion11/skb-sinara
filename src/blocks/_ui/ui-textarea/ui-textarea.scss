@@ -1,0 +1,13 @@
+.ui-textarea {
+  position: relative;
+  textarea {
+    width: 100%;
+    padding: 15px 20px;
+    font: 16px/1.5 $font;
+    background-color: $background1;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: 0;
+    resize: none;
+  }
+}

@@ -1,0 +1,121 @@
+mixin cards-category-group(mods)
+  -
+    const baseName = 'cards-category-group'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        title: 'Группа 1',
+        list: [
+          {
+            img: 'cards-category-group_1.png',
+            name: 'АЗС',
+            value: '2,5%'
+          },
+          {
+            img: 'cards-category-group_2.png',
+            name: 'Рестораны ',
+            nameNowrap: 'и фастфуд',
+            value: '2,5%'
+          },
+          {
+            img: 'cards-category-group_3.png',
+            name: 'Супермаркеты',
+            value: '2,5%'
+          },
+          {
+            img: 'cards-category-group_4.png',
+            name: 'Категория ',
+            nameNowrap: 'не выбрана',
+            value: '0%'
+          },
+        ]
+      },
+      {
+        title: 'Группа 2',
+        list: [
+          {
+            img: 'cards-category-group_5.png',
+            name: 'Детские ',
+            nameNowrap: 'товары',
+            value: '4%'
+          },
+          {
+            img: 'cards-category-group_6.png',
+            name: 'Дом ',
+            nameNowrap: 'и ремонт',
+            value: '4%'
+          },
+          {
+            img: 'cards-category-group_7.png',
+            name: 'Одежда ',
+            nameNowrap: 'и обувь',
+            value: '4%'
+          },
+          {
+            img: 'cards-category-group_4.png',
+            name: 'Категория ',
+            nameNowrap: 'не выбрана',
+            value: '0%'
+          },
+        ]
+      },
+      {
+        title: 'Группа 3',
+        list: [
+          {
+            img: 'cards-category-group_8.png',
+            name: 'Аптеки',
+            value: '7%'
+          },
+          {
+            img: 'cards-category-group_9.png',
+            name: 'Транспорт',
+            value: '7%'
+          },
+          {
+            img: 'cards-category-group_10.png',
+            name: 'Досуг ',
+            nameNowrap: 'и развлечения',
+            value: '7%'
+          },
+          {
+            img: 'cards-category-group_4.png',
+            name: 'Категория ',
+            nameNowrap: 'не выбрана',
+            value: '0%'
+          },
+        ]
+      },
+    ]
+
+  .cards-category-group(class=allMods)&attributes(attributes)
+    each group in data
+      .cards-category-group__box
+        .cards-category-group__head
+          .cards-category-group__thumbs
+            -for(let i=0; i<group.list.length - 1; i++)
+              .cards-category-group__thumb: img(src=`../../images/cards/${group.list[i].img}` alt='')
+          +ui-h5(group.title, 'cards-category-group, --bold')
+          button.cards-category-group__button
+        .cards-category-group__list
+          each item in group.list
+            .cards-category-group__item
+              .cards-category-group__img: img(src=`../../images/cards/${item.img}` alt=item.name)
+              +ui-p3(item.name)
+                if item.nameNowrap
+                  =' '
+                  span.ui-nowrap !{item.nameNowrap}
+                    +ui-tooltip('', 'tt')
+                else
+                  +ui-tooltip('', 'tt')
+              +ui-p3(item.value, 'cards-category-group, --bold, --primary1')
+
+    block

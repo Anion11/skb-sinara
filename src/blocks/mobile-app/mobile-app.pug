@@ -1,0 +1,35 @@
+mixin mobile-app(mods)
+  -
+    const baseName = 'mobile-app'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const listItems1 = [
+      { p3: 'Смотрите подробную информацию обо всех покупках' },
+      { p3: 'Бесплатно пополняйте карту с карты любого банка' },
+      { p3: 'Переводите деньги между своими счетами' }
+    ]
+
+    const imgSrc = pageName === 'main' ? '../../images/mobile-app_img.png' : (isNewYear ? '../../images/new-year/mobile-app_img--not-main-page_ny_24.png' : '../../images/mobile-app_img--not-main-page.png')
+
+  .mobile-app(class=allMods)&attributes(attributes)
+    .mobile-app__content
+      case pageName
+        when 'cards-goodness'
+        when 'cards-salary'
+          +ui-h5('Скачайте мобильное приложение Банка Синара', 'mobile-app, --bold')
+          +ui-p2('И будьте в курсе всех расходных операций по&nbsp;карте', 'mobile-app')
+        default
+          +ui-h5('С мобильным приложением Синара Банк все будет под контролем', 'mobile-app, --bold')
+          +ui-ul(listItems1, 'mobile-app')
+      .mobile-app__buttons(class=pageName === 'cards-goodness' ? 'mobile-app__buttons--m-col' : '')
+        +ui-button({p4: 'Скачать', mods: '--bold'}, '--desktop, --download')
+        +ui-button({p4: 'Скачать', mods: '--bold'}, '--mobile, --download')
+        +ui-button({p3: 'Подробнее', mods: '--bold'}, '--arrow')
+    .mobile-app__image: img(src=imgSrc, alt='С мобильным приложением Синара Банк все будет под контролем')
+    block

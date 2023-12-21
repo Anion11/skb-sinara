@@ -1,0 +1,59 @@
+mixin credits(mods)
+  -
+    const baseName = 'credits'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const items = [
+      { p7: 'Акция', h5: 'Поймайте суперудачу!', p3: 'Возьмите кредит и получите шанс его не платить' },
+      { h3: 'Кредит <span>0</span> %', p2: 'с услугой «Гарантия ставки»', info: [{ p2: 'до <span>5</span> лет', p3: 'срок кредита' }, { p2: 'до <span>4</span> млн ₽', p3: 'максимальная сумма' }]},
+      { h3: 'Быстрый кредит', p2: 'Решение без похода в офис', info: [{ p2: 'от <span>5.7</span> %', p3: 'ставка на весь срок' }, { p2: 'до <span>300</span> тыс ₽', p3: 'сумма на руки' }]},
+      { h3: 'Кредит пенсионный', p2: 'Большие возможности зрелого возраста', info: [{ p2: 'от <span>5.7</span> %', p3: 'ставка на весь срок' }, { p2: 'до <span>3</span> млн ₽', p3: 'сумма на руки' }]},
+      { h3: 'Кредит на большие суммы', p2: 'Большие возможности для ваших планов', info: [{ p2: 'от <span>5.7</span> %', p3: 'ставка на весь срок' }, { p2: 'до <span>3</span> млн ₽', p3: 'сумма на руки' }]},
+      { h3: 'Кредит для пpедпpинимателей', p2: 'Быстрое решение без похода в офис', info: [{ p2: 'от <span>5.7</span> %', p3: 'ставка на весь срок' }, { p2: 'до <span>1</span> млн ₽', p3: 'сумма на руки' }]}
+    ]
+
+  .credits(class=allMods)&attributes(attributes)
+    .credits__head
+      +ui-h2('Кредиты на любые цели', '--bold')
+    .credits__body
+      each item, index in items
+        .credits__item(class=(index === 0 ? 'credits__item--action' : ''))
+          .credits__content
+            if item.p7
+              +ui-p7(item.p7, 'credits, --primary1, --uppercase')
+            if item.h5
+              +ui-h5(item.h5, 'credits, --bold')
+            if item.h3
+              +ui-h3(item.h3, 'credits, --bold')
+            if item.p3
+              +ui-p3(item.p3, 'credits, --secondary3')
+            if item.p2
+              +ui-p2(item.p2, 'credits, --secondary3')
+            .credits__info
+              if item.info
+                each infoItem in item.info
+                  .credits__info-item
+                    +ui-p2(infoItem.p2)
+                    +ui-p3(infoItem.p3, 'credits, --secondary3')
+            .credits__buttons
+              if index === 1
+                +ui-button({p3: 'Оформить', mods: '--bold'}, 'credits, --filled, --p44')
+              +ui-button({p3: 'Подробнее', mods: '--bold'}, 'credits, --p44')
+              +ui-button('', 'credits, --arrow-right')(href='#')
+          if index === 0
+            .credits__image: img(src=`../../images/banner_img--credit-action.png`, alt=item.h5)
+          else
+            -
+              index = index - 1
+            .credits__image
+              if isNewYear
+                img(src=`../../images/new-year/banner_img--credit${index++}.png`, alt=item.h3)
+              else
+                img(src=`../../images/banner_img--credit${index++}.png`, alt=item.h3)
+    block

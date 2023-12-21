@@ -1,0 +1,20 @@
+mixin ui-ul(listItems, mods)
+  -
+    const baseName = 'ui-ul'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  ul.ui-ul(class=allMods)&attributes(attributes)
+    each item in listItems
+      li
+        if item.p3
+          +ui-p3(item.p3)
+        if item.p4
+          +ui-p4(item.p4)
+    block

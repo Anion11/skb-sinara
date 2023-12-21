@@ -1,0 +1,31 @@
+mixin main-promo(mods)
+  -
+    const baseName = 'main-promo'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .main-promo(class=allMods)&attributes(attributes)
+    .main-promo__head
+      +ui-h3('Акции и спецпредложения', '--bold')
+      +ui-button({p4: 'Все акции'}, '--arrow')(href='#')
+    .main-promo__body
+      .main-promo__slider.swiper
+        .swiper-wrapper
+          -for (slides = 0; slides < 6; slides++)
+            a.main-promo__slide.swiper-slide(href='#')
+              .main-promo__image
+                img(src='../../images/main/main-promo_img.jpg', alt='«Уралочка» выручает в «Пятерочке»')
+              .main-promo__content
+                +ui-h6('«Уралочка» выручает в «Пятерочке»', 'main-promo, --bold')
+                +ui-p4('Оплачивайте покупки Единой социальной картой и получайте подарки от магазина «Пятёрочка»', 'main-promo, --secondary3')
+                +ui-button({p3: 'Подробнее'}, '--p44')
+      -const swiperButtonsMods = isNewYear ? 'main-promo, --white, --border, --ny-24' : 'main-promo'
+      +ui-swiper-buttons(swiperButtonsMods)
+      +ui-button({p3: 'Все акции'}, 'main-promo, --p44')
+    block

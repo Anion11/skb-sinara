@@ -1,0 +1,163 @@
+mixin cards-calculator(type, mods)
+  -
+    const baseName = 'cards-calculator'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .cards-calculator(class=allMods)&attributes(attributes)
+    case type
+      when 'categories'
+        .cards-calculator__section
+          .cards-calculator__grid.cards-calculator__grid--col3
+            .cards-calculator__group
+              .cards-calculator__item
+                +ui-p3('Группа 1', 'cards-calculator')
+                +ui-select('--bold, cards-calculator')(required data-not-escape='')
+                  option='<img src="images/cards-calculator_select-0.png"/>Маркетплейсы'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 2'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 3'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 4'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 5'
+              .cards-calculator__item
+                +ui-p3('Сумма покупок в группе 1', 'cards-calculator')
+                +ui-input('', '', 'cards-calculator, --background1', 'summ')(value='1000', data-step='500', data-min='500', data-max='1000000' pattern='[0-9]*' inputmode='numeric')
+                  +ui-svg('icon_minus')
+                  +ui-svg('icon_plus')
+                .cards-calculator__limits
+                  +ui-p5('от  500 ₽', '--secondary3')
+                  +ui-p5('до  1 млн ₽', '--secondary3')
+            .cards-calculator__group
+              .cards-calculator__item
+                +ui-p3('Группа 2', 'cards-calculator')
+                +ui-select('--bold, cards-calculator')(required data-not-escape='')
+                  option='<img src="images/cards-calculator_select-0.png"/>Маркетплейсы'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 2'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 3'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 4'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 5'
+              .cards-calculator__item
+                +ui-p3('Сумма покупок в группе 2', 'cards-calculator')
+                +ui-input('', '', 'cards-calculator, --background1', 'summ')(value='1000', data-step='500', data-min='500', data-max='1000000' pattern='[0-9]*' inputmode='numeric')
+                  +ui-svg('icon_minus')
+                  +ui-svg('icon_plus')
+                .cards-calculator__limits
+                  +ui-p5('от  500 ₽', '--secondary3')
+                  +ui-p5('до  1 млн ₽', '--secondary3')
+            .cards-calculator__group
+              .cards-calculator__item
+                +ui-p3('Группа 3', 'cards-calculator')
+                +ui-select('--bold, cards-calculator')(required data-not-escape='')
+                  option='<img src="images/cards-calculator_select-0.png"/>Маркетплейсы'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 2'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 3'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 4'
+                  option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь 5'
+              .cards-calculator__item
+                +ui-p3('Сумма покупок в группе 3', 'cards-calculator')
+                +ui-input('', '', 'cards-calculator, --background1', 'summ')(value='1000', data-step='500', data-min='500', data-max='1000000' pattern='[0-9]*' inputmode='numeric')
+                  +ui-svg('icon_minus')
+                  +ui-svg('icon_plus')
+                .cards-calculator__limits
+                  +ui-p5('от  500 ₽', '--secondary3')
+                  +ui-p5('до  1 млн ₽', '--secondary3')
+        .cards-calculator__section
+          .cards-calculator__grid.cards-calculator__grid--col2
+            .cards-calculator__item
+              +ui-p3('Сумма покупок с услугой «Все в одной»', 'cards-calculator')
+              +ui-input('', '', 'cards-calculator, --background1', 'summ')(value='1000', data-step='500', data-min='500', data-max='1000000' pattern='[0-9]*' inputmode='numeric')
+                +ui-svg('icon_minus')
+                +ui-svg('icon_plus')
+              .cards-calculator__limits
+                +ui-p5('от  500 ₽', '--secondary3')
+                +ui-p5('до  1 млн ₽', '--secondary3')
+            .cards-calculator__item
+              +ui-p3('Сумма покупок в остальных категориях', 'cards-calculator')
+              +ui-input('', '', 'cards-calculator, --background1', 'summ')(value='1000', data-step='500', data-min='500', data-max='1000000' pattern='[0-9]*' inputmode='numeric')
+                +ui-svg('icon_minus')
+                +ui-svg('icon_plus')
+              .cards-calculator__limits
+                +ui-p5('от  500 ₽', '--secondary3')
+                +ui-p5('до  1 млн ₽', '--secondary3')
+        .cards-calculator__section.cards-calculator__section--mt30
+          .cards-calculator__options
+            +ui-checkbox('cardsMore', 'Можно больше')
+              +ui-tooltip('', 'Test')
+            +ui-checkbox('all-in-one', 'Все в одной')
+              +ui-tooltip('', 'Test')
+        .cards-calculator__section
+          .cards-calculator__info.cards-calculator__info--col2
+            .cards-calculator__item
+              .cards-calculator__line
+                +ui-p2('Сумма баллов за месяц', '--secondary3')
+                +ui-h6('5 000')
+              .cards-calculator__line
+                +ui-p2('Сумма баллов за год', '--secondary3')
+                +ui-h6('50 000')
+              +ui-button({p4: 'Выбрать карту', mods: '--bold'}, 'cards-calculator, --filled, --p44')
+            .cards-calculator__item
+              +ui-info: +ui-p5('Бонусная программа подключается к первой выпущенной Универсальной карте на платежной системе Мир или Mastercard. <br> Если у вас несколько Универсальных карт – перенести Бонусную программу на ту, которой планируете чаще пользоваться. <br> Для переключения оставьте заявку в чате интернет-банка, мобильного приложения или позвоните по тел. ', '--secondary3')
+                =' '
+                a.ui-nowrap.ui-primary1(href='tel:88001000600') 88001000600
+      default
+        .cards-calculator__head
+          +ui-h3('Узнайте сколько бонусных баллов заработаете', 'cards-calculator, --bold')
+          +ui-p2('С любимой категорией получайте больше', '--secondary3')
+        .cards-calculator__body
+          .cards-calculator__item
+            +ui-p3('Выберите любимую категорию, где вы чаще всего делаете покупки', 'cards-calculator')
+            +ui-select('--bold, cards-calculator')(required data-not-escape='')
+              option='<img src="images/cards-calculator_select-0.png"/>Маркетплейсы'
+              option='<img src="images/cards-calculator_select-1.png"/>Одежда и обувь'
+              option='<img src="images/cards-calculator_select-2.png"/>Мой дом'
+              option='<img src="images/cards-calculator_select-3.png"/>Праздник'
+              option='<img src="images/cards-calculator_select-4.png"/>Город'
+              option='<img src="images/cards-calculator_select-5.png"/>Развлечения'
+              option='<img src="images/cards-calculator_select-6.png"/>Прочее'
+            +ui-p3('Сумма покупок в любимой категории', 'cards-calculator')
+              +ui-tooltip('', 'Test')
+            +ui-input('', '', 'cards-calculator, --background1', 'summ')(value='1000', data-step='500', data-min='500', data-max='1000000' pattern='[0-9]*' inputmode='numeric')
+              +ui-svg('icon_minus')
+              +ui-svg('icon_plus')
+            .cards-calculator__limits
+              +ui-p5('от  500 ₽', '--secondary3')
+              +ui-p5('до  1 млн ₽', '--secondary3')
+            +ui-p3('Сумма покупок в остальных категориях', 'cards-calculator')
+              +ui-tooltip('', 'Test')
+            +ui-input('', '', 'cards-calculator, --background1', 'summ')(value='1000', data-step='500', data-min='500', data-max='1000000' pattern='[0-9]*' inputmode='numeric')
+              +ui-svg('icon_minus')
+              +ui-svg('icon_plus')
+            .cards-calculator__limits
+              +ui-p5('от  500 ₽', '--secondary3')
+              +ui-p5('до  1 млн ₽', '--secondary3')
+            +ui-checkbox('cardsMore', 'Можно больше', 'cards-calculator')
+              +ui-tooltip('', 'Test')
+          .cards-calculator__item
+            .cards-calculator__info
+              .cards-calculator__category
+                .cards-calculator__image: img(src='../../images/cards/cards-categories_img1.png', alt='Одежда и обувь')
+                .cards-calculator__text
+                  +ui-p7('Вам подходит категория', '--uppercase, --secondary3')
+                  +ui-h6('Одежда и обувь', 'cards-calculator, --bold')
+                    span=' 5%'
+              .cards-calculator__line
+                +ui-p2('Общая сумма покупок', '--secondary3')
+                +ui-h6('2 000 ₽')
+              .cards-calculator__line
+                +ui-p2('Сумма баллов за месяц', '--secondary3')
+                +ui-h6('5 000')
+              .cards-calculator__line
+                +ui-p2('Сумма баллов за год', '--secondary3')
+                +ui-h6('50 000')
+              +ui-button({p4: 'Оформить карту', mods: '--bold'}, 'cards-calculator, --filled, --p44')
+            +ui-p5('Расчет носит информационно-справочный характер', 'cards-calculator')
+              +ui-tooltip('', 'test')
+    block

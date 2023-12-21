@@ -1,0 +1,31 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'blog-inner-blocks'
+    const pageTitle = 'Внутренние блоки для старого шаблона внутренней блога'
+
+    const pointBannerData = {
+      img: '../../images/usefull_img2.png',
+      p1: 'Накопите 1 000 баллов и компенсируйте любую покупку от 1 000 ₽ за предыдущий месяц',
+      button: 'Оформить карту'
+    }
+
+block content
+  main
+    .inner
+      +ui-h3(pageTitle)
+    br
+    br
+    br
+    .inner(style='max-width: 800px;')
+      +benefits('--1-col', true)
+      br
+      br
+      +point-banner(pointBannerData, '--px-0, --d-size-s')
+      br
+      br
+      +mobile-app('--mx-0, --d-size-s')
+      br
+      br
+      +get-money('', '--px-0, --d-size-s')

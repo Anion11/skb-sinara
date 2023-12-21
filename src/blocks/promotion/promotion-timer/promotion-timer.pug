@@ -1,0 +1,42 @@
+mixin promotion-timer(mods)
+  -
+    const baseName = 'promotion-timer'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const promoTimeItems =[
+      { id: 'months', descr: 'месяцев' },
+      { id: 'days', descr: 'дней' },
+      { id: 'hours', descr: 'часов' },
+      { id: 'minutes', descr: 'минут' },
+      { id: 'seconds', descr: 'секунд' },
+    ]
+
+  .promotion-timer(class=allMods)&attributes(attributes)
+    .promotion-timer__head
+      +ui-p2('До завершения акции осталось:', 'promotion-timer, --bold')
+      +ui-p4('успейте воспользоваться!')
+    .promotion-timer__timer(data-end='October 20, 2023 16:33:00')
+      each item, index in promoTimeItems
+        .promotion-timer__item(data-timer-item=`promo-timer-${item.id}`)
+          .promotion-timer__numbers
+            .promotion-timer__number.promotion-timer__number--first
+              span.base
+              .flap.over.front
+              .flap.over.back
+              .flap.under
+            .promotion-timer__number.promotion-timer__number--second
+              span.base
+              .flap.over.front
+              .flap.over.back
+              .flap.under
+          +ui-p5(item.descr)
+    .promotion-timer__foot
+      +ui-button({p3: 'Условия акции'}, 'promotion-timer, --p64, --filled-white')(href='#')
+    block

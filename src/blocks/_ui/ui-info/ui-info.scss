@@ -1,0 +1,15 @@
+.ui-info {
+  position: relative;
+  padding-left: 26px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1796_28838)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.92398 4.67871C10.5599 4.67871 11.0754 5.19417 11.0754 5.8302C11.0754 6.46612 10.5599 6.98159 9.92398 6.98159C9.2879 6.98159 8.77244 6.46612 8.77244 5.8302C8.77244 5.19417 9.2879 4.67871 9.92398 4.67871ZM11.0894 13.6061L11.6864 13.8328V15.2544H7.93359V13.8328L8.75806 13.6061V9.88172H7.93359V8.46003H11.0894V13.6061Z' stroke='%23DC0533' stroke-miterlimit='22.9256'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.0565 17.5909C6.45203 18.4619 8.10074 18.9654 9.86697 18.9654C14.8916 18.9654 18.9649 14.8921 18.9649 9.86745C18.9649 4.84283 14.8916 0.769531 9.86697 0.769531C4.84234 0.769531 0.769043 4.84283 0.769043 9.86745C0.769043 11.6681 1.29224 13.3466 2.19476 14.7592L0.925166 18.9225L5.0565 17.5909Z' stroke='%23DC0533' stroke-miterlimit='22.9256'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1796_28838'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}

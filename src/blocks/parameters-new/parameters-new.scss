@@ -1,0 +1,204 @@
+.parameters-new {
+  &__head {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 25px;
+    }
+    &--flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      @include media-tablet {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+    }
+    &--mb0 {
+      margin-bottom: 0;
+    }
+  }
+  &__ui-h3 {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  &__ui-tab-head {
+    margin-bottom: 35px;
+    @include media-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 0;
+      overflow: visible;
+    }
+    .ui-tab-head__item {
+      @include media-tablet {
+        flex-direction: column;
+        align-items: baseline;
+        height: 220px;
+        padding: 16px 12px;
+        text-align: left;
+        white-space: unset;
+        color: $secondary1;
+        background-color: #fff;
+        border-color: #fff;
+        border-radius: 14px;
+      }
+      .ui-button {
+        display: none;
+        @include media-tablet {
+          display: inline-flex;
+          margin-top: auto;
+        }
+      }
+    }
+  }
+  &__ui-tab-body {
+    &:not(:last-child) {
+      @include media-laptop {
+        margin-bottom: 30px;
+      }
+      @include media-tablet {
+        margin-bottom: 25px;
+      }
+    }
+    > .ui-tab-body__item {
+      @include media-tablet {
+        display: none;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        z-index: 30;
+        width: 100%;
+        max-height: 90%;
+        padding: 0 15px 102px;
+        background: #fff;
+        box-shadow: 0 0 25px rgba(0 0 0 / 0.1);
+        border-radius: 14px 14px 0 0;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+  &__ui-svg {
+    display: none;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 24px;
+    color: $primary1;
+    @include media-tablet {
+      display: block;
+    }
+  }
+  &__top {
+    display: none;
+    @include media-tablet {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      padding: 35px 0 5px;
+      background-color: #fff;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: calc((100vw - 100%) / 2);
+        height: 100%;
+        background-color: inherit;
+      }
+      &::before {
+        right: 100%;
+      }
+      &::after {
+        left: 100%;
+      }
+    }
+  }
+  &__close {
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Ccircle cx='12' cy='12' r='11.5' stroke='%23949494'/%3E%3Cpath stroke='%23949494' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='1.5' d='m7.97 8.01 8.06 8.061M7.97 15.99l8.06-8.061'/%3E%3C/svg%3E");;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  &__ui-h5 {
+    margin-bottom: 20px;
+    @include media-tablet {
+      padding-right: 30px;
+    }
+  }
+  &__ui-switch {
+    margin-bottom: 30px;
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__repayment {
+    &:not(:last-child) {
+      margin-bottom: 45px;
+      @include media-laptop {
+        margin-bottom: 35px;
+      }
+      @include media-tablet {
+        margin-bottom: 30px;
+      }
+    }
+    .repayment__item {
+      background-color: #fff;
+      @include media-tablet {
+        background-color: $background1;
+      }
+    }
+  }
+  &__ui-p2 {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  &__ui-ul {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  .ui-tab-head--bg-white {
+    @include media-tablet {
+      --bg: #{$background1};
+      --bg-tab: #fff;
+    }
+  }
+  .ui-checkbox {
+    @include media-tablet {
+      --bg: #{$background1};
+    }
+  }
+  .ui-table {
+    @include media-tablet {
+      --border-color: #fff;
+      --bg: #{$background1};
+      --scrollbar-track-color: #{$background1};
+      --bg-tile-color: #fff;
+    }
+  }
+  .document {
+    @include media-tablet {
+      --bg: #{$background1};
+    }
+  }
+  .ui-accordion {
+    @include media-tablet {
+      --wrap-bg: #{$background1};
+    }
+  }
+}

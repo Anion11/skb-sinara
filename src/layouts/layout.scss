@@ -1,0 +1,152 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+*:focus {
+  outline: none;
+}
+html {
+  box-sizing: border-box;
+  line-height: 1;
+  scroll-behavior: smooth;
+  &.lock-scroll {
+    position: relative;
+    overflow: hidden;
+    body {
+      position: relative;
+      overflow: hidden;
+    }
+  }
+}
+body {
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  &.is-using-mouse {
+    overflow: hidden;
+  }
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: $secondary1;
+  transition: 0.3s;
+  &:hover {
+    text-decoration: inherit;
+    color: $primary1;
+  }
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+span,
+ul,
+ol,
+li,
+tr,
+td,
+th,
+table,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+// defaults
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+  font-family: $font;
+  color: $secondary1;
+  &--ov-h {
+    overflow: hidden;
+  }
+  &--background1 {
+    background: $background1;
+  }
+  .inner {
+    max-width: 1480px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    @include media-laptop {
+      max-width: 100%;
+    }
+    &--w100 {
+      max-width: 1920px;
+      padding: 0 30px;
+      @include media-laptop {
+        padding: 0 20px;
+      }
+    }
+    &--s {
+      max-width: 1320px;
+    }
+  }
+  main {
+    flex: 1 0;
+    padding-bottom: 80px;
+    @include media-laptop {
+      padding-bottom: 70px;
+    }
+    @include media-tablet {
+      padding-bottom: 50px;
+    }
+    &.main--pb30 {
+      padding-bottom: 30px;
+    }
+    > .inner {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .become-customer {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-left: 20px;
+    border: 1px solid $secondary4;
+    border-radius: 16px;
+    @include media-tablet {
+      display: flex;
+    }
+    &__image {
+      max-width: 56px;
+    }
+  }
+  .ui {
+    &-nowrap {
+      white-space: nowrap;
+    }
+    &-secondary3 {
+      color: $secondary3;
+    }
+    &-primary1 {
+      color: $primary1;
+    }
+    &-text-center {
+      text-align: center;
+    }
+    &-text-right {
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+mixin popup-geo(mods)
+  -
+    const baseName = 'popup-geo'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const tabHeadings = [
+      { p7: 'Москва' },
+      { p7: 'Санкт-Петербург' },
+      { p7: 'Уфа' },
+      { p7: 'Екатеринбург' },
+      { p7: 'Ростов-на-дону' }
+    ]
+
+  +popup('popupGeo', '--geo').popup-geo(class=allMods)&attributes(attributes)
+    .popup-geo__head
+      +ui-h4('Выбор города', '--bold')
+      .popup-geo__search
+        +ui-input('', '', '--background1')(placeholder='Чем вам помочь?')
+      .popup-geo__favorites
+        each item in tabHeadings
+          .ui-tab-head__item
+            +ui-p7(item.p7, '--uppercase')
+    .popup-geo__body(data-scroll-lock-scrollable)
+      +ui-h5('Все города', '--bold')
+      .popup-geo__list
+        -for (letters = 0; letters < 30; letters++)
+          .popup-geo__item
+            +ui-h5('A', '-bold')
+            ul
+              -for (city = 0; city < 10; city++)
+                li
+                  +ui-p3('A')
+    block

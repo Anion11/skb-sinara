@@ -1,0 +1,14 @@
+mixin ui-svg(iconName, mods)
+  -
+    const baseName = 'ui-svg'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  svg.ui-svg(class=allMods, class='svg--' + iconName)&attributes(attributes)
+    use(xlink:href='#' + iconName)

@@ -1,0 +1,70 @@
+.ui-h1 {
+  font: 90px/1 $font;
+  @include media-laptop {
+    font-size: 64px;
+  }
+  @include media-tablet {
+    font-size: 54px;
+    line-height: 1.2;
+  }
+  &--l {
+    font: 114px/1 $font;
+    @include media-laptop {
+      font-size: 100px;
+    }
+    @include media-tablet {
+      font-size: 54px;
+      line-height: 1.2;
+    }
+  }
+}
+.ui-h2 {
+  font: 50px/1.2 $font;
+  @include media-laptop {
+    font-size: 42px;
+  }
+  @include media-tablet {
+    font-size: 28px;
+  }
+}
+.ui-h3 {
+  font: 44px/1.2 $font;
+  @include media-laptop {
+    font-size: 40px;
+  }
+  @include media-tablet {
+    font-size: 26px;
+  }
+}
+.ui-h4 {
+  font: 38px/1.2 $font;
+  @include media-laptop {
+    font-size: 34px;
+  }
+  @include media-tablet {
+    font-size: 24px;
+  }
+}
+.ui-h5 {
+  font: 28px/1.2 $font;
+  @include media-tablet {
+    font-size: 20px;
+  }
+}
+.ui-h6 {
+  font: 24px/1.2 $font;
+  @include media-tablet {
+    font-size: 18px;
+  }
+}
+[class*='ui-h'] {
+  &[class*='--light'] {
+    font-weight: 300;
+  }
+  &[class*='--bold'] {
+    font-weight: 700;
+  }
+  &[class*='--white'] {
+    color: #fff;
+  }
+}

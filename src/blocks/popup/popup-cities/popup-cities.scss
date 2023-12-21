@@ -1,0 +1,19 @@
+.popup-cities {
+  margin: 10% 0;
+  @include media-tablet {
+    margin: 0;
+  }
+  &__head {
+    margin-bottom: 20px;
+  }
+  &__body {
+    display: grid;
+    gap: 20px;
+  }
+  &__line {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid $secondary4;
+  }
+}

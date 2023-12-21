@@ -1,0 +1,21 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'credits'
+    const pageTitle = 'Credits'
+    const siteSection = 'private'
+    const headerMenuActive = 'Кредиты'
+
+block content
+  main
+    .inner
+      +breadcrumbs
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Кредиты')
+        +breadcrumbs-item('Кредиты', '/', '--mobile')
+      +credits
+      +section
+        +usefull([{credit: true}, {card: true}])
+      +section
+        +seo-text

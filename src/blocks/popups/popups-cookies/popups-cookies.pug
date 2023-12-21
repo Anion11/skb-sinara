@@ -1,0 +1,18 @@
+mixin popups-cookies(mods)
+  -
+    const baseName = 'popups-cookies'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popups-cookies(class=allMods)&attributes(attributes)
+    +ui-p5('Банк Синара защищает персональные данные пользователей и обрабатывает Cookies только для персонализации сервисов.', 'popups-cookies')
+      span.popups-cookies__show  Далее
+      span.popups-cookies__text  Запретить обработку Cookies можно в настройках Вашего браузера. Пожалуйста, ознакомьтесь с <a href="#">Условиями обработки персональных данных и Cookies</a>.
+    +ui-button({p7: 'Спасибо, понятно', mods: '--uppercase'}, 'popups-cookies')
+    block

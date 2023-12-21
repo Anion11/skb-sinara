@@ -1,0 +1,50 @@
+mixin popup-holidays-docs(mods)
+  -
+    const baseName = 'popup-holidays-docs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const listItems = [
+      { p3: 'Сведения о доходах за год, предшествующий дате обращения Заемщика с требованием установления льготного периода (справка 2-НДФЛ с сайта ФНС или справка о состоянии индивидуального лицевого счета застрахованного лица от ПФР с сайта Госуслуг),' },
+      { p3: 'Сведения о доходах за текущий год (справка по форме ФНС, полученная Заемщиком от работодателя).' }
+    ]
+
+  +popup('popupHolidaysDocs', '--holidays-docs').popup-holidays-docs(class=allMods)&attributes(attributes)
+    .popup-holidays-docs__head
+      +ui-h4('Список подтверждающих документов Для физических лиц и&nbsp;Индивидуальных предпринимателей', '--bold')
+    .popup-holidays-docs__body(data-scroll-lock-scrollable)
+      .popup-holidays-docs__line
+        .popup-holidays-docs__item
+          +ui-p3('Причина снижения дохода', '--secondary3')
+        .popup-holidays-docs__item
+          +ui-p3('Подтверждающий документ', '--secondary3')
+      .popup-holidays-docs__line
+        .popup-holidays-docs__item
+          +ui-p3('Потеря работы ', '--secondary3')
+        .popup-holidays-docs__item
+          +ui-p3('Выписка из регистра получателей государственных услуг в сфере занятости населения — физических лиц о регистрации гражданина в качестве безработного либо Трудовая книжка с записью об увольнении (потеря работы произошла не ранее 18.02.2022, срок действия выписки — 30 календарных дней до даты обращения).')
+      .popup-holidays-docs__line
+        .popup-holidays-docs__item
+          +ui-p3('Иные причины снижения дохода более чем на 30%', '--secondary3')
+        .popup-holidays-docs__item
+          +ui-ul(listItems)
+          +ui-p3('В случае, если работодатель осуществляет перечисление полной заработной платы на счет Заемщика, открытый в Банке, подтверждение факта снижения дохода Банк осуществляет самостоятельно на основании выписки со Счета Заемщика.')
+      .popup-holidays-docs__line
+        .popup-holidays-docs__item
+          +ui-p3('Осуществление деятельности в отрасли, определенной постановлением Правительства РФ (для Заемщиков - индивидуальных предпринимателей)', '--secondary3')
+        .popup-holidays-docs__item
+          +ui-p3('Выписка из Единого государственного реестра индивидуальных предпринимателей (запрашивается Банком самостоятельно)')
+      .popup-holidays-docs__line
+        .popup-holidays-docs__item
+          +ui-p3('Временная утрата трудоспособности', '--secondary3')
+        .popup-holidays-docs__item
+          +ui-p3('Копия Листка нетрудоспособности либо Талон к электронному листку нетрудоспособности на срок не менее одного месяца (хотя бы часть временной нетрудоспособности должна выпадать на месяц, предшествующий месяцу обращения заемщика с Требованием)')
+      +ui-p3('Заемщиком могут быть предоставлены иные документы, подтверждающие снижение дохода. Подтверждающие документы можно предоставить в отделение Банка, либо направить их на электронный адрес', 'popup-holidays-docs')
+        a(href='mailto:KK@skbbank.ru') KK@sinara.ru
+    block

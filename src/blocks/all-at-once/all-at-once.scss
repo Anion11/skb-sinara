@@ -1,0 +1,84 @@
+.all-at-once {
+  &__head {
+    position: relative;
+    padding-bottom: 24px;
+    @include media-laptop {
+      padding-bottom: 20px;
+    }
+    @include media-tablet {
+      padding-bottom: 30px;
+    }
+  }
+  &__ui-h3 {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+      @include media-tablet {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  &__descr {
+    display: grid;
+    gap: 15px;
+    align-content: start;
+    padding-right: 395px;
+    @include media-laptop {
+      padding-right: 240px;
+    }
+    @include media-tablet {
+      padding-right: 0;
+    }
+  }
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: -25px;
+    max-width: 343px;
+    @include media-laptop {
+      right: -24px;
+      max-width: 272px;
+    }
+    @include media-tablet {
+      display: none;
+    }
+  }
+  &__ui-p1 {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+      @include media-laptop {
+        margin-bottom: 24px;
+      }
+      @include media-tablet {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  &__ui-ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 30px;
+    @include media-laptop {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    @include media-tablet {
+      gap: 12px;
+    }
+    li {
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+      .ui-secondary3 {
+        margin-left: 8px;
+        @include media-tablet {
+          margin-left: 0;
+        }
+      }
+      .ui-p3 {
+        @include media-tablet {
+          display: grid;
+          gap: 4px;
+        }
+      }
+    }
+  }
+}

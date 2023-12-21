@@ -1,0 +1,31 @@
+mixin get-money(data, mods)
+  -
+    const baseName = 'get-money'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const defaultData = {
+      img: '../../images/credits-inner/get-money_img.png',
+      p1: 'Не надо ждать!',
+      p2: 'Узнайте решение <br>за 2 минуты и получите деньги',
+      button: 'Получить деньги'
+    }
+
+    const bannerData = data || defaultData
+
+  .get-money(class=allMods)&attributes(attributes)
+    .get-money__body
+      .get-money__image: img(src=bannerData.img, alt=bannerData.h5)
+      .get-money__content
+        .get-money__text
+          +ui-p1(bannerData.p1, '--bold')
+          if bannerData.p2
+            +ui-p2(bannerData.p2, 'get-money, --secondary3')
+        +ui-button({p3: bannerData.button, mods: '--bold'}, 'get-money, --filled, --p64')
+    block

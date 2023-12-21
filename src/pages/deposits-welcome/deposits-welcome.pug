@@ -1,0 +1,255 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'deposits-welcome'
+    const pageTitle = 'Deposits welcome'
+    const headerAbsolute = true
+    const siteSection = 'private'
+    const headerMenuActive = 'Вклады и счета'
+
+    const parametersHeadings = [
+      { p4: 'Процентные ставки по вкладу', mods: 'ui-tab-head__item--m-none' },
+      { icon: 'icon_bank', p4: 'Условия вклада' },
+      { icon: 'icon_doc-plus', p4: 'Тарифы и документы' }
+    ]
+
+    const parametersTab1 = [
+      { p3_1: 'Сумма вклада', p3_2: '90 дней' },
+    ]
+
+    const parametersTab2 = [
+      { p3: 'Сумма вклада', p1: '10 000 – 30 000 000 ₽' },
+      { p3: 'Срок вклада', p1: '30 / 90 / 180 / 367 / 720 / 1080 дней' },
+      { table: [
+        { p3_1: 'Валюта вклада', p3_2: 'Рубли РФ' },
+        { p3_1: 'Выплата процентов', p3_2: 'В конце срока' },
+        { p3_1: 'Капитализация процентов', p3_2: 'Не производится' },
+        { p3_1: 'Пополнение вклада', p3_2: 'Не производится' },
+        { p3_1: 'Расходные операции', p3_2: 'Не разрешены' },
+        { p3_1: 'Пролонгация', p3_2: 'Не осуществляется' },
+        { p3_1: 'Досрочное расторжение', p3_2: 'Проценты рассчитываются по ставке вклада «До востребования»' },
+      ], itemMods: 'parameters-grid__item--x2 parameters-grid__item--p40'}
+    ]
+
+    const instructionData_1 = [
+      {
+        img: '../../images/deposits/instruction_mob-1.png',
+        title: 'Откройте новый продукт',
+        descr: 'Нажмите на «+» внизу главной страницы, далее «Открыть новый продукт» и «Открыть вклад»'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-2.png',
+        title: 'Выберите вклад',
+        descr: 'На открывшейся странице выберите тип открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-3.png',
+        title: 'Заполните форму',
+        descr: 'Выберите счет в разделах «Счет списания» и «Счет зачисления после закрытия» и укажите сумму открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-4.png',
+        title: 'Откройте вклад',
+        descr: 'При заполнении всех полей кнопка «Открыть вклад» становится доступной'
+      },
+      {
+        img: '../../images/deposits/instruction_mob-5.png',
+        title: 'Введите код из SMS',
+        descr: 'Вклад открыт!'
+      }
+    ]
+
+    const instructionData_2 = [
+      {
+        img: '../../images/deposits/instruction_tablet-1.png',
+        title: 'Откройте новый продукт',
+        descr: 'Нажмите на «+» внизу главной страницы, далее «Открыть новый продукт» и «Открыть вклад»'
+      },
+      {
+        img: '../../images/deposits/instruction_tablet-2.png',
+        title: 'Выберите вклад',
+        descr: 'На открывшейся странице выберите тип открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_tablet-2.png',
+        title: 'Заполните форму',
+        descr: 'Выберите счет в разделах «Счет списания» и «Счет зачисления после закрытия» и укажите сумму открываемого вклада'
+      },
+      {
+        img: '../../images/deposits/instruction_tablet-3.png',
+        title: 'Введите код из SMS',
+        descr: 'Вклад открыт!'
+      }
+    ]
+
+    const tableData = {
+      style: 'min-width: 695px;',
+      thead: [
+        {
+          mods: 'ui-secondary3',
+          th: [
+            { text: 'Сумма вклада', width: '24%' },
+            { text: '90 дней' },
+            { text: '180 дней' },
+            { text: '367 дней' },
+            { text: '720 дней' },
+            { text: '1080 дней' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'от 10 000 ₽' },
+            { text: '7.0%' },
+            { text: '7.9%' },
+            { text: '8.1%' },
+            { text: '8.5%' },
+            { text: '9.6%' },
+          ]
+        },
+        {
+          td: [
+            { text: 'от 1 500 000 ₽' },
+            { text: '7.1%' },
+            { text: '8.0%' },
+            { text: '8.1%' },
+            { text: '8.7%' },
+            { text: '9.7%' },
+          ]
+        },
+      ]
+    }
+
+    const tableDataMob = {
+      tbody: [
+        {
+          td: [
+            { text: '<span class="ui-secondary3">Сумма вклада</span> от 10 000 ₽', colspan: 2 },
+          ]
+        },
+        {
+          td: [
+            { text: '90 дней', mods: 'ui-secondary3' },
+            { text: '7%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '180 дней', mods: 'ui-secondary3' },
+            { text: '7.9%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '367 дней', mods: 'ui-secondary3' },
+            { text: '8.1%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '720 дней', mods: 'ui-secondary3' },
+            { text: '8.5%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '1080 дней', mods: 'ui-secondary3' },
+            { text: '9.6%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '<span class="ui-secondary3">Сумма вклада</span> от 1 500 000 ₽', colspan: 2 },
+          ]
+        },
+        {
+          td: [
+            { text: '90 дней', mods: 'ui-secondary3' },
+            { text: '7.1%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '180 дней', mods: 'ui-secondary3' },
+            { text: '8.0%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '367 дней', mods: 'ui-secondary3' },
+            { text: '8.1%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '720 дней', mods: 'ui-secondary3' },
+            { text: '8.7%', mods: 'ui-text-right' },
+          ]
+        },
+        {
+          td: [
+            { text: '1080 дней', mods: 'ui-secondary3' },
+            { text: '9.7%', mods: 'ui-text-right' },
+          ]
+        },
+      ]
+    }
+
+block content
+  main
+    .inner
+      +breadcrumbs('--banner')
+        +breadcrumbs-item('Главная', '/')
+        +breadcrumbs-item('Вклад "Приветственный"')
+        +breadcrumbs-item('Вклад "Приветственный"', '/', '--mobile')
+      +banner({h2: 'Вклад «Приветственный»', p2: 'Здорово быть первым! Повышенная ставка для новых клиентов.', infoItems: [{ p2: 'до<span>9.7</span>%', p4: 'ставка на весь срок' }, { p2: 'до<span>10 000</span>₽', p4: 'сумма вклада' }], image: 'banner_img--deposit-welcome.png'}, '--deposit-welcome, --layout')
+      +section('--background, --m-only')
+        +ui-table(tableDataMob, '--bg-white-pd-xl')(data-mob-short='')
+      +section('--background')
+        +main-calculator([{deposit: { period: true, switches: [{ id: 'newClient', label: {p4: 'Новый клиент'}, tooltip: true}]}}])
+      +section('--background, --order-up')
+        +parameters-new('Параметры', parametersHeadings)
+          +ui-tab-item('--active')
+            .parameters-new__top
+              +ui-h4('Процентные ставки по вкладу', '--bold')
+              .parameters-new__close
+            +ui-switch('newClientSwitch', {p4: 'Новый клиент'}, 'parameters-new')
+              +ui-tooltip('', 'Test')
+            +ui-table(tableData, '--m-scroll, --bg-white')(data-scroll-lock-scrollable)
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Условия вклада', '--bold')
+              .parameters-new__close
+            +parameters-grid(parametersTab2, '--x2')
+          +ui-tab-item
+            .parameters-new__top
+              +ui-h4('Тарифы и документы', '--bold')
+              .parameters-new__close
+            +document({p4: 'Тарифы банка'})
+            +document({p4: 'Заявление о присоединении к Правилам комплексного банковского обслуживания и подключении услуг'})
+            +document({p4: 'Реквизиты для безналичного пополнения счета'})
+            +document({p4: 'Правила комплексного банковского обслуживания физических лиц в ПАО Банк Синара. Версия 8.4'})
+            +document({p4: 'Правила КБО Версии 1.0-8.3'})
+            +document({p4: 'Условия предоставления и использования потреб. кредитов в ПАО Банк Синара'})
+            +document({p4: 'Способы и адреса для направления обращений получателями финансовых услуг'})
+            +document({p4: 'Шаблон справки о заработной плате по форме банка'})
+      +section('--l-pd-x')
+        +section-head('--flex')
+          +ui-h3('Открыть вклад просто!', '--bold')
+          +ui-tab-head([{ p4: 'Смартфон' }, { p4: 'Компьютер' }, { p4: 'Офис' }], '--no-outside, --bg-grey-active-black, --m-auto-cols-fr')(data-tab-group='instruction')
+        +ui-tab(data-tab-group='instruction')
+          +ui-tab-body
+            +ui-tab-item('--active')
+              +instruction(instructionData_1)
+            +ui-tab-item
+              +instruction(instructionData_2)
+            +ui-tab-item
+              p 3
+      +section
+        +promo([{doubleBid: true}])
+      +section
+        +questions
+      +section
+        +usefull([{credit: true}, {reference: true}])

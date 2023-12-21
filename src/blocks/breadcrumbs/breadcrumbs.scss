@@ -1,0 +1,110 @@
+.breadcrumbs {
+  order: -100;
+  display: flex;
+  align-items: flex-end;
+  margin: 40px 0 60px;
+  @include media-laptop {
+    margin-top: 30px;
+  }
+  @include media-tablet {
+    overflow-x: auto;
+    margin: 20px 0 40px;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__item {
+    white-space: nowrap;
+    &::before {
+      content: '/';
+      display: inline-block;
+    }
+    &:not(:last-child) {
+      margin-right: 4px;
+      @include media-tablet {
+        display: none;
+      }
+    }
+    &:first-child {
+      &::before {
+        display: none;
+      }
+    }
+    &--mobile {
+      display: none;
+      @include media-tablet {
+        display: block;
+      }
+      &::before {
+        display: none;
+      }
+      .breadcrumbs__link {
+        position: relative;
+        color: $secondary3;
+        pointer-events: none;
+        @include media-tablet {
+          padding-left: 16px;
+          pointer-events: all;
+        }
+        &::before {
+          @include media-tablet {
+            content: '';
+            position: absolute;
+            top: 55%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 14px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='14' fill='none'%3E%3Cpath stroke='%23797979' d='M7 1 1 7l6 6'/%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+  }
+  &__link {
+    color: $secondary1;
+  }
+  &__text {
+    display: inline-block;
+    color: $secondary3;
+  }
+  &--banner {
+    margin: 20px 0;
+    @include media-laptop {
+      margin-top: 30px;
+    }
+    @include media-tablet {
+      position: relative;
+      z-index: 1;
+      margin: 80px 0 -100px;
+    }
+  }
+  &--small-margin {
+    margin: 20px 0;
+    @include media-tablet {
+      margin-top: 0;
+    }
+  }
+  &--ny-24 {
+    .breadcrumbs__item {
+      position: relative;
+      padding-left: 19px;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 46%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 17px;
+        background-image: url('/images/breadcrumbs_ny_24.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      &--mobile,
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}

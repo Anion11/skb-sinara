@@ -1,0 +1,21 @@
+mixin point-banner(data, mods)
+  -
+    const baseName = 'point-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .point-banner(class=allMods)&attributes(attributes)
+    .point-banner__body.point-banner__body--bg2
+      .point-banner__image: img(src=data.img, alt='')
+      +ui-p1(data.p1, 'point-banner, --bold')
+      if data.p3
+        +ui-p3(data.p3, 'point-banner')
+      if data.button
+        +ui-button({p3: data.button}, 'point-banner, --filled, --p64')
+    block

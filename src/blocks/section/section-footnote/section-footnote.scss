@@ -1,0 +1,17 @@
+.section-footnote {
+  &:not(:first-child) {
+    margin-top: 30px;
+    @include media-laptop {
+      margin-top: 25px;
+    }
+    @include media-tablet {
+      margin-top: 20px;
+    }
+  }
+  &--max-w730 {
+    max-width: 730px;
+  }
+  &--max-w900 {
+    max-width: 900px;
+  }
+}

@@ -1,0 +1,40 @@
+mixin ui-table(data, mods)
+  -
+    const baseName = 'ui-table'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-table(class=allMods)&attributes(attributes)
+    .ui-table__container(style=data.style)
+      table
+        if data.thead
+          thead
+            each itemTr in data.thead
+              tr(class=itemTr.mods)
+                each itemTh in itemTr.th
+                  th(width=itemTh.width colspan=itemTh.colspan rowspan=itemTh.rowspan class=itemTh.mods)
+                    if itemTh.bg
+                      .ui-table__bg(class=itemTh.bgMods) !{itemTh.text}
+                    else
+                      | !{itemTh.text}
+                      if itemTh.textNowrap
+                        =' '
+                        span.ui-nowrap !{itemTh.textNowrap}
+                         if itemTh.tooltip
+                          +ui-tooltip('', itemTh.tooltip)
+        tbody
+          each itemTr in data.tbody
+            tr(class=itemTr.mods)
+              each itemTd in itemTr.td
+                td(width=itemTd.width colspan=itemTd.colspan rowspan=itemTd.rowspan class=itemTd.mods)
+                  if itemTd.bg
+                    .ui-table__bg(class=itemTd.bgMods) !{itemTd.text}
+                  else
+                    | !{itemTd.text}
+    block

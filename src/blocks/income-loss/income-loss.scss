@@ -1,0 +1,29 @@
+.income-loss {
+  display: flex;
+  background-color: $background1;
+  border-radius: 24px;
+  &__content {
+    padding: 50px 45px 50px 80px;
+    @include media-laptop {
+      padding: 40px;
+    }
+  }
+  &__ui-h5 {
+    margin-bottom: 24px;
+  }
+  &__ui-p2 {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    a {
+      color: $primary1;
+    }
+  }
+  &__image {
+    flex-shrink: 0;
+    max-width: 555px;
+    @include media-laptop {
+      display: none;
+    }
+  }
+}

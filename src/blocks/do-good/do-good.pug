@@ -1,0 +1,17 @@
+mixin do-good(mods)
+  -
+    const baseName = 'do-good'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .do-good(class=allMods)&attributes(attributes)
+    .do-good__img: img(src='../../images/cards/do-good.png' alt='')
+    +ui-h5('Совершайте добрые дела, оплачивая повседневные покупки', 'do-good, --bold')
+    +ui-p3('Оформляя карту, вы становитесь участником в совместном проекте Благотворительного фонда «Синара-Фонд» и ПАО «Банк Синара». Все средства, собранные в рамках проекта, направляются на приобретение лекарственных препаратов детям, проходящим лечение в Центре детской онкологии и гематологии Областной детской клинической больницы (г. Екатеринбург), на приобретение медицинского оборудования для Калужской областной клинической детской больницы, а также на повышение квалификации специалистов-онкологов.')
+    block

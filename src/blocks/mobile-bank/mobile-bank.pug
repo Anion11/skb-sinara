@@ -1,0 +1,22 @@
+mixin mobile-bank(mods)
+  -
+    const baseName = 'mobile-bank'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .mobile-bank(class=allMods)&attributes(attributes)
+    .mobile-bank__content
+      +ui-svg('icon_sinara', 'mobile-bank')
+      .mobile-bank__text
+        +ui-p2('Мобильный банк', 'mobile-bank, --bold')
+        +ui-p5('Приложение всегда под рукой', '--secondary3')
+    +ui-button({p4: 'Скачать', mods: '--bold'}, 'mobile-bank, --download, --desktop').js-popup(a href='#popupApp')
+    +ui-button({p4: 'Скачать', mods: '--bold'}, 'mobile-bank, --download, --mobile')
+    +popup-app
+    block

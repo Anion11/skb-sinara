@@ -1,0 +1,24 @@
+mixin call-form(mods)
+  -
+    const baseName = 'call-form'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  form.call-form(class=allMods)&attributes(attributes)
+    +ui-h3('Отправьте заявку на&nbsp;звонок', 'call-form, --bold')
+    .call-form__body
+      .call-form__fields
+        +ui-input('name', 'ФИО', '--border')(required)
+        +ui-select('--bg-white, --fz16', '', 'Липецк', 'Воронеж')(placeholder='Выберите город' required)
+        +ui-input('tel', 'Телефон', '--border', 'phone')(required)
+        +ui-checkbox('consent', 'Я принимаю условия ')
+          =' '
+          a.ui-primary1(href='#') соглашения
+      +ui-button({ p3: 'Отправить' }, 'call-form, --filled, --p64')(type='submit')
+    block

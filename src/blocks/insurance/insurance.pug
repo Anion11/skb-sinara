@@ -1,0 +1,19 @@
+mixin insurance(mods)
+  -
+    const baseName = 'insurance'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .insurance(class=allMods class=(isNewYear ? 'insurance--ny-24' : ''))&attributes(attributes)
+    .insurance__body
+      .insurance__image: img(src='../../images/insurance.png', alt='')
+      .insurance__text
+        +ui-h5('Вклады в Банке Синара застрахованы!', 'insurance, --bold')
+        +ui-p3('Банк входит в <a href="#">Систему Страхования Вкладов</a>. Это значит, что если с банком что-нибудь случится, вы все равно, гарантированно сможете вернуть свои деньги.', 'insurance, --secondary3')
+    block

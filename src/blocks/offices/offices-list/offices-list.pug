@@ -1,0 +1,57 @@
+mixin offices-list(mods)
+  -
+    const baseName = 'offices-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  mixin office-item()
+    .offices-list__item
+      .offices-list__name
+        +ui-svg('icon_sinara-atm', 'offices-list')
+        .offices-list__wrap
+          +ui-p7('Банк Синара', '--uppercase, --secondary3')
+          +ui-p3('ДО "Юго-Западный"', 'offices-list, --bold')
+      +ui-p3('620102, г. Екатеринбург, Шаумяна, дом 103/1')
+      .offices-list__line
+        .offices-list__time
+          +ui-p7('Физические лица', '--uppercase, --secondary3')
+          +ui-p3('пн-пт: 10:00-19:00 сб-вс: выходной')
+        .offices-list__time
+          +ui-p7('юридические лица', '--uppercase, --secondary3')
+          +ui-p3('пн-пт: 10:00-17:00 сб-вс: выходной')
+      +ui-p3('Обратите внимание! Обслуживание только зарплатных клиентов ТМК и Группы Синара', '--gradient')
+      block
+
+  .offices-list(class=allMods)&attributes(attributes)
+    .offices-list__head
+      .offices-list__close.offices__swipe
+      +ui-p2('', '--bold, --uppercase').offices-list__geo.js-popup(a href='#popupGeo')
+        +ui-svg('icon_geo-tick', '--mobile')
+        +ui-svg('icon_geo-tick--circle', '--desktop')
+        ='Санкт-Петеpбуpг'
+      .offices-list__search
+        +ui-input('officesAdress')(placeholder='Введите адрес или отделение')
+      .offices-list__control
+        .offices-list__radios
+          +ui-radio('offices', {p4: 'Офисы'}, 'offices-list')(name='atms' checked)
+          +ui-radio('atms', {p4: 'Банкоматы'}, 'offices-list')(name='atms')
+        +offices-filter
+    .offices-list__body
+      .offices-list__items
+        +office-item
+          .offices-list__backdrop: img(src='../../../images/offices_backdrop.png', alt='')
+        +office-item
+        +office-item
+        .offices-list__item.offices-list__item--not-found
+          +ui-svg('icon_loupe')
+          +ui-p3('Мы ничего не нашли в этой области', '--bold')
+          +ui-p3('Отдалите карту или сбросьте фильтры, чтобы увидеть больше', '--secondary3')
+        +offices-banner
+        +ui-button({p3: 'Показать еще'}, 'offices-list, --p64')
+    block

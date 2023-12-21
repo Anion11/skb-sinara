@@ -1,0 +1,32 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'promotion-template'
+    const pageTitle = 'promotion-template'
+    const siteSection = 'private'
+    const headerMods = 'header--landing'
+    const wrapperMods = 'wrapper--ov-h wrapper--background1'
+
+block content
+  main
+    .inner.inner--s
+      +section
+        +promotion-banner
+      +section
+        +section-box('--p60-177, --m-inset')
+          +section-head.ui-text-center: +ui-h4('Как принять участие в&nbsp;акции', '--bold')
+          +promotion-steps
+      +section
+        +promotion-table
+      +section
+        +section-head: +ui-h4('Не позднее 31 июля 2023 года случайным образом будет определено 4 победителя, которые получат призы', '--bold')
+        +promotion-prizes
+      +section('--max-w930, --z1')
+        +section-head.ui-text-center: +ui-h4('Документы', '--bold')
+        +document({p2: 'Условия акции "Поймай суперудачу!"'}, '--xxl', 'icon_file')
+      +section('--decor')
+        +section-head.ui-text-center: +ui-h4('Вопросы и ответы', '--bold')
+        -for(let i=0; i<3; i++)
+          +ui-accordion({p2: 'Могу ли я принять участие в акции, если оформил Универсальную карту / кредитную карту “ДА!” после начала акции?'}, '--bg-white, --pd-l, --arrow')
+            +ui-p3('Нет, подключение пакета возможно только при выдаче кредита.')

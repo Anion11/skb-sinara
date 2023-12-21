@@ -1,0 +1,38 @@
+.card-premium-ban {
+  position: relative;
+  padding: 40px 500px 75px 65px;
+  border: 1px solid $secondary4;
+  border-radius: 24px;
+  overflow: hidden;
+  @include media-laptop {
+    padding: 40px 370px 62px 24px;
+  }
+  @include media-tablet {
+    padding: 40px 20px 210px;
+    border-radius: 14px;
+  }
+  &__ui-h5 {
+    margin-bottom: 20px;
+  }
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 493px;
+    @include media-laptop {
+      right: -55px;
+      max-width: 365px;
+    }
+    @include media-tablet {
+      right: 0;
+      max-width: 275px;
+    }
+  }
+  &__ui-ul {
+    li {
+      &::before {
+        margin-top: 5px;
+      }
+    }
+  }
+}

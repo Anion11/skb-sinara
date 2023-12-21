@@ -1,0 +1,363 @@
+.banner {
+  position: relative;
+  order: -10;
+  overflow: hidden;
+  &__body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    min-height: 450px;
+    padding: 55px 0 50px 80px;
+    background-color: $background1;
+    border-radius: 24px;
+    @include media-laptop {
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 50px 24px 40px;
+    }
+    @include media-tablet {
+      padding: 125px 20px 40px;
+      border-radius: 0 0 14px 14px;
+    }
+  }
+  &__ui-h2 {
+    margin-bottom: 14px;
+    @include media-laptop {
+      margin-bottom: 10px;
+    }
+    span {
+      display: inline-block;
+      font-size: 90px;
+      line-height: 1;
+      @include media-laptop {
+        font-size: 64px;
+      }
+    }
+  }
+  &__ui-p2 {
+    span {
+      @include media-tablet {
+        display: none;
+      }
+    }
+  }
+  &__info {
+    display: flex;
+    gap: 40px;
+    margin: 24px 0;
+    @include media-tablet {
+      gap: 30px;
+      margin: 16px 0;
+    }
+  }
+  &__item {
+    &:nth-child(3) {
+      @include media-tablet {
+        display: none;
+      }
+    }
+    .ui-p2 {
+      display: flex;
+      align-items: flex-end;
+      min-height: 38px;
+      @include media-laptop {
+        justify-content: center;
+        min-height: 34px;
+      }
+      &:not(:last-child) {
+        margin-bottom: 5px;
+        @include media-tablet {
+          margin-bottom: 3px;
+        }
+      }
+      span {
+        display: inline-block;
+        margin: 0 5px;
+        font-size: 38px;
+        line-height: 1;
+        @include media-laptop {
+          font-size: 34px;
+        }
+        @include media-tablet {
+          font-size: 24px;
+        }
+      }
+    }
+    a {
+      display: inline;
+      color: $primary1;
+    }
+  }
+  &__icon {
+    width: 28px;
+    height: 28px;
+    margin: 8px 0 7px;
+    @include media-laptop {
+      margin: 6px auto 5px;
+    }
+    @include media-tablet {
+      width: 19px;
+      height: 19px;
+      margin: 14px auto 4px;
+    }
+  }
+  &__ui-p6 {
+    @include media-tablet {
+      max-width: 330px;
+    }
+  }
+  &__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 775px;
+    pointer-events: none;
+    @include media-laptop {
+      position: static;
+      margin-top: 30px;
+      margin-right: -110px;
+    }
+    @include media-tablet {
+      max-width: 545px;
+      margin-right: -110px;
+      margin-left: -110px;
+    }
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: auto;
+    @include media-laptop {
+      flex-direction: column;
+      align-items: unset;
+      gap: 16px;
+      width: 100%;
+      max-width: 525px;
+      margin-top: 20px;
+    }
+    @include media-tablet {
+      margin-top: 16px;
+    }
+    .ui-button {
+      @include media-laptop {
+        transition: inherit;
+      }
+      &--text {
+        gap: 5px;
+      }
+    }
+  }
+  &--layout {
+    @include media-tablet {
+      margin: 0 -20px;
+    }
+  }
+  &--cards-goodness {
+    .banner {
+      &__item {
+        @include media-tablet {
+          max-width: 106px;
+        }
+      }
+    }
+  }
+  &--cards-uni-social {
+    .banner {
+      &__ui-p2 {
+        max-width: 590px;
+      }
+      &__info {
+        @include media-tablet {
+          gap: 14px;
+        }
+      }
+      &__item {
+        max-width: 220px;
+      }
+    }
+  }
+  &--credit-card-yes {
+    .ui-p2 {
+      max-width: 530px;
+    }
+  }
+  &--credit-holidays {
+    .ui-p2 {
+      max-width: 545px;
+    }
+  }
+  &--delivery {
+    .ui-h2 {
+      max-width: 500px;
+      @include media-tablet {
+        max-width: 285px;
+      }
+    }
+    .ui-p2 {
+      max-width: 420px;
+      @include media-tablet {
+        max-width: 245px;
+      }
+      .ui-tooltip {
+        @include media-tablet {
+          display: none;
+        }
+      }
+    }
+  }
+  &--deposit-welcome {
+    .ui-p2 {
+      max-width: 520px;
+    }
+  }
+  &--deposit-desires-plus {
+    .banner {
+      &__ui-p1 {
+        max-width: 550px;
+      }
+    }
+    .ui-p2 {
+      max-width: 500px;
+      span {
+        @include media-tablet {
+          font-size: 19px;
+        }
+      }
+    }
+  }
+  &--deposit-desires {
+    .ui-p2 {
+      span {
+        @include media-tablet {
+          font-size: 19px;
+        }
+      }
+    }
+  }
+  &--deposit-maximum {
+    .ui-p2 {
+      max-width: 500px;
+    }
+  }
+  &--deposit-active-income {
+    .banner {
+      &__ui-h2,
+      &__ui-p1 {
+        max-width: 640px;
+      }
+    }
+    .ui-p2 {
+      max-width: 650px;
+    }
+  }
+  &--deposit-dream-course {
+    .banner {
+      &__ui-h2 {
+        max-width: 730px;
+      }
+      &__ui-p1 {
+        max-width: 640px;
+      }
+    }
+    .ui-p2 {
+      max-width: 600px;
+    }
+  }
+  &--deposit-lucky-coin {
+    .banner {
+      &__ui-p1 {
+        max-width: 576px;
+      }
+    }
+    .ui-p2 {
+      max-width: 600px;
+    }
+  }
+  &--deposit-my-charm {
+    .banner {
+      &__ui-p1 {
+        max-width: 640px;
+      }
+    }
+    .ui-p2 {
+      max-width: 630px;
+      @include media-tablet {
+        max-width: 330px;
+      }
+    }
+  }
+  &--deposit-active-account {
+    .banner {
+      &__ui-p1 {
+        max-width: 450px;
+      }
+    }
+    .ui-p2 {
+      max-width: 480px;
+      @include media-tablet {
+        max-width: 290px;
+      }
+    }
+  }
+  &--internet-bank {
+    .ui-h2 {
+      max-width: 660px;
+      br {
+        display: none;
+        @include media-tablet {
+          display: block;
+        }
+      }
+    }
+    .ui-p2 {
+      @include media-tablet {
+        max-width: 200px;
+      }
+    }
+  }
+  &--cards-premium {
+    .banner {
+      &__ui-p2 {
+        max-width: 500px;
+      }
+      &__item {
+        max-width: 220px;
+        @include media-laptop {
+          max-width: 260px;
+        }
+        @include media-tablet {
+          max-width: 120px;
+        }
+      }
+    }
+  }
+  &--cards-universal {
+    .banner {
+      &__item {
+        @include media-laptop {
+          max-width: 183px;
+        }
+        @include media-tablet {
+          max-width: 148px;
+        }
+      }
+    }
+  }
+  &--yuan-transfer {
+    .banner {
+      &__ui-p2 {
+        max-width: 400px;
+      }
+      &__item {
+        .ui-p4 {
+          max-width: 120px;
+        }
+      }
+    }
+  }
+}

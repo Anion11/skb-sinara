@@ -1,0 +1,38 @@
+mixin promo(items, mods)
+  -
+    const baseName = 'promo'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  each item in items
+    if item.activeIncome
+      .promo(class=allMods)&attributes(attributes)
+        .promo__head
+          +ui-h3('Акции и спецпредложения', '--bold')
+        .promo__body
+          .promo__content
+            +ui-p7('Акция', 'promo, --primary1, --uppercase')
+            +ui-h5('Накопительный счёт «Активный доход»', 'promo, --bold')
+            +ui-p3('Повышенная ставка по счёту при оплате <br>покупок картой от 10 000 ₽/мес.', 'promo, --secondary3')
+            +ui-button({p3: 'Подробнее'}, 'promo, --p44')
+          .promo__image: img(src='../../images/promo_active-income.png', alt='Накопительный счёт «Активный доход»')
+        block
+
+    if item.doubleBid
+      .promo(class=allMods)&attributes(attributes)
+        .promo__head
+          +ui-h3('Акции и спецпредложения', '--bold')
+        .promo__body
+          .promo__content
+            +ui-p7('Акция', 'promo, --primary1, --uppercase')
+            +ui-h5('Акция «Удвойте ставку!»', 'promo, --bold')
+            +ui-p3('Откройте вклад до 30 июня и участвуйте в розыгрыше', 'promo, --secondary3')
+            +ui-button({p3: 'Подробнее'}, 'promo, --p44')
+          .promo__image: img(src='../../images/promo_double-bid.png', alt='Акция «Удвойте ставку!»')
+        block

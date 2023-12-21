@@ -1,0 +1,22 @@
+extends ../../layouts/layout
+
+block variables
+  -
+    const pageName = 'offices'
+    const pageTitle = 'Offices'
+    const headerAbsolute = false
+    const siteSection = 'private'
+    const headerMenuActive = 'Офисы и банкоматы'
+
+block content
+  main.main--pb30
+    .inner.inner--w100
+      +offices
+      br
+      br
+      div(style='cursor: pointer;' onclick='globalAtmsItemShow(document.querySelector(".offices-list"))') Показать список офисов/банкоматов
+      br
+      div(style='cursor: pointer;' onclick='globalAtmsItemShow(document.querySelector(".offices-office"))') Показать офис/банкомат
+
+block append scripts
+  script(src='https://api-maps.yandex.ru/2.1/?apikey=4207a9d6-3cbc-4407-b9a6-4d4bd69b3c52&lang=ru_RU')

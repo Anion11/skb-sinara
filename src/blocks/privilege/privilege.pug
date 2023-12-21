@@ -1,0 +1,22 @@
+mixin privilege(data, mods)
+  -
+    const baseName = 'privilege'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .privilege(class=allMods)&attributes(attributes)
+    +ui-h3(data.title, 'privilege, --bold')
+    .privilege__wrapper
+      each item in data.items
+        .privilege__item
+          .privilege__text
+            +ui-p2(item.name, 'privilege, --bold')
+            +ui-p3(item.descr)
+          .privilege__img: img(src=item.img alt=item.name)
+    block

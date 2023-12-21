@@ -1,0 +1,23 @@
+.questions {
+  &__head {
+    margin-bottom: 35px;
+    @include media-laptop {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__body {
+    padding: 16px 80px;
+    background-color: $background1;
+    border-radius: 24px;
+    @include media-laptop {
+      padding: 16px 24px;
+    }
+    @include media-tablet {
+      padding: 12px 12px;
+      border-radius: 14px;
+    }
+  }
+}
