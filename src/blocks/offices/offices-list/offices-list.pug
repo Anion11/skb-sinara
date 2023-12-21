@@ -1,4 +1,4 @@
-mixin offices-list(mods)
+mixin offices-list(type, mods)
   -
     const baseName = 'offices-list'
     let allMods = ''
@@ -27,31 +27,55 @@ mixin offices-list(mods)
           +ui-p3('пн-пт: 10:00-17:00 сб-вс: выходной')
       +ui-p3('Обратите внимание! Обслуживание только зарплатных клиентов ТМК и Группы Синара', '--gradient')
       block
-
-  .offices-list(class=allMods)&attributes(attributes)
-    .offices-list__head
-      .offices-list__close.offices__swipe
-      +ui-p2('', '--bold, --uppercase').offices-list__geo.js-popup(a href='#popupGeo')
-        +ui-svg('icon_geo-tick', '--mobile')
-        +ui-svg('icon_geo-tick--circle', '--desktop')
-        ='Санкт-Петеpбуpг'
-      .offices-list__search
-        +ui-input('officesAdress')(placeholder='Введите адрес или отделение')
-      .offices-list__control
-        .offices-list__radios
-          +ui-radio('offices', {p4: 'Офисы'}, 'offices-list')(name='atms' checked)
-          +ui-radio('atms', {p4: 'Банкоматы'}, 'offices-list')(name='atms')
-        +offices-filter
-    .offices-list__body
-      .offices-list__items
-        +office-item
-          .offices-list__backdrop: img(src='../../../images/offices_backdrop.png', alt='')
-        +office-item
-        +office-item
-        .offices-list__item.offices-list__item--not-found
-          +ui-svg('icon_loupe')
-          +ui-p3('Мы ничего не нашли в этой области', '--bold')
-          +ui-p3('Отдалите карту или сбросьте фильтры, чтобы увидеть больше', '--secondary3')
-        +offices-banner
-        +ui-button({p3: 'Показать еще'}, 'offices-list, --p64')
-    block
+  case type
+    when 'new-year'
+      .offices-list.offices-list--new-year(class=allMods)&attributes(attributes)
+        .offices-list__head
+          .offices-list__close.offices__swipe
+          +ui-p2('', '--bold, --uppercase').offices-list__geo.js-popup(a href='#popupGeo')
+            +ui-svg('icon_geo-tick', '--mobile')
+            +ui-svg('icon_geo-tick--circle', '--desktop')
+            ='Санкт-Петеpбуpг'
+          .offices-list__search
+            +ui-input('officesAdress')(placeholder='Введите адрес или отделение')
+          .offices-list__control
+            .offices-list__radios
+              +ui-radio('offices', {p4: 'Офисы'}, 'offices-list')(name='atms' checked)
+              +ui-radio('atms', {p4: 'Банкоматы'}, 'offices-list')(name='atms')
+            +offices-filter
+        .offices-list__body
+          .offices-list__items
+            +offices-banner('new-year')
+            +office-item
+              .offices-list__backdrop: img(src='../../../images/offices_backdrop.png', alt='')
+            +office-item
+          +ui-button({p3: 'Показать еще'}, 'offices-list, --p64')
+        block
+    default
+      .offices-list(class=allMods)&attributes(attributes)
+        .offices-list__head
+          .offices-list__close.offices__swipe
+          +ui-p2('', '--bold, --uppercase').offices-list__geo.js-popup(a href='#popupGeo')
+            +ui-svg('icon_geo-tick', '--mobile')
+            +ui-svg('icon_geo-tick--circle', '--desktop')
+            ='Санкт-Петеpбуpг'
+          .offices-list__search
+            +ui-input('officesAdress')(placeholder='Введите адрес или отделение')
+          .offices-list__control
+            .offices-list__radios
+              +ui-radio('offices', {p4: 'Офисы'}, 'offices-list')(name='atms' checked)
+              +ui-radio('atms', {p4: 'Банкоматы'}, 'offices-list')(name='atms')
+            +offices-filter
+        .offices-list__body
+          .offices-list__items
+            +office-item
+              .offices-list__backdrop: img(src='../../../images/offices_backdrop.png', alt='')
+            +office-item
+            +office-item
+            .offices-list__item.offices-list__item--not-found
+              +ui-svg('icon_loupe')
+              +ui-p3('Мы ничего не нашли в этой области', '--bold')
+              +ui-p3('Отдалите карту или сбросьте фильтры, чтобы увидеть больше', '--secondary3')
+            +offices-banner
+            +ui-button({p3: 'Показать еще'}, 'offices-list, --p64')
+        block

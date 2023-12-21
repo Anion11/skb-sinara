@@ -1,4 +1,4 @@
-mixin offices-banner(mods)
+mixin offices-banner(type, mods)
   -
     const baseName = 'offices-banner'
     let allMods = ''
@@ -9,18 +9,35 @@ mixin offices-banner(mods)
       }
       allMods = allMods.trim()
     }
-
-  a.offices-banner(href='#' class=allMods)&attributes(attributes)
-    .offices-banner__body
-      .offices-banner__close
-      +ui-p1('Кредит <span>0</span> %', 'offices-banner, --bold, --primary1')
-      +ui-p6('с услугой «Гарантия ставки»')
-      .offices-banner__info
-        .offices-banner__item
-          +ui-p6('до <span>5</span> лет')
-          +ui-p6('срок кредита', '--secondary3')
-        .offices-banner__item
-          +ui-p6('до <span>3</span> млн ₽')
-          +ui-p6('максимальная сумма', '--secondary3')
-    .offices-banner__image: img(src='../../images/offices/offices-banner_img1.png', alt='')
-    block
+  case type 
+    when 'new-year'
+      a.offices-banner.offices-banner--new-year(href='#' class=allMods)&attributes(attributes)
+        .offices-banner__body
+          .offices-banner__close
+          +ui-p1('Кредит <span>0</span> %', 'offices-banner, --bold, --primary1')
+          +ui-p7('с услугой «Гарантия ставки»')
+          .offices-banner__info
+            .offices-banner__item
+              +ui-p7('до <span>5</span> лет')
+              +ui-p7('срок кредита', '--secondary3')
+            .offices-banner__item
+              +ui-p7('до <span>3</span> млн ₽')
+              +ui-p7('максимальная сумма', '--secondary3')
+        .offices-banner__image-snowflake: img(src='../../images/offices/snowflake.png', alt='')
+        .offices-banner__image: img(src='../../images/offices/offices-banner_img1.png', alt='')
+        block
+    default
+      a.offices-banner(href='#' class=allMods)&attributes(attributes)
+        .offices-banner__body
+          .offices-banner__close
+          +ui-p1('Кредит <span>0</span> %', 'offices-banner, --bold, --primary1')
+          +ui-p6('с услугой «Гарантия ставки»')
+          .offices-banner__info
+            .offices-banner__item
+              +ui-p6('до <span>5</span> лет')
+              +ui-p6('срок кредита', '--secondary3')
+            .offices-banner__item
+              +ui-p6('до <span>3</span> млн ₽')
+              +ui-p6('максимальная сумма', '--secondary3')
+        .offices-banner__image: img(src='../../images/offices/offices-banner_img1.png', alt='')
+        block

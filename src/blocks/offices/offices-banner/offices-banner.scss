@@ -73,4 +73,18 @@
       height: 100%;
     }
   }
+  &--new-year {
+    .offices-banner__image-snowflake {
+      margin-bottom: auto;
+      margin-top: 12px;
+      height: 50px;
+      width: 50px;
+    }
+    .offices-banner__body {
+      padding-right: 0;
+    }
+    .offices-banner__image {
+      height: 85px;
+    }
+  }
 }

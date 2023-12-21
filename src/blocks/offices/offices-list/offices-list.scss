@@ -230,4 +230,22 @@
   &__ui-button {
     width: 100%;
   }
+  &--new-year {
+    --pd-y: 28px;
+    background-image: url('../../../images/offices/new-year_bg.png'), $gradientNewYear;
+    background-repeat: no-repeat;
+    background-position: top;
+    .offices-list__item:nth-child(2) {
+      border-top: none;
+    }
+    .offices-list__items {
+      height: calc(var(--height) - 450px);
+    }
+    .offices-list__body {
+      padding-top: 20px;
+    }
+    .offices-list__ui-button {
+      margin-top: 20px;
+    }
+  }
 }

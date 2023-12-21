@@ -17,6 +17,7 @@
   // gradients
   --gradient1: linear-gradient(112.35deg, #f8cfd6 0.97%, #fff3cc 98.83%);
   --gradient2: linear-gradient(112.35deg, #cbdfd1 0.97%, #f2e6ac 98.83%);
+  --gradientNewYear: linear-gradient(112deg, #B6DCFF 0.97%, #D2F1EB 98.83%);
 }
 
 // fonts
@@ -37,6 +38,7 @@ $secondary4: var(--secondary4);
 // gradients
 $gradient1: var(--gradient1);
 $gradient2: var(--gradient2);
+$gradientNewYear: var(--gradientNewYear);
 
 // media
 $mediaWidthLaptop: 1365px;
