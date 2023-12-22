@@ -235,6 +235,24 @@
     background-image: url('../../../images/offices/new-year_bg.png'), $gradientNewYear;
     background-repeat: no-repeat;
     background-position: top;
+    @include media-laptop {
+      background-image: url('../../../images/offices/new-year__bg-mob.png');
+      background-repeat: no-repeat;
+      background-position: top left 25px;
+    }
+    @include media-tablet {
+      background-image: url('../../../images/offices/new-year__bg-mob.png');
+      background-repeat: no-repeat;
+      background-position: top left;
+    }
+    .offices-list__head {
+      @include media-laptop {
+        background-color: unset;
+      }
+      @include media-tablet {
+        padding-top: 50px;
+      }
+    }
     .offices-list__item:nth-child(2) {
       border-top: none;
     }
@@ -243,6 +261,9 @@
     }
     .offices-list__body {
       padding-top: 20px;
+      @include media-laptop {
+        border-top: none
+      }
     }
     .offices-list__ui-button {
       margin-top: 20px;

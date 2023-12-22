@@ -29,8 +29,10 @@ mixin offices(type, mods)
               +ui-svg('icon_full_screen--open', 'offices, --open')
               +ui-svg('icon_full_screen--close', 'offices, --close')
               +ui-svg('icon_geo-tick--circle-white', 'offices')
-              .offices__decoration
+              .offices__buttons-decor
                 img(src="../../images/offices/christmas_tree_angel_toy.png", alt="christmas_tree_angel_toy")
+            .offices__map-decor
+              img(src="../../images/offices/map_decoration.png", alt="map_decoration")
             +offices-banner('offices, --map')
         block
     default
